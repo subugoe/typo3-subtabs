@@ -1,0 +1,23 @@
+[
+	<f:for each="{faechersammlungen}" as="faechersammlung" iteration="faecherSammlungKommaIterator">
+		{
+			"titel":"{faechersammlung.titel}",
+			"faecher":
+			[
+
+		<f:for each="{faechersammlung.fachListe}" as="fachliste" iteration="fachlisteKommaIterator" >
+				{
+				"titel":"{fachliste.titel}",
+				"tags":[
+			<f:for each="{fachliste.tagListe}" as="tag" iteration="kommaIterator">
+						"{tag.tag}"<f:if condition="{kommaIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+			</f:for>
+						],
+					"seite":"<f:uri.page pageUid="{fachliste.seite.uid}"></f:uri.page>"
+				}<f:if condition="{fachlisteKommaIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+		</f:for>
+			],
+			"seite":"<f:uri.page pageUid="{faechersammlung.seite.uid}" />"
+		}<f:if condition="{faecherSammlungKommaIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+	</f:for>
+]

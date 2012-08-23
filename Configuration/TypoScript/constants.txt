@@ -1,0 +1,29 @@
+plugin.tx_subtabs {
+	view {
+		# cat=plugin.tx_subtabs/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:subtabs/Resources/Private/Templates/
+		# cat=plugin.tx_subtabs/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:subtabs/Resources/Private/Partials/
+		# cat=plugin.tx_subtabs/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:subtabs/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_subtabs//a; type=int+; label=Default storage PID
+		storagePid = 
+	}
+}
+
+module.tx_subtabs {
+	view {
+		# cat=plugin.tx_subtabs/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:subtabs/Resources/Private/Backend/Templates/
+		# cat=plugin.tx_subtabs/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:subtabs/Resources/Private/Backend/Partials/
+		# cat=plugin.tx_subtabs/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:subtabs/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_subtabs//a; type=int+; label=Default storage PID
+		storagePid = 
+	}
+}

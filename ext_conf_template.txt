@@ -1,0 +1,2 @@
+# cat=basic//130; type=text; label=Url of the current installation
+baseUrl = http://www.sub.uni-goettingen.de/

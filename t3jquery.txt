@@ -1,0 +1,2 @@
+script=Resources/Public/JavaScript/Tabs.js,Resources/Public/JavaScript/Suggest.js
+components=jQuery,Autocomplete

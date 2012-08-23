@@ -1,0 +1,171 @@
+2012-08-16 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Farbanpassungen
+	* Explode ViewHelper hinzugefuegt
+
+2012-05-16 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Workspacekompatibilitaet erweitert
+
+2012-04-16 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Pflichtfelder im Backend entfernt (WWW-1183)
+
+2012-04-04 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Anzeige des Titletextes bei pazpar2 (WWW-1177)
+
+2012-03-29 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Behebung des 1px Abstand Bug (WWW-1141)
+
+2012-03-27 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Breite des Faechersammlungstabs angepasst (WWW-1141)
+
+2012-03-15 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Sortierbarkeit der IRRE Elemente (WWW-1141)
+	* Runde Ecken bei den Suchfeldern, hoeheren Button (WWW-1141)
+
+2012-03-14 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Javascript Anpassungen der Tabs (WWW-1141)
+
+2012-03-07 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Links im Katalogreiter blau (WWW-1141)
+
+2012-03-01 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Direktlinks eingebaut (WWW-1141)
+	* Title des Direktlinks (WWW-1141)
+
+2012-03-01 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Verbesserungen an der Lokalisierung und HTML Validitaet (WWW-1141)
+
+2012-02-29 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Bezeichnung "Website" geaendert
+
+2011-12-20 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* IE Workaround fuer die Tabs und Placeholder (WWW-1041)
+	* Seitenaufbau ansprechender gestaltet (WWW-1010)
+
+2011-12-19 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Suggest holt Daten jetzt per POST - umgeht Caching (WWW-1038)
+
+2011-12-16 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Sass fuer Tabs
+
+2011-12-15 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Solr Suggest fuer Tab (WWW-1021)
+	* Bugfixing des Solr Javascripts (WWW-1021)
+	* Beibehalten des ausgewaehlten Tabs nach der Solr Suche (WWW-1026)
+
+2011-12-08 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Datenbankfelder hinzugefuegt bezueglich der Sprache der Tags (WWW-937)
+
+2011-11-07 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Escaping des Url Parameters fuer die GUK Suche (WWW-988)
+	* Suchleiste IE kompatibel gemacht (WWW-988)
+
+2011-12-06 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Vorbereitung der Ajaxierung der Faechersammlungssuche
+
+2011-12-05 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Ladeverhalten des JSON Arrays so korrigiert, dass es nur geladen wird, wenn auf Facher/Sammlungen geklickt wird
+	* Cachingeinstellungen auf TYPO3 4.6 angepasst
+
+2011-11-29 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Placeholder im Webseitentab korrigiert (WWW-945)
+	* Ausrichtung des Tabcontainers korrigiert (WWW-938)
+	* Anzeige des Links im Reiter / Kataloge (WWW-934)
+	* Uebersetzung der Synonyme (WWW-741)
+	* Nur noch ein Klick noetig um den links zu folgen (WWW-765)
+	* Pixelschubsen (WWW-953)
+
+2011-11-28 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Anzeige der Synonyme mit Umlauten (WWW-825)
+	* Aenderung der Labels und Placeholder (WWW-916)
+
+2011-11-24 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Katalogsuche nach jQuery Update gefixt
+	* Kompatibilitaet zu TYPO3 4.6 Bug in JS
+	* Solrsuche in die Tabs eingefuegt (WWW-903)
+	* Solrsuchstring wird per Post uebergeben (WWW-903)
+	* Language String Stichwoerte geaendert (WWW-898)
+
+2011-11-23 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Suche im Backend TYPO3 4.6 kompatibel gestaltet (WWW-896)
+	* Abschicken des Faecher/Sammlungen Tabs mit der Tastatur unterbunden (WWW-869)
+
+2011-11-22 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Refactoring, Performanceverbesserungen, Lokalisierungen
+
+2011-11-17 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Anzeige der Trefferliste der Faecher/Sammlungen korrigiert (www-831)
+
+2011-11-16 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Sprechende URL aus den Tabs (WWW-860)
+
+2011-11-07 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Nur noch ein Klick notwendig um den Links zu folgen (WWW-765)
+
+2011-11-03 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Anpassung der Tabhoehe im CSS an das neue Logo (WWW-794)
+
+2011-11-01 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Anpassung der Styles und kleine Bugfixes
+
+2011-10-12 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Performance bei der Faechersuche optimiert (WWW-738)
+
+2011-09-27 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Anpassung der Breite der Tabs auf 578px (WWW-739)
+	* Optimierung und Bugfixing im JavaScript
+
+2011-09-26 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Bugfix bei der Suchergebnisdarstellung im Bereich Faecher / Sammlungen
+	* Bugfix in der Backenddarstellung und Dateneingabe
+
+2011-09-23 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Darstellung der gefundenen Suchbegriffe im Reiter Faecher / Sammlungen
+	* Highlighting des Suchbegriffs in der Trefferliste
+
+2011-09-22 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Bugfix in der Backendkonfiguration
+	* Ausgrauung der nicht gefundenen Oberelemente
+
+2011-09-20 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Sauberes Linkparsen im Frontend zur Integration von internen Links
+
+2011-09-09 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Voreinstellung des GUKs als Standardauswahl für die Katalogsuche (WWW-728)
+	* Suchbegriff wurde nicht uebernommen
+	* CSS Anpassungen an die Reiter - selbe Startposition fuer alle
+
+2011-09-07 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Tabellendefinition aktualisiert
+
+2011-09-05 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Cachingframework hinzugefuegt
+
+2011-08-23 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Scheduler geschrieben, der dynamisches JSON in eine Datei schreibt - Performanceboost
+
+2011-08-11 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Caches aktiviert
+
+2011-05-18 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Diverse UX und Konsistenzverbesserungen bei den Tabs
+
+2011-05-17 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Speicherung von zustaendigen Mitarbeitern pro Fach
+
+2011-05-16 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Bugfix bei einem Rueckgabewert im JS
+	* Cleanup des Javascripts + Bugfixing
+
+2011-05-13 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* GOK Interface
+
+2011-05-11 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Einfuegen HTML5 Platzhalter in den Formularfeldern
+
+2011-05-10 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Refactoring JS
+	* Aufteilung des JS in zwei Dateien
+
+2011-04-06 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
+	* Start des Projekts
+	* Erstellung Modell

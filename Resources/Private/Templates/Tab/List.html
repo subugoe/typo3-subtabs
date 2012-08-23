@@ -1,0 +1,72 @@
+{namespace fed=Tx_Fed_ViewHelpers}
+
+<fed:script src="typo3conf/ext/subtabs/Resources/Public/JavaScript/*.js"/>
+<fed:style href="{f:uri.resource(path:'Css/Tabs.css')}"/>
+<fed:script>
+	jQuery(document).ready(function () {
+		if (Modernizr.input.placeholder === false) {
+			jQuery('#mytextbox').attr('value', '<f:translate key="labelkatalogsuche" />');
+			jQuery('#q').attr('value', '<f:translate key="labelfaecher" />');
+			jQuery('#solrtab').attr('value', '<f:translate key="suchAufWebseiten" />');
+			jQuery(".placeholder").focusin(function () {
+				jQuery(this).attr('value', '');
+			});
+		}
+	});
+</fed:script>
+
+<div class="tx-subtabs-tabs">
+	<div class="tabs">
+
+		<ul class="tabNavigation">
+			<li>
+				<f:link.page section="Katalog" id="tab-katalog" addQueryString="TRUE" class="tabElement">
+					<f:translate key="Katalog"/>
+				</f:link.page>
+			</li>
+			<li>
+				<f:link.page section="Faechersammlungen" id="tab-faechersammlungen" addQueryString="TRUE" class="tabElement">
+					<f:translate key="Faechersammlungen"/>
+				</f:link.page>
+			</li>
+			<li>
+				<f:link.page section="Webseite" id="tab-webseite" addQueryString="TRUE" class="tabElement">
+					<f:translate key="Webseite"/>
+				</f:link.page>
+			</li>
+
+		</ul>
+	<f:render partial="Katalog" arguments="{_all}" />
+
+	<fed:comment>Faechersammlungen</fed:comment>
+	<div id="Faechersammlungen">
+		<div class="tabsContent">
+			<form action="/" id="tabsFormThird">
+				<input class="field placeholder" type="search" id="q" placeholder="{f:translate(key:'labelfaecher')}"/>
+			</form>
+			<div class="tabsContentPlus" id="FaechersammlungenContentPlus">
+				<ul id="third_select" style="overflow:auto; width: 100%; margin-left: 0px;">
+
+					<f:for each="{faechersammlungen}" as="fach">
+						<li>
+							<f:link.page pageUid="{fach.seite}">{fach.titel}</f:link.page>
+						</li>
+					</f:for>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<fed:comment>Webseite</fed:comment>
+	<div id="Webseite">
+			<div class="tabsContent">
+				<form action="{f:translate(key:'solrTarget')}" method="get" accept-charset="utf-8">
+						<input type="search" class="field tx-solr-q placeholder field" size="40" id="solrtab" name="tx_solr[q]" value="" placeholder="{f:translate(key:'suchAufWebseiten')}" />
+						<input type="submit" value="{f:translate(key:'suchSubmitButton')}" class="formButton" />
+				</form>
+				<div class="tabsContentPlus" id="WebseiteContentPlus"></div>
+			</div>
+	</div>
+</div>
+</div>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'subtabs'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_subtabs_domain_model_formulare">Formulare</label>
+			<label index="tx_subtabs_domain_model_formulare.aktuell">Aktuell</label>
+			<label index="tx_subtabs_domain_model_faecher">Fächer und Sammlungen</label>
+			<label index="tx_subtabs_domain_model_faecher.fach_liste">Fach Liste</label>
+			<label index="tx_subtabs_domain_model_faecher.seite">Link zur Seite</label>
+			<label index="tx_subtabs_domain_model_fach">Fach / Sammlung</label>
+			<label index="tx_subtabs_domain_model_fach.titel">Fach / Sammlungstitel</label>
+			<label index="tx_subtabs_domain_model_fach.seite">Link zur Seite</label>
+			<label index="tx_subtabs_domain_model_fach.tag_liste">Synonyme</label>
+			<label index="tx_subtabs_domain_model_faecher.titel">Titel</label>
+			<label index="tx_subtabs_domain_model_kataloge">Kataloge</label>
+			<label index="tx_subtabs_domain_model_kataloge.titel">Titel</label>
+			<label index="tx_subtabs_domain_model_kataloge.katalog_liste">Katalog Liste</label>
+			<label index="tx_subtabs_domain_model_kataloge.suchparameter">Suchparameter</label>
+			<label index="tx_subtabs_domain_model_webseite">Webseite</label>
+			<label index="tx_subtabs_domain_model_katalog">Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.titel">Titel</label>
+			<label index="tx_subtabs_domain_model_katalog.url">Url</label>
+			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.information">Information</label>
+			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Neues Fenster</label>
+			<label index="tx_subtabs_domain_model_tags">Synonyme</label>
+			<label index="tx_subtabs_domain_model_tags.titel">Synonym</label>
+			<label index="tx_subtabs_domain_model_fach.neuerwerbungen">Neuerwerbungen</label>
+			<label index="tx_subtabs_domain_model_neuerwerbung.titel">Titel</label>
+			<label index="tx_subtabs_domain_model_katalog.direktLinkTitel">Titel des Direktlinks</label>
+			<label index="tx_subtabs_domain_model_neuerwerbung.kurz">Label</label>
+			<label index="tx_subtabs_domain_model_neuerwerbung.suchbegriff">Suchbegriff</label>
+		</languageKey>
+	</data>
+</T3locallang>

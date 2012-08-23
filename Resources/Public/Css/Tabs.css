@@ -1,0 +1,214 @@
+.tx-subtabs-fach {
+  display: none;
+}
+
+.tabs {
+  position: relative;
+  height: 40px;
+  width: 572px;
+  margin-top: 23px;
+  left: 200px;
+  overflow: visible;
+  z-index: 10;
+}
+.tabs ::-webkit-input-placeholder {
+  font-size: 14px;
+  padding: 0px;
+}
+.tabs input:-moz-placeholder {
+  font-size: 14px;
+  padding: 0px;
+}
+.tabs .formButton {
+  width: 64px;
+  border: 1px solid #434343;
+  border-width: 1px;
+  border-color: #bbbbbb;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: url("/typo3conf/ext/subtabs/Resources/Public/Icons/button_shade_large.png") repeat-x scroll 0 100% #f3f6fb;
+  border-style: solid;
+  margin-left: 0;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  line-height: 100%;
+  padding: 3px 8px!important;
+  height: 30px;
+  color: #434343;
+  margin-left: 10px;
+}
+.tabs .tabsContentPlus {
+  margin-top: 8px;
+  position: relative;
+  float: left;
+  width: 572px;
+}
+.tabs form {
+  padding: 0;
+}
+.tabs form input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  box-sizing: content-box;
+  border-width: 1px;
+  border-radius: 14px;
+  border-color: #bbbbbb;
+  padding: 0 10px;
+  width: 476px;
+  height: 28px;
+  font-size: 14px;
+  line-height: 26px;
+  float: left;
+  -webkit-box-shadow: rgba(119, 119, 119, 0.4) 0 0 5px inset;
+  -moz-box-shadow: rgba(119, 119, 119, 0.4) 0 0 5px inset;
+  box-shadow: rgba(119, 119, 119, 0.4) 0 0 5px inset;
+}
+.tabs .ui-state-hover {
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+.tabs #Katalog .tabsContentPlus .description {
+  position: absolute;
+  width: auto;
+}
+.tabs #Katalog .tabsContentPlus label a {
+  color: #1a3771;
+  margin-left: 3px;
+}
+.tabs #Katalog .tabsContentPlus label a:visited {
+  color: #1a3771;
+}
+.tabs #Katalog .tabsContentPlus label a:hover {
+  text-decoration: underline;
+}
+.tabs #Katalog .tabsContentPlus .separator {
+  padding-left: 32px;
+}
+.tabs #Faechersammlungen .field {
+  width: 548px;
+}
+
+.tabNavigation {
+  width: 572px;
+  height: 26px;
+  margin-left: 1px;
+}
+.tabNavigation a {
+  padding: 8px;
+  background-color: #93a8cf;
+  margin-right: 2px;
+  color: #1a3771;
+  font-size: 17px;
+  -moz-border-radius-topleft: 7px;
+  -webkit-border-top-left-radius: 7px;
+  border-top-left-radius: 7px;
+  -moz-border-radius-topright: 7px;
+  -webkit-border-top-right-radius: 7px;
+  border-top-right-radius: 7px;
+  text-shadow: 0 1px 0 #BBE;
+}
+.tabNavigation a:hover {
+  background-color: #eeeeee;
+}
+.tabNavigation li {
+  list-style-type: none;
+  display: inline;
+}
+.tabNavigation .hover {
+  background-color: #93a8cf;
+}
+.tabNavigation .selected {
+  background-color: #eeeeee;
+  color: #1a3771;
+  text-shadow: 0 1px 0 #FFF;
+}
+.tabNavigation .tabsTagline {
+  background-color: #6e7fa0;
+  color: white;
+  font-size: 90%;
+}
+
+.tabsContentLarge {
+  -moz-border-radius-bottomleft: 7px;
+  -webkit-border-bottom-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-bottom-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  height: auto;
+}
+
+.tabsContentSmall {
+  background-color: #FAFAFA;
+  -moz-border-radius-bottomleft: 7px;
+  -webkit-border-bottom-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-bottom-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  border-right: 1px solid #6e7fa0;
+  border-left: 1px solid #6e7fa0;
+  border-bottom: 1px solid #6e7fa0;
+}
+
+.tabsContent {
+  width: 572px;
+  padding: 10px;
+  -moz-border-radius-bottomleft: 7px;
+  -webkit-border-bottom-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  -moz-border-radius-bottomright: 7px;
+  -webkit-border-bottom-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  background-color: #eeeeee;
+  border-right: 1px solid #6e7fa0;
+  border-bottom: 1px solid #6e7fa0;
+  border-left: 1px solid #6e7fa0;
+  float: left;
+  position: absolute;
+  -webkit-box-shadow: rgba(119, 119, 119, 0.4) 0px 7px 7px;
+  -moz-box-shadow: rgba(119, 119, 119, 0.4) 0px 7px 7px;
+  box-shadow: rgba(119, 119, 119, 0.4) 0px 7px 7px;
+  display: none;
+}
+.tabsContent input[type=radio] {
+  margin-right: 5px;
+  margin-left: 2px;
+}
+.tabsContent ul {
+  margin: 0 0 0 2px;
+}
+.tabsContent ul li {
+  list-style-type: none;
+  background-image: url("/typo3conf/ext/subtabs/Resources/Public/Icons/arrow_right.png");
+  background-repeat: no-repeat;
+  background-position: 2px 5px;
+  padding: 0;
+  margin: 0;
+  padding-left: 14px;
+  float: left;
+  width: 93%;
+  clear: both;
+}
+.tabsContent ul li a {
+  color: #1a3771;
+}
+.tabsContent ul li a:hover {
+  text-decoration: underline!important;
+}
+.tabsContent .trefferliste {
+  color: #444;
+  text-indent: -5px;
+  margin-left: 6px;
+}
+.tabsContent .highlight {
+  background-color: #eeaa66;
+}

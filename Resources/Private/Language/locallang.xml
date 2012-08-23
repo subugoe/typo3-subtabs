@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Tabs extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="en" type="array">
+			<label index="tx_subtabs_domain_model_faecher">Reiter Faecher und Sammlungen</label>
+			<label index="synonymsuche">Suche nach Begriffen</label>
+			<label index="tx_subtabs_domain_model_kataloge">Reiter Kataloge</label>
+			<label index="tx_subtabs_domain_model_kataloge.titel">Titel des Reiters</label>
+			<label index="tx_subtabs_domain_model_kataloge.katalog_liste">Liste der Kataloge</label>
+			<label index="tx_subtabs_domain_model_webseite">Reiter Webseite</label>
+			<label index="tx_subtabs_domain_model_katalog">Ein Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.url">URL zum Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.information">Informationstext zur Sammlung</label>
+			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Ob das Suchergebnis in einem neuen Fenster geoeffnet werden soll</label>
+			<label index="Faechersammlungen">Subjects/Collections</label>
+			<label index="Webseite">Website</label>
+			<label index="Katalog">Catalogues</label>
+			<label index="direktLink">Link to</label>
+			<label index="direktLinkTitel">Titel des Direktlinks</label>
+			<label index="labelkatalogsuche">Please enter your search terms here</label>
+			<label index="labelfaecher">Search for your subjects and our collections</label>
+			<label index="labelwebseite">Search the website</label>
+			<label index="opacError">Temporärer Fehler bei der Abfrage der Datenbanken</label>
+			<label index="notAvailable">Nicht verfügbar</label>
+			<label index="available">Verfügbar</label>
+			<label index="suchSubmitButton">Search</label>
+			<label index="suchAufWebseiten">Search the website</label>
+			<label index="solrLang">1</label>
+			<label index="solrTarget">/en/search/</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_subtabs_domain_model_faecher">Reiter Faecher und Sammlungen</label>
+			<label index="synonymsuche">Suche nach Begriffen</label>
+			<label index="tx_subtabs_domain_model_kataloge">Reiter Kataloge</label>
+			<label index="tx_subtabs_domain_model_kataloge.titel">Titel des Reiters</label>
+			<label index="tx_subtabs_domain_model_kataloge.katalog_liste">Liste der Kataloge</label>
+			<label index="tx_subtabs_domain_model_webseite">Reiter Website</label>
+			<label index="tx_subtabs_domain_model_katalog">Ein Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.titel">Titel des Katalogs</label>
+			<label index="tx_subtabs_domain_model_katalog.url">URL zum Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
+			<label index="tx_subtabs_domain_model_katalog.information">Informationstext zur Sammlung</label>
+			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Ob das Suchergebnis in einem neuen Fenster geoeffnet werden soll</label>
+			<label index="Faechersammlungen">… nach Fächern</label>
+			<label index="Webseite">… auf der Website</label>
+			<label index="Katalog">Suche: in Katalogen</label>
+			<label index="direktLink">Direktlink</label>
+			<label index="direktLinkTitel">Titel des Direktlinks</label>
+			<label index="labelkatalogsuche">Geben Sie hier Ihre Suchbegriffe ein für GUK, GVK, EZB, DBIS ...</label>
+			<label index="labelfaecher">Suchen Sie nach Ihren Fachgebieten und unseren Sammlungen</label>
+			<label index="labelwebseite">Suche in den Webseiten</label>
+			<label index="opacError">Temporärer Fehler bei der Abfrage der Datenbanken</label>
+			<label index="notAvailable">Nicht verfügbar</label>
+			<label index="available">Verfügbar</label>
+			<label index="suchSubmitButton">Suchen</label>
+			<label index="suchAufWebseiten">Suche in den Webseiten</label>
+			<label index="solrLang">0</label>
+			<label index="solrTarget">/suche/</label>
+		</languageKey>
+
+	</data>
+</T3locallang>

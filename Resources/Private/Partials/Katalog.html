@@ -1,0 +1,44 @@
+{namespace sub=Tx_Subtabs_ViewHelpers}
+
+<div id="Katalog" xmlns:f="http://www.w3.org/1999/html">
+	<div class="tabsContent">
+		<f:for each="{kataloge}" as="katalogliste">
+			<f:form method="get" action="/" id="catalogueSearchForm">
+				<div class="searchLine">
+					<input type="search" name="searchcat" id="mytextbox" size="40" class="field placeholder" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
+					<input type="submit" value="{f:translate(key:'suchSubmitButton')}" class="formButton"/>
+				</div>
+				<div class="tabsContentPlus">
+					<f:for each="{katalogliste.katalogListe}" as="liste" iteration="katalogIterator">
+
+						<f:if condition="{liste.neuesFenster}">
+							<f:then>
+								<f:form.radio name="kataloge" id="katalog-{liste.uid}" class="newWindow" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
+							</f:then>
+							<f:else>
+								<f:form.radio name="kataloge" id="katalog-{liste.uid}" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
+							</f:else>
+						</f:if>
+						<sub:explode glue=" - " content="{liste.titel}" as="abbr"/>
+						<label for="katalog-{liste.uid}">
+							<span <f:if condition="{abbr.1}"><f:then> class="description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}
+							</span>
+							<f:if condition="{abbr.1}">
+								<span class="separator">-</span>
+								<f:link.external uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbr.1}</f:link.external>
+							</f:if>
+						</label>
+						<br />
+					</f:for>
+					<ul>
+						<f:for each="{katalogliste.seitenListe}" as="page">
+							<li>
+								<f:link.page pageUid="{page.uid}">{page.title}</f:link.page>
+							</li>
+						</f:for>
+					</ul>
+				</div>
+			</f:form>
+		</f:for>
+	</div>
+</div>

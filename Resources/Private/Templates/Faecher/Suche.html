@@ -1,0 +1,11 @@
+<div class="tx-subtabs-pi1">
+	<f:form method="post" action="suche" controller="Faecher">
+		<label for="synonymsuche"><f:translate key="synonymsuche" /></label><br />
+		<f:form.textfield name="suchbegriff" id="synonymsuche" placeholder="{f:translate(key:'labelfaecher')}" value="{suchbegriff}" /><br />
+		<f:form.submit value="Suchen" />
+	</f:form>
+
+	<f:for each="{suchergebnis}" as="ergebnis">
+		{ergebnis.titel}<br />
+	</f:for>
+</div>

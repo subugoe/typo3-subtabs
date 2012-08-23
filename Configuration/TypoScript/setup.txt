@@ -1,0 +1,65 @@
+plugin.tx_subtabs {
+	view {
+		templateRootPath = {$plugin.tx_subtabs.view.templateRootPath}
+		partialRootPath = {$plugin.tx_subtabs.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_subtabs.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_subtabs.persistence.storagePid}
+		classes {
+			Tx_Subtabs_Domain_Model_Page {
+				mapping {
+					tableName = pages
+					columns {
+						title = title
+					}
+				}
+			}
+		}
+	}
+	_CSS_DEFAULT_STYLE (
+		input.f3-form-error {
+			background-color:#FF9F9F;
+			border: 1px #FF0000 solid;
+		}
+
+		.tx-subtabs-pi1 table {
+			border-collapse:separate;
+			border-spacing:10px;
+		}
+
+		.tx-subtabs-pi1 table th {
+			font-weight:bold;
+		}
+
+		.tx-subtabs-pi1 table td {
+			vertical-align:top;
+		}
+	)
+}
+
+#Module configuration
+module.tx_subtabs {
+	persistence {
+		storagePid = {$plugin.tx_subtabs.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_subtabs.view.templateRootPath}
+		partialRootPath = {$module.tx_subtabs.view.partialRootPath}
+		layoutRootPath = {$module.tx_subtabs.view.layoutRootPath}
+	}
+}
+
+#JSON output
+subtabsJson = PAGE
+subtabsJson {
+	typeNum = 1011
+	10 < tt_content.list.20.subtabs_synonyme
+	config {
+		disableAllHeaderCode = true
+		additionalHeaders = Content-type:application/json;charset=utf-8
+		charset = utf-8
+	}
+	disableCharsetHeader = 1
+	disableAllHeaderCode = true
+}

@@ -1,0 +1,29 @@
+<T3DataStructure>
+	<ROOT>
+		<type>array</type>
+		<el>
+			<switchableControllerActions>
+				<TCEforms>
+					<label>Konfiguration der Tabs</label>
+					<config>
+						<type>select</type>
+						<items type="array">
+							<numIndex index="0" type="array">
+								<numIndex index="0">Kataloge</numIndex>
+								<numIndex index="1">Launcher->showKataloge;Kataloge->list;Launcher->showTabs</numIndex>
+							</numIndex>
+							<numIndex index="1" type="array">
+								<numIndex index="0">Faecher</numIndex>
+								<numIndex index="1">Launcher->showFaecher;Faecher->list;Faecher->suche</numIndex>
+							</numIndex>
+							<numIndex index="2" type="array">
+								<numIndex index="0">Webseite</numIndex>
+								<numIndex index="1">Launcher->showWebseite;Webseite->list</numIndex>
+							</numIndex>
+						</items>
+					</config>
+				</TCEforms>
+			</switchableControllerActions>
+		</el>
+	</ROOT>
+</T3DataStructure>
