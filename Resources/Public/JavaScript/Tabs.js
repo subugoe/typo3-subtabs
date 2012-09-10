@@ -26,7 +26,7 @@ jQuery(document).ready(function () {
 				.parent('li')
 				.css('background-image', 'url("/typo3conf/ext/subtabs/Resources/Public/Icons/arrow_right_grey.png")')
 				.children('a')
-				.css('color', '#dee1e7')
+				.addClass('noMatch')
 				.removeAttr('href')
 				.next('ul')
 				.remove();

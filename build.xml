@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Subtabs" default="build">
 	<target name="build"
-			depends="prepare,lint,parallelTasks,phpcb,sass"/>
+			depends="prepare,lint,parallelTasks,phpcb"/>
 	<target name="clean" description="Cleanup build artifacts">
 		<delete dir="${basedir}/build/api"/>
 		<delete dir="${basedir}/build/code-browser"/>

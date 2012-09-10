@@ -1,17 +1,16 @@
 @import 'compass/css3';
 @import 'compass/utilities';
 
-$tabSelected: #eee;
+$tabSelected: white;
 $textColor: #1A3771;
-$inactiveTab: #93a8cf;
-$highlightColor: #EA6;
+$inactiveTab: #dee1e7;
+$highlightColor: $inactiveTab;
 
 $darkblue: #6E7FA0;
 $tabWidth: 572px;
-$border: 1px solid $darkblue;
+$border: 1px solid $textColor;
 $fieldBorderColor: #bbb;
 $shadowColor: #777;
-$white: #FFF;
 $hover: #405680;
 $darkgrey: #434343;
 $borderRadius: 7px;
@@ -26,7 +25,7 @@ $fieldHeight: 28px;
 	position: relative;
 	height: 40px;
 	width: $tabWidth;
-	margin-top: 23px;
+	margin-top: 22px;
 	left: 200px;
 	overflow: visible;
 	z-index: 10;
@@ -53,7 +52,7 @@ $fieldHeight: 28px;
 		text-shadow: 0 1px rgba(255, 255, 255, 0.75);
 		text-transform: uppercase;
 		line-height: 100%;
-		padding: 3px 8px!important;
+		padding: 6px 8px 4px 8px;
 		height: $fieldHeight + 2;
 		color: $darkgrey;
 		margin-left: 10px;
@@ -64,6 +63,9 @@ $fieldHeight: 28px;
 		float: left;
 		width: $tabWidth;
  	}
+	.noMatch {
+		color: lighten($darkgrey, 20%);
+	}
 	form {
  		padding: 0;
  		input[type=search] {
@@ -73,7 +75,7 @@ $fieldHeight: 28px;
 			-ms-box-sizing: content-box;
  	 		box-sizing: content-box;
  			border-width: 1px;
- 			border-radius: 14px;
+			@include border-radius(3px);
  			border-color: $fieldBorderColor;
  			padding: 0 10px;
 			width: 476px;
@@ -81,7 +83,7 @@ $fieldHeight: 28px;
 			font-size: 14px;
 			line-height: $fieldHeight - 2;
 			float:left;
-			 @include box-shadow(rgba($shadowColor, 0.4) 0 0 5px inset);
+			@include box-shadow(rgba($shadowColor, 0.4) 0 0 5px inset);
  		}
  	 }
 	.ui-state-hover {
@@ -125,9 +127,9 @@ $fieldHeight: 28px;
 	a {
  		padding: 8px;
 		background-color: $inactiveTab;
-		margin-right: 2px;
+		margin-right: 0;
 		color: $textColor;
-		font-size: 17px;
+		font-size: 1.5em;
 		@include border-top-radius($borderRadius);
 		text-shadow: 0 1px 0 #BBE;
 		&:hover {
@@ -145,10 +147,13 @@ $fieldHeight: 28px;
 		background-color: $tabSelected;
 		color: $textColor;
 		text-shadow: 0 1px 0 #FFF;
+		border-bottom: 2px solid white;
+		z-index: 1000000;
+		position: relative;
 	}
 	.tabsTagline {
 		background-color: $darkblue;
-		color: $white;
+		color: $tabSelected;
 		font-size: 90%;
 	}
 }
@@ -170,14 +175,17 @@ $fieldHeight: 28px;
 	width: $tabWidth;
 	padding: 10px;
 	@include border-bottom-radius($borderRadius);
+	@include border-top-right-radius($borderRadius);
 	background-color: $tabSelected;
 	border-right: $border;
 	border-bottom: $border;
 	border-left: $border;
+	border-top: $border;
 	float: left;
 	position: absolute;
 	@include box-shadow(rgba(119, 119, 119, 0.4) 0px 7px 7px);
 	display: none;
+	margin-top: 0;
 	input[type=radio] {
  		margin-right: 5px;
  		margin-left: 2px;

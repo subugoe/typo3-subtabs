@@ -1,11 +1,12 @@
 jQuery(document).ready(function () {
 
 		// clicks outside the tab scope will close the tabsContentPlus panel
-	$('html').click(function(event) {
-		var clicked = $(event.target);
+	jQuery('html').click(function(event) {
+		var clicked = jQuery(event.target);
 
-		if (!clicked.parents().hasClass('tabs')) {
-			$('.tabsContentPlus').hide();
+		if (!clicked.parents().hasClass('tabs') && jQuery('.tabsContentPlus').is(':visible')) {
+			jQuery('.tabsContent').hide();
+			jQuery('.tabElement.selected').removeClass('selected');
 		}
 		event.stopPropagation();
 	});

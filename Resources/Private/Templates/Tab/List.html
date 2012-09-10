@@ -19,22 +19,9 @@
 	<div class="tabs">
 
 		<ul class="tabNavigation">
-			<li>
-				<f:link.page section="Katalog" id="tab-katalog" addQueryString="TRUE" class="tabElement">
-					<f:translate key="Katalog"/>
-				</f:link.page>
-			</li>
-			<li>
-				<f:link.page section="Faechersammlungen" id="tab-faechersammlungen" addQueryString="TRUE" class="tabElement">
-					<f:translate key="Faechersammlungen"/>
-				</f:link.page>
-			</li>
-			<li>
-				<f:link.page section="Webseite" id="tab-webseite" addQueryString="TRUE" class="tabElement">
-					<f:translate key="Webseite"/>
-				</f:link.page>
-			</li>
-
+			<li><f:link.page section="Katalog" id="tab-katalog" addQueryString="TRUE" class="tabElement"><f:translate key="Katalog"/></f:link.page></li>
+			<li><f:link.page section="Faechersammlungen" id="tab-faechersammlungen" addQueryString="TRUE" class="tabElement"><f:translate key="Faechersammlungen"/></f:link.page></li>
+			<li><f:link.page section="Webseite" id="tab-webseite" addQueryString="TRUE" class="tabElement"><f:translate key="Webseite"/></f:link.page></li>
 		</ul>
 	<f:render partial="Katalog" arguments="{_all}" />
 
