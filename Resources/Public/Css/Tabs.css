@@ -1,26 +1,44 @@
+.tx-subtabs-tabs {
+  vertical-align: super;
+}
+
 .tx-subtabs-fach {
   display: none;
 }
 
+.circle {
+  width: 140px;
+  height: 140px;
+  background: #1A3771;
+  -moz-border-radius: 70px;
+  -webkit-border-radius: 70px;
+  border-radius: 70px;
+  color: white;
+}
+
 .tabs {
   position: relative;
-  height: 40px;
-  width: 572px;
-  margin-top: 22px;
-  left: 200px;
+  height: 32px;
+  max-width: 514.8px;
+  margin-top: -26px;
+  left: 20%;
   overflow: visible;
   z-index: 10;
 }
-.tabs ::-webkit-input-placeholder {
+.tabs ::-webkit-input-placeholder, .tabs input:-moz-placeholder {
   font-size: 14px;
   padding: 0px;
 }
-.tabs input:-moz-placeholder {
-  font-size: 14px;
-  padding: 0px;
+.tabs .tabElement .fsResults {
+  font-size: 0.7em;
+  top: -0.4em;
+  position: relative;
+  right: -0.4em;
+  padding: 0.3em;
+  text-shadow: none;
 }
 .tabs .formButton {
-  width: 64px;
+  width: 13.774410774%;
   border: 1px solid #434343;
   border-width: 1px;
   border-color: #bbbbbb;
@@ -47,10 +65,13 @@
   margin-top: 8px;
   position: relative;
   float: left;
-  width: 572px;
+  width: 100%;
 }
 .tabs .noMatch {
   color: #767676;
+}
+.tabs .linkList {
+  margin-top: 8px;
 }
 .tabs form {
   padding: 0;
@@ -69,7 +90,7 @@
   border-radius: 3px;
   border-color: #bbbbbb;
   padding: 0 10px;
-  width: 476px;
+  width: 79.888268156%;
   height: 28px;
   font-size: 14px;
   line-height: 26px;
@@ -99,28 +120,31 @@
 .tabs #Katalog .tabsContentPlus .separator {
   padding-left: 32px;
 }
+.tabs #Faechersammlungen .noResults {
+  position: absolute;
+  right: 1%;
+  text-transform: uppercase;
+}
 .tabs #Faechersammlungen .field {
-  width: 548px;
+  width: 95.477386935%;
 }
 
 .tabNavigation {
-  width: 572px;
   height: 26px;
   margin-left: 1px;
 }
 .tabNavigation a {
-  padding: 8px;
+  padding: 8px 6px;
   background-color: #dee1e7;
   margin-right: 0;
   color: #1a3771;
-  font-size: 1.5em;
+  font-size: 1.3em;
   -moz-border-radius-topleft: 7px;
   -webkit-border-top-left-radius: 7px;
   border-top-left-radius: 7px;
   -moz-border-radius-topright: 7px;
   -webkit-border-top-right-radius: 7px;
   border-top-right-radius: 7px;
-  text-shadow: 0 1px 0 #BBE;
 }
 .tabNavigation a:hover {
   background-color: white;
@@ -135,7 +159,7 @@
 .tabNavigation .selected {
   background-color: white;
   color: #1a3771;
-  text-shadow: 0 1px 0 #FFF;
+  text-shadow: 0 1px 0 white;
   border-bottom: 2px solid white;
   z-index: 1000000;
   position: relative;
@@ -170,7 +194,7 @@
 }
 
 .tabsContent {
-  width: 572px;
+  width: 100%;
   padding: 10px;
   -moz-border-radius-bottomleft: 7px;
   -webkit-border-bottom-left-radius: 7px;

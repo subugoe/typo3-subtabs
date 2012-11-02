@@ -1,6 +1,6 @@
 {namespace sub=Tx_Subtabs_ViewHelpers}
 
-<div id="Katalog" xmlns:f="http://www.w3.org/1999/html">
+<div id="Katalog">
 	<div class="tabsContent">
 		<f:for each="{kataloge}" as="katalogliste">
 			<f:form method="get" action="/" id="catalogueSearchForm">
@@ -30,10 +30,10 @@
 						</label>
 						<br />
 					</f:for>
-					<ul>
+					<ul class="linkList">
 						<f:for each="{katalogliste.seitenListe}" as="page">
 							<li>
-								<f:link.page pageUid="{page.uid}">{page.title}</f:link.page>
+								<f:link.page pageUid="{page.uid}">{page.title -> f:format.htmlentitiesDecode()}</f:link.page>
 							</li>
 						</f:for>
 					</ul>

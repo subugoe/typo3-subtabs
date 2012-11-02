@@ -45,5 +45,5 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Tx_Subtabs_Serv
 if (!is_array($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['subtabs_cache'])) {
     $TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['subtabs_cache'] = array();
 }
-$TYPO3_CONF_VARS['FE']['eID_include'][$_EXTKEY] = 'EXT:' . $_EXTKEY . '/Resources/Public/Ajax/FaecherSammlungen.php';
+$TYPO3_CONF_VARS['FE']['eID_include'][$_EXTKEY . '_subjects'] = 'EXT:' . $_EXTKEY . '/Resources/Private/Ajax/FaecherSammlungen.php';
 ?>

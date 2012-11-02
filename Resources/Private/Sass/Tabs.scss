@@ -7,7 +7,7 @@ $inactiveTab: #dee1e7;
 $highlightColor: $inactiveTab;
 
 $darkblue: #6E7FA0;
-$tabWidth: 572px;
+$tabWidth: 572px * 0.9;
 $border: 1px solid $textColor;
 $fieldBorderColor: #bbb;
 $shadowColor: #777;
@@ -17,28 +17,48 @@ $borderRadius: 7px;
 $buttonBackground: '/typo3conf/ext/subtabs/Resources/Public/Icons/button_shade_large.png';
 $fieldHeight: 28px;
 
+.tx-subtabs-tabs {
+	vertical-align: super;
+}
+
+
 .tx-subtabs-fach {
 	display: none;
+}
+.circle {
+	width: 140px;
+	height: 140px;
+	background: #1A3771;
+	-moz-border-radius: 70px;
+	-webkit-border-radius: 70px;
+	border-radius: 70px;
+	color: white
 }
 
 .tabs {
 	position: relative;
-	height: 40px;
-	width: $tabWidth;
-	margin-top: 22px;
-	left: 200px;
+	height: 32px;
+	max-width: $tabWidth;
+	margin-top: -26px;
+	left: 20%;
 	overflow: visible;
 	z-index: 10;
-	::-webkit-input-placeholder  {
+	::-webkit-input-placeholder, input:-moz-placeholder {
 		font-size: 14px;
 		padding: 0px;
 	}
-	input:-moz-placeholder {
-		font-size: 14px;
-		padding: 0px;
+	.tabElement {
+		.fsResults {
+			font-size: 0.7em;
+			top: -0.4em;
+			position: relative;
+			right: -0.4em;
+			padding: 0.3em;
+			text-shadow: none;
+		}
 	}
 	.formButton {
-		width: 64px;
+		width: 13.774410774%;
 		border: 1px solid $darkgrey;
 		border-width: 1px;
 		border-color: $fieldBorderColor;
@@ -61,10 +81,13 @@ $fieldHeight: 28px;
 		margin-top: 8px;
 		position: relative;
 		float: left;
-		width: $tabWidth;
+		width: 100%;
  	}
 	.noMatch {
 		color: lighten($darkgrey, 20%);
+	}
+	.linkList {
+		margin-top: 8px;
 	}
 	form {
  		padding: 0;
@@ -78,7 +101,7 @@ $fieldHeight: 28px;
 			@include border-radius(3px);
  			border-color: $fieldBorderColor;
  			padding: 0 10px;
-			width: 476px;
+			width: 79.888268156%;
 			height: $fieldHeight;
 			font-size: 14px;
 			line-height: $fieldHeight - 2;
@@ -114,24 +137,27 @@ $fieldHeight: 28px;
 		}
 	}
 	#Faechersammlungen {
+		.noResults {
+			position: absolute;
+			right: 1%;
+			text-transform: uppercase;
+		}
 		.field {
-			width: $tabWidth - 24;
+			width: 95.477386935%;
 		}
 	}
 }
 
 .tabNavigation {
-	width: $tabWidth;
 	height: 26px;
 	margin-left: 1px;
 	a {
- 		padding: 8px;
+ 		padding: 8px 6px;
 		background-color: $inactiveTab;
 		margin-right: 0;
 		color: $textColor;
-		font-size: 1.5em;
+		font-size: 1.3em;
 		@include border-top-radius($borderRadius);
-		text-shadow: 0 1px 0 #BBE;
 		&:hover {
 			background-color: $tabSelected;
 		}
@@ -146,7 +172,7 @@ $fieldHeight: 28px;
 	.selected {
 		background-color: $tabSelected;
 		color: $textColor;
-		text-shadow: 0 1px 0 #FFF;
+		text-shadow: 0 1px 0 white;
 		border-bottom: 2px solid white;
 		z-index: 1000000;
 		position: relative;
@@ -172,7 +198,7 @@ $fieldHeight: 28px;
 }
 
 .tabsContent {
-	width: $tabWidth;
+	width: 100%;
 	padding: 10px;
 	@include border-bottom-radius($borderRadius);
 	@include border-top-right-radius($borderRadius);

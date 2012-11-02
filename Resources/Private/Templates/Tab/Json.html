@@ -1,10 +1,9 @@
 [
 	<f:for each="{faechersammlungen}" as="faechersammlung" iteration="faecherSammlungKommaIterator">
 		{
-			"titel":"{faechersammlung.titel}",
+			"titel":"{faechersammlung.titel -> f:format.raw()}",
 			"faecher":
 			[
-
 		<f:for each="{faechersammlung.fachListe}" as="fachliste" iteration="fachlisteKommaIterator" >
 				{
 				"titel":"{fachliste.titel}",

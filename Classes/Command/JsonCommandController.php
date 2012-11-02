@@ -29,7 +29,6 @@
  * Description
  *
  * @author Ingo Pfennigstorf <pfennigstorf@sub-goettingen.de>, Goettingen State Library
- * Date: 06.08.12
  */
 class Tx_Subtabs_Command_JsonCommandController extends Tx_Extbase_MVC_Controller_CommandController {
 
@@ -39,7 +38,9 @@ class Tx_Subtabs_Command_JsonCommandController extends Tx_Extbase_MVC_Controller
 	 */
 	protected $faecherRepository;
 
-
+	/**
+	 * Write Json files to location
+	 */
 	public function writeJsonFilesCommand() {
 		$subConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['subtabs']);
 
@@ -48,12 +49,12 @@ class Tx_Subtabs_Command_JsonCommandController extends Tx_Extbase_MVC_Controller
 			// do it twice for each language
 			// @todo automatically detect number of available languages
 		for ($i = 0; $i <= 1; $i++) {
-			$destinationDirectory = t3lib_div::getFileAbsFileName('typo3temp/subtabs/data-' . $i . '.js');
-			$url = $hostname . '/?type=1011&L=' . $i;
+			$destinationDirectory = t3lib_div::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
+			$url = $hostname . '?type=1011&L=' . $i;
 			$json = t3lib_div::getUrl($url, 0);
+			$json = t3lib_div::minifyJavaScript($json);
 			t3lib_div::devLog($url, 'subtabs', 1);
 			t3lib_div::writeFile($destinationDirectory, $json) ? $return = TRUE : $return = FALSE;
 		}
-
-    }
+	}
 }

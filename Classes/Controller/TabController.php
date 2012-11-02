@@ -92,7 +92,7 @@ class Tx_Subtabs_Controller_TabController extends Tx_Extbase_MVC_Controller_Acti
 
 		$cacheName = 'subtabs-' . $this->language;
 
-		if (!$this->cacheInstance->has($cacheName)) {
+		if ($this->cacheInstance->has($cacheName) === FALSE) {
 				// Reiter Kataloge
 			$kataloge = $this->katalogeRepository->findAll();
 				// Reiter Faecher Sammlungen

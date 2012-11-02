@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY, 'Tabs', 'Tabs Neu');
+Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY, 'Tabs', 'Tabs');
 Tx_Extbase_Utility_Extension::registerPlugin($_EXTKEY, 'Ajax', 'Ajaxtabs Neu');
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Tabs');
@@ -169,8 +169,8 @@ $extensionName = t3lib_div::underscoredToUpperCamelCase($_EXTKEY);
 $pluginSignature = strtolower($extensionName) . '_tabs';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/flexform_tabs.xml');
-if (TYPO3_MODE === 'BE') {
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Tx_Subtabs_Command_JsonCommandController';
-}
+
+	// command controller
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Tx_Subtabs_Command_JsonCommandController';
 
 ?>

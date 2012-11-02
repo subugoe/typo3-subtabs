@@ -28,7 +28,7 @@
  * Test case for class Tx_Subtabs_Service_WriteJsonFileTask
  *
  * @author Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
- * $Id: WriteJsonFileTaskTest.php 1899 2012-08-06 06:54:22Z pfennigstorf $
+ * $Id: WriteJsonFileTaskTest.php 1964 2012-10-24 07:32:52Z pfennigstorf $
  * @package subtabs
  */
 class Tx_Subtabs_Tests_Unit_Controller_FaecherControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
@@ -42,7 +42,7 @@ class Tx_Subtabs_Tests_Unit_Controller_FaecherControllerTest extends Tx_Extbase_
 	 * @return void
 	 */
 	public function setUp() {
-		$class =  'Tx_Subtabs_Service_WriteJsonFileTask';
+		$class =  'Tx_Subtabs_Command_JsonCommandController';
 		$this->fixture = $this->getMock($class);
 	}
 
@@ -54,8 +54,8 @@ class Tx_Subtabs_Tests_Unit_Controller_FaecherControllerTest extends Tx_Extbase_
 		$baseUrl = 'http://www.sub.uni-goettingen.de/';
 
 		$serializedString = 'a:1:{s:7:"baseUrl";s:33:"http://www.sub.uni-goettingen.de/";}';
-		$unserialized = unserialize($serializedString);
-		$this->assertEquals($baseUrl, $unserialized['baseUrl']);
+		$unSerialized = unserialize($serializedString);
+		$this->assertEquals($baseUrl, $unSerialized['baseUrl']);
 	}
 
 	public function checkIfExecutionWorks() {
