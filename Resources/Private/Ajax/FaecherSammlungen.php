@@ -4,7 +4,7 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
 class  tx_subtabs_faecherSammlungen extends tslib_pibase {
 
 	/**
-	 *
+	 * Initializes defaults
 	 */
 	protected function init() {
 
@@ -31,7 +31,7 @@ class  tx_subtabs_faecherSammlungen extends tslib_pibase {
 		$language = filter_var($requestVars['language'], FILTER_SANITIZE_NUMBER_INT);
 
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-			't.tag, f.titel, u.titel AS fachtitel, f.uid, f.seite',
+			't.tag, f.titel, u.titel AS fachtitel, f.uid, f.seite, u.seite as useite',
 			'tx_subtabs_domain_model_tags t, tx_subtabs_domain_model_fach f, tx_subtabs_domain_model_faecher u',
 			't.tag LIKE  \'%' . $searchParam . '%\' AND f.uid = t.fach AND f.faecher = u.uid AND t.sys_language_uid = ' . $language,
 			'',
@@ -52,12 +52,12 @@ class  tx_subtabs_faecherSammlungen extends tslib_pibase {
 
 				// just one time the top level item
 			if (!in_array($result['fachtitel'], $fachtitel)) {
-				$resultString .= $this->wrapResultWith('<a href="' . $this->getUrl($result['seite']) . '">' . $result['fachtitel'] .'</a>', 'li');
+				$resultString .= '<li><a href="' . $this->getUrl($result['seite']) . '">' . $result['fachtitel'] .'</a>';
 					array_push($fachtitel, $result['fachtitel']);
 			}
 			if (!in_array($result['titel'], $faechertitel)) {
-				$titelString = $this->wrapResultWith($result['titel'], 'li');
-				$resultString .= $this->wrapResultWith($titelString, 'ul');
+				$titleString = '<a href="' . $this->getUrl($result['seite']) . '">' . $result['titel'] .'</a>';
+				$resultString .= $this->wrapResultWith($titleString, 'ul');
 					array_push($faechertitel, $result['titel']);
 			}
 			$resultString .= $this->highlight($result['tag'], $searchParam) . ', ';

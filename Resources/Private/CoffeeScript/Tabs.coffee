@@ -1,4 +1,5 @@
 $(document).ready ->
+	"use strict"
 	$("#q").bind "keypress", (e) ->
 		false if e.keyCode is 13
 
@@ -23,20 +24,20 @@ $(document).ready ->
 
 			# Suche im Hauptobjekt nach dem eingegebenen Wert
 			arr = $.each(synonyme, (key, val) ->
-			#	objectMatchesTerm val.titel, filter
+				objectMatchesTerm val.titel, filter
 			)
 
-			$.ajax({url: window.location.host + '/?eID=subtabs_subjects&faechersammlungen[suche]=' + filter + '&faechersammlungen[language]=' + sys_language_uid}).complete (data) ->
-				#console.log(data.responseText)
-				$("#Faechersammlungen .tabsContentPlus").html data.responseText
-				$(".tx-subtabs-fach").css "display", "inline"
+		#	$.ajax({url: window.location.host + '/?eID=subtabs_subjects&faechersammlungen[suche]=' + filter + '&faechersammlungen[language]=' + sys_language_uid}).complete (data) ->
+		#		#console.log(data.responseText)
+		#		$("#Faechersammlungen .tabsContentPlus").html data.responseText
+		#		$(".tx-subtabs-fach").css "display", "inline"
 
 			# Wenn es treffer gab ...
 			if arr.length > 0
-#				getTrefferErsteEbene arr, filter
+				getTrefferErsteEbene arr, filter
 				$("ul:empty").parent("li").css("background-image", "url(\"/typo3conf/ext/subtabs/Resources/Public/Icons/arrow_right_grey.png\")").children("a").addClass("noMatch").removeAttr("href").next("ul").remove()
-				notifyAboutNoResults($('#FaechersammlungenContentPlus .highlight').size())
-				$('.fsResults').addClass('circle').text($('#FaechersammlungenContentPlus .highlight').size())
+	#			notifyAboutNoResults($('#FaechersammlungenContentPlus .highlight').size())
+	#			$('.fsResults').addClass('circle').text($('#FaechersammlungenContentPlus .highlight').size())
 				notifyAboutNoResults(0) if resultsFound() is false
 
 		else
@@ -171,7 +172,7 @@ Abfrage auf den Unterelementen
 @todo non-blocking / async
 ###
 fachMatchesTerm = (fach, filterTerm) ->
-	fachArray = new Array()
+	fachArray = []
 	tagID = undefined
 	tag = undefined
 	result = (fach.titel.toLowerCase().indexOf(filterTerm) >= 0)

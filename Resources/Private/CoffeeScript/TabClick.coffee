@@ -77,7 +77,6 @@ $ ->
 		link = $("#catalogueSearchForm input:checked").val()
 		get = encodeURIComponent(str)
 		url = link + get
-		false
 
 		if $('#katalog-2').attr('checked') is 'checked'
 			bixPix = document.createElement('img')
@@ -106,6 +105,7 @@ klappeAuf = (klickObjekt, tabs, panels, tabsContent, tabsContentPlus) ->
 
 getQueryParams = (qs) ->
 	qs = qs.split("+").join(" ")
+	params = {}
 	re = /[?&]?([^=]+)=([^&]*)/g
 	while (tokens = re.exec(qs))
 		params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2])

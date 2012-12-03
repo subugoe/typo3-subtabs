@@ -48,7 +48,7 @@ class Tx_Subtabs_ViewHelpers_ExplodeViewHelper extends Tx_Fluid_ViewHelpers_Base
 	 * @param mixed $content String or variable convertible to string which should be exploded
 	 * @return mixed
 	 */
-	public function render($content=NULL) {
+	public function render($content = NULL) {
 		$contentWasSource = FALSE;
 		if (!$content) {
 			$content = $this->renderChildren();
