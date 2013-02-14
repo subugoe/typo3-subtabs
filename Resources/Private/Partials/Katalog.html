@@ -5,12 +5,11 @@
 		<f:for each="{kataloge}" as="katalogliste">
 			<f:form method="get" action="/" id="catalogueSearchForm">
 				<div class="searchLine">
-					<input type="search" name="searchcat" id="mytextbox" size="40" class="field placeholder" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
-					<input type="submit" value="{f:translate(key:'suchSubmitButton')}" class="formButton"/>
+					<f:form.textfield type="search" name="searchcat" id="mytextbox" size="40" class="field placeholder" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
+					<f:form.submit value="{f:translate(key:'suchSubmitButton')}" class="formButton"/>
 				</div>
 				<div class="tabsContentPlus">
 					<f:for each="{katalogliste.katalogListe}" as="liste" iteration="katalogIterator">
-
 						<f:if condition="{liste.neuesFenster}">
 							<f:then>
 								<f:form.radio name="kataloge" id="katalog-{liste.uid}" class="newWindow" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
@@ -19,13 +18,11 @@
 								<f:form.radio name="kataloge" id="katalog-{liste.uid}" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
 							</f:else>
 						</f:if>
-						<sub:explode glue=" – " content="{liste.titel}" as="abbr"/>
+						<sub:explode glue=" - " content="{liste.titel}" as="abbr"/>
 						<label for="katalog-{liste.uid}">
-							<span <f:if condition="{abbr.1}"><f:then> class="description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}
-							</span>
+							<span <f:if condition="{abbr.1}"><f:then> class="description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}	</span>
 							<f:if condition="{abbr.1}">
-								<span class="separator"> </span>
-								<f:link.external uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbr.1}</f:link.external>
+								<f:link.external class="separator" uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbr.1}</f:link.external>
 							</f:if>
 						</label>
 						<br />

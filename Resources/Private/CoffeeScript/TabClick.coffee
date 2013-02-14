@@ -28,20 +28,19 @@ $ ->
 			if this.id is 'tab-webseite' and ($('#WebseiteContentPlus').children('ul').val() is '' or document.getElementById('solrtab').value is '')
 				$('div.tabsContent').css('height', '30px')
 
-			if this.id is 'tab-webseite' and $('#solrtab').val isnt ''
-				$('#solrtab').keydown()
+			if this.id is 'tab-webseite' and $('#solrtab').val() isnt ''
+				$('#solrtab').keydown().focus()
 				$('div.tabsContent').css('height', 'auto')
 
-			if typeof(piwikTracker) isnt 'undefined' and this.text != 'undefined'
+			if typeof(piwikTracker) isnt 'undefined' and this.text isnt 'undefined'
 				piwikTracker.trackPageView('Tab/' + this.text)
 
 			if this.id isnt 'tab-webseite'
 				$('.tabsContentPlus').show()
-			false
+		#	false
 
 		tabs.click ->
 			klappeAuf(this, tabs, panels, $('div.tabsContent'), $('.tabsContentPlus'));
-			false
 
 		if (document.getElementById('bigpicture') != null)
 			$('#Katalog .tabsContent').addClass('tabsContentLarge').css('display', 'block')
@@ -52,9 +51,9 @@ $ ->
 			$('.tabs input[type=search]').focus ->
 				$('.tabsContentPlus').show()
 				$('div.tabsContent').css('height', 'auto');
-				if this.id is 'solrtab' and ($('#WebseiteContentPlus').children('ul').val() is '' or this.value is '')
+				if this.id is 'solrtab' and ($('#WebseiteContentPlus').children('ul').children('li').length is '' or this.value is '')
 					$('div.tabsContent').css('height', '30px')
-				false
+				#false
 		else
 			$('#Katalog .tabsContent').addClass('tabsContentSmall')
 
@@ -70,7 +69,6 @@ $ ->
 	$('#catalogueSearchForm input[type=radio]').click ->
 		link = $("#catalogueSearchForm input:checked").val()
 		$(this).parent().parent().attr('action', link)
-		false
 
 	$('#catalogueSearchForm').submit ->
 		str = $('input#mytextbox.field').val()
