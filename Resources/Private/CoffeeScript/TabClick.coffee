@@ -70,24 +70,27 @@ $ ->
 		link = $("#catalogueSearchForm input:checked").val()
 		$(this).parent().parent().attr('action', link)
 
+	# submit the catalogue form
 	$('#catalogueSearchForm').submit ->
 		str = $('input#mytextbox.field').val()
 		link = $("#catalogueSearchForm input:checked").val()
-		get = encodeURIComponent(str)
+		get = escape(str)
 		url = link + get
-
 		if $('#katalog-2').attr('checked') is 'checked'
 			bixPix = document.createElement('img')
 			bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2')
 			window.open(url)
 		else
 			if $('#catalogueSearchForm input:checked').attr('class') is 'newWindow'
+				console.log(url)
 				window.open(url)
 			else
+				console.log(url)
 				location.href = url
 		false;
 	false
 
+# show the subsection of a specified tab
 klappeAuf = (klickObjekt, tabs, panels, tabsContent, tabsContentPlus) ->
 	tabsContent.show()
 	tabsContentPlus.show()
@@ -101,6 +104,7 @@ klappeAuf = (klickObjekt, tabs, panels, tabsContent, tabsContentPlus) ->
 		panels.hide().filter(klickObjekt.hash).show()
 	false
 
+# get and decode query parameters
 getQueryParams = (qs) ->
 	qs = qs.split("+").join(" ")
 	params = {}
