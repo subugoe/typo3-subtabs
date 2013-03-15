@@ -198,7 +198,11 @@
       var bixPix, get, link, str, url;
       str = $('input#mytextbox.field').val();
       link = $("#catalogueSearchForm input:checked").val();
-      get = escape(str);
+      if ($('#katalog-4').attr('checked') === 'checked' || $('#katalog-5').attr('checked') === 'checked') {
+        get = escape(str);
+      } else {
+        get = encodeURIComponent(str);
+      }
       url = link + get;
       if ($('#katalog-2').attr('checked') === 'checked') {
         bixPix = document.createElement('img');
@@ -206,10 +210,8 @@
         window.open(url);
       } else {
         if ($('#catalogueSearchForm input:checked').attr('class') === 'newWindow') {
-          console.log(url);
           window.open(url);
         } else {
-          console.log(url);
           location.href = url;
         }
       }
