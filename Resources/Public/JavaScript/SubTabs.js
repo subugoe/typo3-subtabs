@@ -438,6 +438,7 @@
 
   fachMatchesTerm = function(fach, filterTerm) {
     var fachArray, result, tag, tagID;
+    filterTerm = filterTerm.toLowerCase();
     fachArray = [];
     tagID = void 0;
     tag = void 0;
