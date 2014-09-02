@@ -1,5 +1,4 @@
 <?php
-require_once(PATH_tslib.'class.tslib_pibase.php');
 
 class  tx_subtabs_faecherSammlungen extends tslib_pibase {
 

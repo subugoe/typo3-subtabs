@@ -61,6 +61,9 @@ class Tx_Subtabs_Controller_TabController extends Tx_Extbase_MVC_Controller_Acti
 	public function initializeAction() {
 		$this->initializeCache();
 		$this->language = $GLOBALS['TSFE']->sys_language_uid;
+		/** @var t3lib_pageRenderer $pageRenderer */
+		$pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
+		$pageRenderer->addCssFile('typo3conf/ext/subtabs/Resources/Public/Css/Tabs.css');
 	}
 
 	/**

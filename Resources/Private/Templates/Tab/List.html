@@ -1,7 +1,5 @@
-{namespace fed=Tx_Fed_ViewHelpers}
-<fed:pageRenderer.addJsFile file="{f:uri.resource(path:'JavaScript/SubTabs.min.js')}"/>
-<fed:style href="{f:uri.resource(path:'Css/Tabs.css')}"/>
-<fed:script>
+{namespace t3jquery=Tx_T3jquery_ViewHelpers}
+<t3jquery:addJQueryAndScript jsfile="{f:uri.resource(path:'JavaScript/SubTabs.min.js')}">
 	$(document).ready(function () {
 		if (Modernizr.input.placeholder === false) {
 			$('#mytextbox').attr('value', '<f:translate key="labelkatalogsuche" />');
@@ -15,8 +13,7 @@
 			});
 		}
 	});
-</fed:script>
-
+	</t3jquery:addJQueryAndScript>
 <div class="tx-subtabs-tabs">
 	<div class="tabs">
 		<ul class="tabNavigation">
