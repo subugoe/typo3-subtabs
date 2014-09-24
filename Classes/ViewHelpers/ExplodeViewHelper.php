@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\ViewHelpers;
 /***************************************************************
 *  Copyright notice
 *
@@ -32,7 +33,7 @@
  * @package Fed
  * @subpackage ViewHelpers
  */
-class Tx_Subtabs_ViewHelpers_ExplodeViewHelper extends Tx_Fluid_ViewHelpers_BaseViewHelper {
+class ExplodeViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\BaseViewHelper {
 
 	/**
 	 * Initialize

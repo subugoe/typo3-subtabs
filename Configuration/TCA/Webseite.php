@@ -93,4 +93,3 @@ $TCA['tx_subtabs_domain_model_webseite'] = array(
 		),
 	),
 );
-?>

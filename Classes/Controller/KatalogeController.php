@@ -1,5 +1,5 @@
 <?php
-
+namespace Subugoe\Subtabs\Controller;
 /* * *************************************************************
  *  Copyright notice
  *
@@ -29,39 +29,38 @@
 /**
  * Controller for the Sammlungen object
  *
- * @author Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
  */
-class Tx_Subtabs_Controller_KatalogeController extends Tx_Extbase_MVC_Controller_ActionController {
+class KatalogeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * katalogeRepository
 	 *
-	 * @var Tx_Subtabs_Domain_Repository_KatalogeRepository
+	 * @var \Subugoe\Subtabs\Domain\Repository\KatalogeRepository
 	 */
 	protected $katalogeRepository;
 	/**
 	 * GOK Repository verfuegbar machen
 	 *
-	 * @var Tx_Subtabs_Domain_Repository_GokRepository 
+	 * @var \Subugoe\Subtabs\Domain\Repository\GokRepository 
 	 */
 	protected $gokRepository;
 
 	/**
 	 * Alle IRRE Kataloge
 	 *
-	 * @param Tx_Subtabs_Domain_Repository_KatalogeRepository $katalogeRepository 
+	 * @param \Subugoe\Subtabs\Domain\Repository\KatalogeRepository $katalogeRepository 
 	 */
-	public function injectKataloge(Tx_Subtabs_Domain_Repository_KatalogeRepository $katalogeRepository) {
+	public function injectKataloge(\Subugoe\Subtabs\Domain\Repository\KatalogeRepository $katalogeRepository) {
 		$this->katalogeRepository = $katalogeRepository;
 	}
 
 	/**
 	 * Alle GOK Kataloge
 	 *
-	 * @param Tx_Subtabs_Domain_Repository_GokRepository $gokRepository
+	 * @param \Subugoe\Subtabs\Domain\Repository\GokRepository $gokRepository
 	 * @return void
 	 */
-	public function injectGok(Tx_Subtabs_Domain_Repository_GokRepository $gokRepository) {
+	public function injectGok(\Subugoe\Subtabs\Domain\Repository\GokRepository $gokRepository) {
 		$this->gokRepository = $gokRepository;
 	}
 
@@ -78,4 +77,3 @@ class Tx_Subtabs_Controller_KatalogeController extends Tx_Extbase_MVC_Controller
 		$this->view->assign('goks', $goks);
 	}
 }
-?>

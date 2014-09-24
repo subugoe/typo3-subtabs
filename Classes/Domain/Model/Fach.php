@@ -1,5 +1,5 @@
 <?php
-
+namespace Subugoe\Subtabs\Domain\Model;
 /* * *************************************************************
  *  Copyright notice
  *
@@ -27,7 +27,7 @@
 /**
  * Eine Sammlung
  */
-class Tx_Subtabs_Domain_Model_Fach extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Fach extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 
 	/**
 	 * Titel des Fachs
@@ -39,13 +39,13 @@ class Tx_Subtabs_Domain_Model_Fach extends Tx_Extbase_DomainObject_AbstractValue
 	/**
 	 * Link zur Seite des Fachknotens
 	 *
-	 * @var Tx_Subtabs_Domain_Model_Page
+	 * @var \Subugoe\Subtabs\Domain\Model\Page
 	 */
 	protected $seite;
 	/**
 	 * Liste der Tags
 	 * @lazy
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Tags> $tagListe
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Tags> $tagListe
 	 */
 	protected $tagListe;
 
@@ -60,7 +60,7 @@ class Tx_Subtabs_Domain_Model_Fach extends Tx_Extbase_DomainObject_AbstractValue
 	}
 
 	/**
-	 * Initializes all Tx_Extbase_Persistence_ObjectStorage properties.
+	 * Initializes all ObjectStorage properties.
 	 *
 	 * @return void
 	 */
@@ -70,33 +70,33 @@ class Tx_Subtabs_Domain_Model_Fach extends Tx_Extbase_DomainObject_AbstractValue
 		 * It will be rewritten on each save in the kickstarter
 		 * You may modify the constructor of this class instead
 		 */
-		$this->fachListe = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->fachListe = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
 	 * Adds a Tag
 	 *
-	 * @param Tx_Subtabs_Domain_Model_Tags $tagListe
+	 * @param \Subugoe\Subtabs\Domain\Model\Tags $tagListe
 	 * @return void
 	 */
-	public function addTagListe(Tx_Subtabs_Domain_Model_Tags $tagListe) {
+	public function addTagListe(\Subugoe\Subtabs\Domain\Model\Tags $tagListe) {
 		$this->tagListe->attach($tagListe);
 	}
 
 	/**
 	 * Removes a Tag
 	 *
-	 * @param Tx_Subtabs_Domain_Model_Tags $tagListeToRemove The Sammlung to be removed
+	 * @param \Subugoe\Subtabs\Domain\Model\Tags $tagListeToRemove The Sammlung to be removed
 	 * @return void
 	 */
-	public function removeTagListe(Tx_Subtabs_Domain_Model_Tags $tagListeToRemove) {
+	public function removeTagListe(\Subugoe\Subtabs\Domain\Model\Tags $tagListeToRemove) {
 		$this->tagListe->detach($tagListeToRemove);
 	}
 
 	/**
 	 * Returns the tagListe
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Tags> $tagListe
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Tags> $tagListe
 	 */
 	public function getTagListe() {
 		return $this->tagListe;
@@ -105,7 +105,7 @@ class Tx_Subtabs_Domain_Model_Fach extends Tx_Extbase_DomainObject_AbstractValue
 	/**
 	 * Sets the tagListe
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Tags> $tagListe
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Tags> $tagListe
 	 * @return void
 	 */
 	public function setTagListe($tagListe) {
@@ -132,7 +132,7 @@ class Tx_Subtabs_Domain_Model_Fach extends Tx_Extbase_DomainObject_AbstractValue
 
 	/**
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page>
 	 */
 	public function getSeite() {
 		return $this->seite;
@@ -140,10 +140,9 @@ class Tx_Subtabs_Domain_Model_Fach extends Tx_Extbase_DomainObject_AbstractValue
 
 	/**
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Page> $seite
+	 * @param Tx_Extbase_Persistence_ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page> $seite
 	 */
 	public function setSeite($seite) {
 		$this->seite = $seite;
 	}
 }
-?>

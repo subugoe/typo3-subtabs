@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Model;
 
 /* * *************************************************************
  *  Copyright notice
@@ -27,7 +28,7 @@
 /**
  * Die Tabs
  */
-class Tx_Subtabs_Domain_Model_Tab extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Tab extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 
 	/**
 	 * Alle Reiter der obersten Ebene
@@ -49,5 +50,3 @@ class Tx_Subtabs_Domain_Model_Tab extends Tx_Extbase_DomainObject_AbstractValueO
 	}
 
 }
-
-?>

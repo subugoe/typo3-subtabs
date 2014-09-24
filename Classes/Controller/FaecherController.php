@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Controller;
 
 /** *************************************************************
  *  Copyright notice
@@ -28,22 +29,14 @@
 /**
  * Controller for the Faecher object
  */
-class Tx_Subtabs_Controller_FaecherController extends Tx_Extbase_MVC_Controller_ActionController {
+class FaecherController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * faecherRepository
 	 *
-	 * @var Tx_Subtabs_Domain_Repository_FaecherRepository
+	 * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
 	 */
 	protected $faecherRepository;
-
-	/**
-	 * Alle IRRE Faecher
-	 * @param Tx_Subtabs_Domain_Repository_FaecherRepository $faecherRepository 
-	 */
-	public function injectFaecherRepository(Tx_Subtabs_Domain_Repository_FaecherRepository $faecherRepository) {
-		$this->faecherRepository = $faecherRepository;
-	}
 
 	/**
 	 * Displays all Faechereintraege
@@ -70,7 +63,7 @@ class Tx_Subtabs_Controller_FaecherController extends Tx_Extbase_MVC_Controller_
 
 	/**
 	 * Fuehrt die Suche aus und liefert das Ergebnis zurueck
-	 * @param type $suchbegriff
+	 * @param string $suchbegriff
 	 * @return type 
 	 */
 	private function sucheNachBegriff($suchbegriff) {
@@ -78,5 +71,3 @@ class Tx_Subtabs_Controller_FaecherController extends Tx_Extbase_MVC_Controller_
 	}
 
 }
-
-?>

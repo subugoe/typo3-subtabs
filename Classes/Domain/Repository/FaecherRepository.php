@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Repository;
 
 /* * *************************************************************
  *  Copyright notice
@@ -25,14 +26,14 @@
  * ************************************************************* */
 
 /**
- * Repository for Tx_Subtabs_Domain_Model_Faecher
+ * Repository for Faecher
  */
-class Tx_Subtabs_Domain_Repository_FaecherRepository extends Tx_Extbase_Persistence_Repository {
+class FaecherRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	/**
 	 * Suche in allen Teilen des verketteten Objekts nach dem Vorkommen eines Strings
 	 * @param string $suchbegriff
-	 * @return type 
+	 * @return array|QueryResultInterface
 	 */
 	public function findSuchbegriff($suchbegriff) {
 
@@ -63,10 +64,7 @@ class Tx_Subtabs_Domain_Repository_FaecherRepository extends Tx_Extbase_Persiste
 		$query = $this->createQuery();
 		$statement = 'SELECT * FROM tx_subtabs_domain_model_faecher WHERE deleted = 0 AND hidden = 0 AND sys_language_uid = ' . $sysLanguageUid;
 		$query = $query->statement($statement);
-		//$query->getQuerySettings()->setRespectSysLanguage(FALSE);
 		return $query->execute();
 	}
 
 }
-
-?>

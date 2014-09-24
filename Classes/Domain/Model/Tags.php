@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Model;
 
 /* * *************************************************************
  *  Copyright notice
@@ -27,7 +28,7 @@
 /**
  * Ein Tag
  */
-class Tx_Subtabs_Domain_Model_Tags extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Tags extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 
 	/**
 	 * Titel des Tags
@@ -67,5 +68,3 @@ class Tx_Subtabs_Domain_Model_Tags extends Tx_Extbase_DomainObject_AbstractValue
 	}
 
 }
-
-?>

@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Repository;
 
 /* * *************************************************************
  *  Copyright notice
@@ -26,10 +27,8 @@
  * ************************************************************* */
 
 /**
- * Repository for Tx_Subtabs_Domain_Model_Page
+ * Repository for Page
  */
-class Tx_Subtabs_Domain_Repository_PageRepository extends Tx_Extbase_Persistence_Repository {
+class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 }
-
-?>
