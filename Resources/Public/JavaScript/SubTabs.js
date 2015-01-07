@@ -1,19 +1,5 @@
 (function() {
-  var Fach, Fachbereich, collection, dataUrl, language, synonyms, sys_language_uid;
-
-  Fachbereich = Backbone.Model.extend({
-    defaults: {
-      title: "",
-      subjects: []
-    }
-  });
-
-  Fach = Backbone.Model.extend({
-    defaults: {
-      title: "",
-      tags: []
-    }
-  });
+  var collection, dataUrl, language, synonyms, sys_language_uid;
 
   language = jQuery(document).children("html").attr("lang");
 
@@ -63,7 +49,6 @@
 }).call(this);
 
 (function() {
-
   $(function() {
     "use strict";
     var sprache, sys_language_uid, tx_solr_suggestUrl, tx_solr_uid;
@@ -123,7 +108,8 @@
   var getQueryParams, klappeAuf;
 
   $(function() {
-    "use strict";    $('.tx-subtabs-tabs li').click = function(event) {
+    "use strict";
+    $('.tx-subtabs-tabs li').click = function(event) {
       var clicked;
       clicked = $(event.target);
       if (!clicked.parents().hasClass('tabs') && $('.tabsContentPlus').is(':visible')) {
@@ -252,7 +238,8 @@
   var fachMatchesTerm, getAlleFaecher, getDefaultFaecherSammlungen, getTrefferErsteEbene, highlightTerms, localizations, notifyAboutNoResults, objectMatchesTerm, resultsFound, synonyme;
 
   $(document).ready(function() {
-    "use strict";    $("#q").bind("keypress", function(e) {
+    "use strict";
+    $("#q").bind("keypress", function(e) {
       if (e.keyCode === 13) {
         return false;
       }
@@ -292,10 +279,10 @@
     return false;
   });
 
+
   /*
   Notifies the user that no results are found
-  */
-
+   */
 
   notifyAboutNoResults = function(matches) {
     var message, notificationContainer, notificationText, tabsContentContainer;
@@ -313,10 +300,10 @@
     return false;
   };
 
+
   /*
   Zeige Treffer der ersten Ebene an und gib diese aus
-  */
-
+   */
 
   getTrefferErsteEbene = function(arr, filter) {
     var liste;
@@ -337,10 +324,10 @@
     return false;
   };
 
+
   /*
   Standards fuer den unteren Teil des Faecher und Sammlungen Reiters
-  */
-
+   */
 
   getDefaultFaecherSammlungen = function() {
     var standardListe;
@@ -361,10 +348,10 @@
     return false;
   };
 
+
   /*
   Ausgabe aller Faecher
-  */
-
+   */
 
   getAlleFaecher = function(oberfach, inhalt, filterTerm) {
     var rueckgabe;
@@ -402,13 +389,13 @@
     return rueckgabe;
   };
 
+
   /*
   Auszeichnung des Suchbegriffs in den Trefferstrings
   
   @param line
   @param word
-  */
-
+   */
 
   highlightTerms = function(treffer, filterTerm) {
     var regex;
@@ -416,10 +403,10 @@
     return treffer.replace(regex, "<span class=\"highlight\">$1</span>");
   };
 
+
   /*
   Wenn das Objekt dem Suchterm entspricht
-  */
-
+   */
 
   objectMatchesTerm = function(titel, filterTerm) {
     var result;
@@ -430,15 +417,14 @@
     return result;
   };
 
+
   /*
   Abfrage auf den Unterelementen
   @todo non-blocking / async
-  */
-
+   */
 
   fachMatchesTerm = function(fach, filterTerm) {
     var fachArray, result, tag, tagID;
-    filterTerm = filterTerm.toLowerCase();
     fachArray = [];
     tagID = void 0;
     tag = void 0;
@@ -464,10 +450,10 @@
     return fachArray;
   };
 
+
   /*
   Retrieve all synonyms and save them globally
-  */
-
+   */
 
   synonyme = function() {
     var dataUrl, language, sys_language_uid;
@@ -485,12 +471,12 @@
     });
   };
 
+
   /*
   tells us if there are any results
   
   @return {Boolean}
-  */
-
+   */
 
   resultsFound = function() {
     if ($("a.noMatch").length === $("#Faechersammlungen .tabsContentPlus ul>li>a").length) {
@@ -500,12 +486,12 @@
     }
   };
 
+
   /*
   Localizations used for the tabs
   
   @type {Object}
-  */
-
+   */
 
   localizations = {
     0: {

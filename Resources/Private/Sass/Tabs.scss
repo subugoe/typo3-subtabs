@@ -60,12 +60,9 @@ $fieldHeight: 28px;
 	.formButton {
 		width: 13.774410774%;
 		border: 1px solid $darkgrey;
-		border-width: 1px;
 		border-color: $fieldBorderColor;
 		@include border-radius(3px);
 		background: url($buttonBackground) repeat-x scroll 0 100% #f3f6fb;
-		border-style: solid;
-		margin-left: 0;
 		font-weight: bold;
 		text-align: center;
 		text-decoration: none;

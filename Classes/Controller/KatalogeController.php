@@ -38,17 +38,18 @@ class KatalogeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	 * @var \Subugoe\Subtabs\Domain\Repository\KatalogeRepository
 	 */
 	protected $katalogeRepository;
+
 	/**
 	 * GOK Repository verfuegbar machen
 	 *
-	 * @var \Subugoe\Subtabs\Domain\Repository\GokRepository 
+	 * @var \Subugoe\Subtabs\Domain\Repository\GokRepository
 	 */
 	protected $gokRepository;
 
 	/**
 	 * Alle IRRE Kataloge
 	 *
-	 * @param \Subugoe\Subtabs\Domain\Repository\KatalogeRepository $katalogeRepository 
+	 * @param \Subugoe\Subtabs\Domain\Repository\KatalogeRepository $katalogeRepository
 	 */
 	public function injectKataloge(\Subugoe\Subtabs\Domain\Repository\KatalogeRepository $katalogeRepository) {
 		$this->katalogeRepository = $katalogeRepository;
