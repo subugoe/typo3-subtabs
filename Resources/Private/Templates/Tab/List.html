@@ -1,5 +1,5 @@
 {namespace t3jquery=Tx_T3jquery_ViewHelpers}
-<t3jquery:addJQueryAndScript jsfile="{f:uri.resource(path:'JavaScript/SubTabs.min.js')}">
+<t3jquery:addJQueryAndScript jsfile="{f:uri.resource(path:'JavaScript/SubTabs.js')}">
 	$(document).ready(function () {
 		if (Modernizr.input.placeholder === false) {
 			$('#mytextbox').attr('value', '<f:translate key="labelkatalogsuche" />');

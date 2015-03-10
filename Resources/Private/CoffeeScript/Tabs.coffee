@@ -44,9 +44,6 @@ $(document).ready ->
 		$(this).val().length >= 3
 	false
 
-
-# @todo show badges WWW-1121
-
 ###
 Notifies the user that no results are found
 ###
