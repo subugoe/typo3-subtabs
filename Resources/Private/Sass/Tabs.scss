@@ -1,144 +1,156 @@
-@import 'compass/css3';
-@import 'compass/utilities';
+$selected-tab: white;
+$text-color: #1a3771;
+$inactive-tab: #dee1e7;
+$highlight-color: $inactive-tab;
 
-$tabSelected: white;
-$textColor: #1A3771;
-$inactiveTab: #dee1e7;
-$highlightColor: $inactiveTab;
-
-$darkblue: #6E7FA0;
-$tabWidth: 572px * 0.9;
-$border: 1px solid $textColor;
-$fieldBorderColor: #bbb;
-$shadowColor: #777;
+$darkblue: #6e7fa0;
+$tab-width: 65%;
+$border: 1px solid $text-color;
+$field-border-color: #bbb;
+$shadow-color: #777;
 $hover: #405680;
 $darkgrey: #434343;
-$borderRadius: 7px;
-$buttonBackground: '/typo3conf/ext/subtabs/Resources/Public/Icons/button_shade_large.png';
-$fieldHeight: 28px;
+$border-radius: 7px;
+$button-background: '/typo3conf/ext/subtabs/Resources/Public/Icons/button_shade_large.png';
+$field-height: 28px;
+$tab-height: 25px;
 
 .tx-subtabs-tabs {
 	vertical-align: super;
 }
 
-
 .tx-subtabs-fach {
 	display: none;
 }
+
 .circle {
 	width: 140px;
 	height: 140px;
-	background: #1A3771;
-	-moz-border-radius: 70px;
-	-webkit-border-radius: 70px;
+	background: $text-color;
 	border-radius: 70px;
-	color: white
+	color: white;
 }
 
 .tabs {
 	position: relative;
-	height: 32px;
-	max-width: $tabWidth;
-	margin-top: -26px;
-	left: 20%;
+	height: $tab-height;
+	max-width: $tab-width;
+	margin-top: -$tab-height;
+	left: 25%;
 	overflow: visible;
 	z-index: 10;
-	::-webkit-input-placeholder, input:-moz-placeholder {
-		font-size: 14px;
-		padding: 0px;
-	}
+
 	.tabElement {
 		.fsResults {
-			font-size: 0.7em;
-			top: -0.4em;
+			font-size: .7em;
+			top: -.4em;
 			position: relative;
-			right: -0.4em;
-			padding: 0.3em;
+			right: -.4em;
+			padding: .3em;
 			text-shadow: none;
 		}
+		&:hover,
+		&.selected,
+		&.hover {
+			text-decoration: none;
+		}
 	}
+
 	.formButton {
 		width: 13.774410774%;
 		border: 1px solid $darkgrey;
-		border-color: $fieldBorderColor;
-		@include border-radius(3px);
-		background: url($buttonBackground) repeat-x scroll 0 100% #f3f6fb;
+		border-color: $field-border-color;
+		border-radius: 3px;
+		background: url($button-background) repeat-x scroll 0 100% #f3f6fb;
 		font-weight: bold;
 		text-align: center;
 		text-decoration: none;
-		text-shadow: 0 1px rgba(255, 255, 255, 0.75);
+		text-shadow: 0 1px rgba(255, 255, 255, .75);
 		text-transform: uppercase;
 		line-height: 100%;
-		padding: 6px 8px 4px 8px;
-		height: $fieldHeight + 2;
+		padding: 6px 8px 4px;
+		height: $field-height + 2;
 		color: $darkgrey;
 		margin-left: 10px;
 	}
+
 	.tabsContentPlus {
 		margin-top: 8px;
 		position: relative;
 		float: left;
-		width: 100%;
- 	}
+		width: 75%;
+
+		ul {
+			padding-left: 0;
+		}
+	}
+
 	.noMatch {
 		color: lighten($darkgrey, 20%);
 	}
+
 	.linkList {
 		margin-top: 8px;
 	}
+
 	form {
- 		padding: 0;
- 		input[type=search] {
- 			-webkit-appearance: textfield;
- 	 		-moz-box-sizing: content-box;
- 	 		-webkit-box-sizing: content-box;
-			-ms-box-sizing: content-box;
- 	 		box-sizing: content-box;
- 			border-width: 1px;
-			@include border-radius(3px);
- 			border-color: $fieldBorderColor;
- 			padding: 0 10px;
+		padding: 0;
+
+		input[type=search] {
+			border-radius: 3px;
+			box-shadow: rgba($shadow-color, .4) 0 0 5px inset;
+			box-sizing: content-box;
+			border-width: 1px;
+			border-color: $field-border-color;
+			padding: 0 10px;
 			width: 79.888268156%;
-			height: $fieldHeight;
+			height: $field-height;
 			font-size: 14px;
-			line-height: $fieldHeight - 2;
-			float:left;
-			@include box-shadow(rgba($shadowColor, 0.4) 0 0 5px inset);
- 		}
- 	 }
+			line-height: $field-height - 2;
+			float: left;
+		}
+	}
+
 	.ui-state-hover {
 		margin-bottom: 2px;
 		font-weight: bold;
 	}
+
 	#Katalog {
 		.tabsContentPlus {
 			.description {
 				position: absolute;
 				width: auto;
 			}
+
 			label {
 				a {
-					color: $textColor;
+					color: $text-color;
 					margin-left: 3px;
+
 					&:visited {
-						color: $textColor;
+						color: $text-color;
 					}
+
 					&:hover {
 						text-decoration: underline;
 					}
 				}
 			}
+
 			.separator {
-				padding-left: 67px;
+				padding-left: 11rem;
 			}
 		}
 	}
+
 	#Faechersammlungen {
 		.noResults {
 			position: absolute;
 			right: 1%;
 			text-transform: uppercase;
 		}
+
 		.field {
 			width: 95.477386935%;
 		}
@@ -146,76 +158,90 @@ $fieldHeight: 28px;
 }
 
 .tabNavigation {
-	height: 26px;
+	height: $tab-height;
 	margin-left: 1px;
+
 	a {
- 		padding: 8px 6px;
-		background-color: $inactiveTab;
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		padding: 8px 6px;
+		background-color: $inactive-tab;
 		margin-right: 0;
-		color: $textColor;
+		color: $text-color;
 		font-size: 1.3em;
-		@include border-top-radius($borderRadius);
+
 		&:hover {
-			background-color: $tabSelected;
+			background-color: $selected-tab;
 		}
 	}
+
 	li {
 		list-style-type: none;
 		display: inline;
 	}
-	.hover{
-		background-color: $inactiveTab;
+
+	.hover {
+		background-color: $inactive-tab;
 	}
+
 	.selected {
-		background-color: $tabSelected;
-		color: $textColor;
+		background-color: $selected-tab;
+		color: $text-color;
 		text-shadow: 0 1px 0 white;
 		border-bottom: 2px solid white;
 		z-index: 1000000;
 		position: relative;
 	}
+
 	.tabsTagline {
 		background-color: $darkblue;
-		color: $tabSelected;
+		color: $selected-tab;
 		font-size: 90%;
 	}
 }
 
 .tabsContentLarge {
-	@include border-bottom-radius($borderRadius);
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
 	height: auto;
 }
 
 .tabsContentSmall {
-	background-color: #FAFAFA;
-	@include border-bottom-radius($borderRadius);
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
+	background-color: #fafafa;
 	border-right: 1px solid $darkblue;
 	border-left: 1px solid $darkblue;
 	border-bottom: 1px solid $darkblue;
 }
 
 .tabsContent {
+	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius;
+	border-top-right-radius: $border-radius;
+	box-shadow: rgba(119, 119, 119, .4) 0 7px 7px;
 	width: 100%;
 	padding: 10px;
-	@include border-bottom-radius($borderRadius);
-	@include border-top-right-radius($borderRadius);
-	background-color: $tabSelected;
+	background-color: $selected-tab;
 	border-right: $border;
 	border-bottom: $border;
 	border-left: $border;
 	border-top: $border;
 	float: left;
 	position: absolute;
-	@include box-shadow(rgba(119, 119, 119, 0.4) 0px 7px 7px);
 	display: none;
 	margin-top: 0;
+	left: 0;
+
 	input[type=radio] {
- 		margin-right: 5px;
- 		margin-left: 2px;
+		margin-right: 5px;
+		margin-left: 2px;
 	}
+
 	ul {
- 		margin: 0 0 0 2px;
-		 li {
+		margin: 0 0 0 2px;
+
+		li {
 			list-style-type: none;
 			background-image: url('/typo3conf/ext/subtabs/Resources/Public/Icons/arrow_right.png');
 			background-repeat: no-repeat;
@@ -226,20 +252,24 @@ $fieldHeight: 28px;
 			float: left;
 			width: 93%;
 			clear: both;
+
 			a {
-				color: $textColor;
+				color: $text-color;
+
 				&:hover {
-					text-decoration: underline!important;
+					text-decoration: underline !important;
 				}
 			}
 		}
 	}
+
 	.trefferliste {
 		color: #444;
 		text-indent: -5px;
 		margin-left: 6px;
 	}
+
 	.highlight {
- 		background-color: $highlightColor;
+		background-color: $highlight-color;
 	}
 }

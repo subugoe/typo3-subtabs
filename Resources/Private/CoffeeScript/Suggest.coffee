@@ -8,11 +8,6 @@ $ ->
 	else
 		sys_language_uid = 1
 
-	# Change back to the old behavior of auto-complete
-	# http://jqueryui.com/docs/Upgrade_Guide_184#Autocomplete
-	$.ui.autocomplete::_renderItem = (ul, item) ->
-		$("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&tx_solr[q]=" + item.value + "\">" + item.label + "</a>").appendTo ul
-
 	$("#Webseite .tx-solr-q").autocomplete
 		source: (request, response) ->
 			$.ajax
@@ -44,3 +39,5 @@ $ ->
 		delay: 0
 		minLength: 3
 		appendTo: "#WebseiteContentPlus"
+	.data("ui-autocomplete")._renderItem = (ul, item) ->
+		$("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&tx_solr[q]=" + item.value + "\">" + item.label + "</a>").appendTo ul

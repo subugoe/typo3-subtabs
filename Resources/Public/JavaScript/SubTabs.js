@@ -60,9 +60,6 @@
     } else {
       sys_language_uid = 1;
     }
-    $.ui.autocomplete.prototype._renderItem = function(ul, item) {
-      return $("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&tx_solr[q]=" + item.value + "\">" + item.label + "</a>").appendTo(ul);
-    };
     return $("#Webseite .tx-solr-q").autocomplete({
       source: function(request, response) {
         return $.ajax({
@@ -99,7 +96,9 @@
       delay: 0,
       minLength: 3,
       appendTo: "#WebseiteContentPlus"
-    });
+    }).data("ui-autocomplete")._renderItem = function(ul, item) {
+      return $("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&tx_solr[q]=" + item.value + "\">" + item.label + "</a>").appendTo(ul);
+    };
   });
 
 }).call(this);
