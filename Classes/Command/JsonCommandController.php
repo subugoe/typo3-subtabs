@@ -47,7 +47,7 @@ class JsonCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandCon
 		// do it twice for each language
 		// @todo automatically detect number of available languages
 		for ($i = 0; $i <= 1; $i++) {
-			$destinationDirectory = t3lib_div::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
+			$destinationDirectory = GeneralUtility::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
 			$url = $hostname . '?type=1011&L=' . $i;
 			$json = GeneralUtility::getUrl($url, 0);
 			$json = GeneralUtility::minifyJavaScript($json);
