@@ -41,8 +41,4 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Suguboe\\Subtab
 		'description' => 'Parsen eines dynamisch erstellten JSON in eine Datei'
 );
 
-// Register cache subtabs_cache'
-if (!is_array($TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['subtabs_cache'])) {
-	$TYPO3_CONF_VARS['SYS']['caching']['cacheConfigurations']['subtabs_cache'] = array();
-}
 $TYPO3_CONF_VARS['FE']['eID_include'][$_EXTKEY . '_subjects'] = 'EXT:' . $_EXTKEY . '/Resources/Private/Ajax/FaecherSammlungen.php';
