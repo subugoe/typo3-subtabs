@@ -97,7 +97,7 @@
       minLength: 3,
       appendTo: "#WebseiteContentPlus"
     }).data("ui-autocomplete")._renderItem = function(ul, item) {
-      return $("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&tx_solr[q]=" + item.value + "\">" + item.label + "</a>").appendTo(ul);
+      return $("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&q=" + item.value + "\">" + item.label + "</a>").appendTo(ul);
     };
   });
 
@@ -166,7 +166,7 @@
       } else {
         $('#Katalog .tabsContent').addClass('tabsContentSmall');
         getParams = getQueryParams(document.location.search);
-        if (getParams['tx_solr[q]']) {
+        if (getParams['q']) {
           $('#tab-webseite').addClass('selected');
           $('#tab-katalog').removeClass('selected').addClass('hover');
         }

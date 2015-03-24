@@ -40,4 +40,4 @@ $ ->
 		minLength: 3
 		appendTo: "#WebseiteContentPlus"
 	.data("ui-autocomplete")._renderItem = (ul, item) ->
-		$("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&tx_solr[q]=" + item.value + "\">" + item.label + "</a>").appendTo ul
+		$("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&q=" + item.value + "\">" + item.label + "</a>").appendTo ul
