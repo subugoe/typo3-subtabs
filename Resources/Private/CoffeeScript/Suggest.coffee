@@ -8,7 +8,8 @@ $ ->
 	else
 		sys_language_uid = 1
 
-	$("#Webseite .tx-solr-q").autocomplete
+	if typeof autocomplete is 'function'
+		$("#Webseite .tx-solr-q").autocomplete
 		source: (request, response) ->
 			$.ajax
 				type: "GET"
@@ -39,5 +40,3 @@ $ ->
 		delay: 0
 		minLength: 3
 		appendTo: "#WebseiteContentPlus"
-	.data("ui-autocomplete")._renderItem = (ul, item) ->
-		$("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&q=" + item.value + "\">" + item.label + "</a>").appendTo ul
