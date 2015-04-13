@@ -25,6 +25,7 @@ namespace Subugoe\Subtabs\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
  * Controller for the Tab object
@@ -63,7 +64,7 @@ class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		$this->language = $GLOBALS['TSFE']->sys_language_uid;
 		/** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
 		$pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
-		$pageRenderer->addCssFile('typo3conf/ext/subtabs/Resources/Public/Css/Tabs.css');
+		$pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
 	}
 
 	/**
