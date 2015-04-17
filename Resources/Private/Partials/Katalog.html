@@ -5,6 +5,7 @@
 		<f:for each="{kataloge}" as="katalogliste">
 			<f:form method="get" action="/" id="catalogueSearchForm">
 				<div class="searchLine">
+					<label for="mytextbox" class="sr-only">Katalogsuche</label>
 					<f:form.textfield type="search" name="searchcat" id="mytextbox" size="40" class="field placeholder" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
 					<f:form.submit value="{f:translate(key:'suchSubmitButton')}" class="formButton"/>
 				</div>
