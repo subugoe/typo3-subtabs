@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Controller;
 /***************************************************************
 *  Copyright notice
 *
@@ -30,7 +31,7 @@
  *
  * @author Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
  */
-class Tx_Subtabs_Controller_KatalogController extends Tx_Extbase_MVC_Controller_ActionController {
+class KatalogController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 
 	/**
@@ -45,12 +46,11 @@ class Tx_Subtabs_Controller_KatalogController extends Tx_Extbase_MVC_Controller_
 	/**
 	 * Displays a single Katalog
 	 *
-	 * @param Tx_Subtabs_Domain_Model_Katalog $katalog the Katalog to display
+	 * @param \Subugoe\Subtabs\Domain\Model\Katalog $katalog the Katalog to display
 	 * @return string The rendered view
 	 */
-	public function showAction(Tx_Subtabs_Domain_Model_Katalog $katalog) {
+	public function showAction(\Subugoe\Subtabs\Domain\Model\Katalog $katalog) {
 		$this->view->assign('katalog', $katalog);
 	}
 
 }
-?>

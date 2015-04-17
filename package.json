@@ -1,0 +1,28 @@
+{
+  "name": "subtabs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/subugoe/typo3-subtabs.git"
+  },
+  "author": "",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/subugoe/typo3-subtabs/issues"
+  },
+  "homepage": "https://github.com/subugoe/typo3-subtabs",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-compass": "^0.3.9",
+    "grunt-contrib-coffee": "^0.12.0",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "devDependencies": {
+    "grunt-autoprefixer": "^2.2.0"
+  }
+}

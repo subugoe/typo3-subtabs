@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Controller;
 
 /* * *************************************************************
  *  Copyright notice
@@ -24,26 +25,27 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
  * Controller for the Tab object
  */
-class Tx_Subtabs_Controller_TabController extends Tx_Extbase_MVC_Controller_ActionController {
+class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * @var t3lib_cache_frontend_StringFrontend
+	 * @var \TYPO3\CMS\Core\Cache\Frontend\StringFrontend
 	 */
 	protected $cacheInstance;
 
 	/**
 	 * Repository fuer den Reiter Kataloge
-	 * @var Tx_Subtabs_Domain_Repository_KatalogeRepository
+	 * @var \Subugoe\Subtabs\Domain\Repository\KatalogeRepository
 	 * @inject
 	 */
 	protected $katalogeRepository;
 	/**
 	 * Repository mit den Faechern
-	 * @var Tx_Subtabs_Domain_Repository_FaecherRepository
+	 * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
 	 * @inject
 	 */
 	protected $faecherRepository;
@@ -59,31 +61,10 @@ class Tx_Subtabs_Controller_TabController extends Tx_Extbase_MVC_Controller_Acti
 	 * @return void
 	 */
 	public function initializeAction() {
-		$this->initializeCache();
 		$this->language = $GLOBALS['TSFE']->sys_language_uid;
-		/** @var t3lib_pageRenderer $pageRenderer */
+		/** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
 		$pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
-		$pageRenderer->addCssFile('typo3conf/ext/subtabs/Resources/Public/Css/Tabs.css');
-	}
-
-	/**
-	 * Initialisierung des Cachingframeworks
-	 *
-	 * @return void
-	 */
-	protected function initializeCache() {
-
-		t3lib_cache::initializeCachingFramework();
-		try {
-			$this->cacheInstance = $GLOBALS['typo3CacheManager']->getCache('subtabs_cache');
-		} catch (t3lib_cache_exception_NoSuchCache $e) {
-			$this->cacheInstance = $GLOBALS['typo3CacheFactory']->create(
-				'subtabs_cache',
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['subtabs_cache']['frontend'],
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['subtabs_cache']['backend'],
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['subtabs_cache']['options']
-			);
-		}
+		$pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
 	}
 
 	/**
@@ -93,25 +74,16 @@ class Tx_Subtabs_Controller_TabController extends Tx_Extbase_MVC_Controller_Acti
 	 */
 	public function listAction() {
 
-		$cacheName = 'subtabs-' . $this->language;
-
-		if ($this->cacheInstance->has($cacheName) === FALSE) {
-				// Reiter Kataloge
-			$kataloge = $this->katalogeRepository->findAll();
-				// Reiter Faecher Sammlungen
-			$faechersammlungen = $this->faecherRepository->findAll();
-				// Uebergabe an den View
-			$this->view->assignMultiple(array(
-				'faechersammlungen' => $faechersammlungen,
-				'kataloge' => $kataloge
+		// Reiter Kataloge
+		$kataloge = $this->katalogeRepository->findAll();
+		// Reiter Faecher Sammlungen
+		$faechersammlungen = $this->faecherRepository->findAll();
+		// Uebergabe an den View
+		$this->view->assignMultiple(array(
+						'faechersammlungen' => $faechersammlungen,
+						'kataloge' => $kataloge
 				)
-			);
-
-			$toCache = $this->view->render();
-			$this->cacheInstance->set($cacheName, $toCache, array(), 0);
-		}
-		return $this->cacheInstance->get($cacheName);
-
+		);
 	}
 
 	/**
@@ -120,10 +92,8 @@ class Tx_Subtabs_Controller_TabController extends Tx_Extbase_MVC_Controller_Acti
 	 * @return void
 	 */
 	public function jsonAction() {
-			// Ausgabe aller Faecher und Sammlungen
+		// Ausgabe aller Faecher und Sammlungen
 		$faechersammlungen = $this->faecherRepository->findFaecherSammlungen($GLOBALS['TSFE']->sys_language_uid);
 		$this->view->assign('faechersammlungen', $faechersammlungen);
-
 	}
 }
-?>

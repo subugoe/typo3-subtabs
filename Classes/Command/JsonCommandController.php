@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Command;
 
 /* * *************************************************************
  *  Copyright notice
@@ -25,15 +26,12 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Description
- *
- * @author Ingo Pfennigstorf <pfennigstorf@sub-goettingen.de>, Goettingen State Library
- */
-class Tx_Subtabs_Command_JsonCommandController extends Tx_Extbase_MVC_Controller_CommandController {
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+class JsonCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController {
 
 	/**
-	 * @var Tx_Subtabs_Domain_Repository_FaecherRepository
+	 * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
 	 * @inject
 	 */
 	protected $faecherRepository;
@@ -46,15 +44,15 @@ class Tx_Subtabs_Command_JsonCommandController extends Tx_Extbase_MVC_Controller
 
 		$hostname = $subConf['baseUrl'];
 
-			// do it twice for each language
-			// @todo automatically detect number of available languages
+		// do it twice for each language
+		// @todo automatically detect number of available languages
 		for ($i = 0; $i <= 1; $i++) {
-			$destinationDirectory = t3lib_div::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
+			$destinationDirectory = GeneralUtility::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
 			$url = $hostname . '?type=1011&L=' . $i;
-			$json = t3lib_div::getUrl($url, 0);
-			$json = t3lib_div::minifyJavaScript($json);
-			t3lib_div::devLog($url, 'subtabs', 1);
-			t3lib_div::writeFile($destinationDirectory, $json) ? $return = TRUE : $return = FALSE;
+			$json = GeneralUtility::getUrl($url, 0);
+			$json = GeneralUtility::minifyJavaScript($json);
+			GeneralUtility::devLog($url, 'subtabs', 1);
+			GeneralUtility::writeFile($destinationDirectory, $json) ? $return = TRUE : $return = FALSE;
 		}
 	}
 }

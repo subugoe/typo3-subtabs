@@ -182,4 +182,3 @@ $TCA['tx_subtabs_domain_model_katalog'] = array(
 		),
 	),
 );
-?>

@@ -1,4 +1,6 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Repository;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,9 +27,8 @@
 
 
 /**
- * Repository for Tx_Subtabs_Domain_Model_Kataloge
+ * Repository for Kataloge
  */
-class Tx_Subtabs_Domain_Repository_KatalogeRepository extends Tx_Extbase_Persistence_Repository {
+class KatalogeRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 }
-?>

@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Repository;
 
 /* * *************************************************************
  *  Copyright notice
@@ -25,10 +26,8 @@
  * ************************************************************* */
 
 /**
- * Repository for Tx_Subtabs_Domain_Model_Fach
+ * Repository for Fach
  */
-class Tx_Subtabs_Domain_Repository_FachRepository extends Tx_Extbase_Persistence_Repository {
+class FachRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 }
-
-?>

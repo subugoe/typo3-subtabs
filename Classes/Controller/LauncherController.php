@@ -1,5 +1,5 @@
 <?php
-
+namespace Subugoe\Subtabs\Controller;
 /* * *************************************************************
  *  Copyright notice
  *
@@ -30,7 +30,7 @@
  *
  * @author Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
  */
-class Tx_Subtabs_Controller_LauncherController extends Tx_Extbase_MVC_Controller_ActionController {
+class LauncherController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * Startet die Aktion fuer den katalogreiter
@@ -69,4 +69,3 @@ class Tx_Subtabs_Controller_LauncherController extends Tx_Extbase_MVC_Controller
 	}
 
 }
-?>

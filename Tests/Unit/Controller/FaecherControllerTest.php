@@ -1,5 +1,5 @@
 <?php
-
+namespace Subugoe\Subtabs\Tests\Unit\Controller;
 /***************************************************************
  *  Copyright notice
  *
@@ -23,6 +23,7 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Test case for class Tx_Subtabs_Controller_FachController
@@ -30,14 +31,14 @@
  * @author Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
  * @package subtabs
  */
-class Tx_Subtabs_Tests_Unit_Controller_FaecherControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase {
+class FaecherControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var Tx_Subtabs_Controller_FaecherController
+	 * @var \Subugoe\Subtabs\Controller\FaecherController
 	 */
 	protected $fixture;
 
 	/**
-	 * @var Tx_Subtabs_Domain_Repository_FaecherRepository
+	 * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
 	 */
 	protected $repository;
 
@@ -45,24 +46,22 @@ class Tx_Subtabs_Tests_Unit_Controller_FaecherControllerTest extends Tx_Extbase_
 	 * @return void
 	 */
 	public function setUp() {
-		$class =  'Tx_Subtabs_Controller_FaecherController';
+		$class =  'Subugoe\\Subtabs\\Controller\\FaecherController';
 		$this->fixture = $this->getMock($class);
-		$this->fixture->injectObjectManager($this->objectManager);
 
 		/**
-		 * @var $repository Tx_Subtabs_Domain_Repository_FaecherRepository
+		 * @var $repository \Subugoe\Subtabs\Domain\Repository\FaecherRepository
 		 */
 		$this->repository = $this->getMock(
-			'Tx_Subtabs_Domain_Repository_FaecherRepository',
+			'Subugoe\\Subtabs\\Domain\\Repository\\FaecherRepository',
 			array('findAll', 'findByUid', 'update', 'add', 'remove', 'countAll', 'findSuchbegriff')
 		);
-		$this->fixture->injectFaecherRepository($this->repository);
 
 	}
 
 	/**
 	 * @test
-	 * @incomplete
+	 * @markTestIncomplete
 	 */
 	public function testFachAnlage(){
 		$i = 1;
@@ -71,5 +70,3 @@ class Tx_Subtabs_Tests_Unit_Controller_FaecherControllerTest extends Tx_Extbase_
 	}
 
 }
-
-?>

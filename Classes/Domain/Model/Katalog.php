@@ -1,4 +1,6 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Model;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -28,7 +30,7 @@
 /**
  * Eine Sammlung
  */
-class Tx_Subtabs_Domain_Model_Katalog extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Katalog extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 
 	/**
 	 * Titel des Katalogs
@@ -193,7 +195,7 @@ class Tx_Subtabs_Domain_Model_Katalog extends Tx_Extbase_DomainObject_AbstractVa
 	}
 
 	/**
-	 * Initializes all Tx_Extbase_Persistence_ObjectStorage properties.
+	 * Initializes all ObjectStorage properties.
 	 *
 	 * @return void
 	 */

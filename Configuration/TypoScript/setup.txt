@@ -7,7 +7,7 @@ plugin.tx_subtabs {
 	persistence {
 		storagePid = {$plugin.tx_subtabs.persistence.storagePid}
 		classes {
-			Tx_Subtabs_Domain_Model_Page {
+			Subugoe\Subtabs\Domain\Model\Page {
 				mapping {
 					tableName = pages
 					columns {

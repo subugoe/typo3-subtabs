@@ -58,7 +58,7 @@ $ ->
 			$('#Katalog .tabsContent').addClass('tabsContentSmall')
 
 			getParams = getQueryParams(document.location.search);
-			if getParams['tx_solr[q]']
+			if getParams['q']
 				$('#tab-webseite').addClass('selected')
 				$('#tab-katalog').removeClass('selected').addClass('hover')
 
