@@ -1,0 +1,12 @@
+{
+    "name": "subugoe/subtabs",
+    "description": "tabs for sub website",
+    "type": "typo3-cms-extension",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Ingo Pfennigstorf",
+            "email": "i.pfennigstorf@gmail.com"
+        }
+    ]
+}
