@@ -1,0 +1,17 @@
+{namespace sub=Subugoe\Subtabs\ViewHelpers}
+
+<div class="search_content" id="Faechersammlungen">
+	<!--
+	<form class="search_form" action="/" id="tabsFormThird">
+		<input class="search_input" type="search" id="q" placeholder="{f:translate(key:'labelfaecher')}"/>
+	</form>
+	-->
+	<ul>
+		<f:for each="{faechersammlungen}" as="fach">
+			<li>
+				<f:link.page pageUid="{fach.seite}">{fach.titel}</f:link.page>
+			</li>
+		</f:for>
+	</ul>
+	<div class="search_result-info"></div>
+</div>

@@ -1,54 +1,43 @@
 {namespace t3jquery=Tx_T3jquery_ViewHelpers}
+
 <t3jquery:addJQueryAndScript jsfile="{f:uri.resource(path:'JavaScript/SubTabs.js')}">
-	$(document).ready(function () {
+	$(function () {
 		if (Modernizr.input.placeholder === false) {
-			$('#mytextbox').attr('value', '<f:translate key="labelkatalogsuche" />');
+			$('#mytextbox').attr('value', '<f:translate key="labelkatalogsuche" />')
 			$('#q').attr('value', '<f:translate key="labelfaecher" />');
-			$('#solrtab').attr('value', '<f:translate key="suchAufWebseiten" />');
+			$('#solrtab').attr('value', '<f:translate key="suchAufWebseiten" />')
 			$('.placeholder').focusin(function () {
-				$(this).attr('value', '');
-			});
+				$(this).attr('value', '')
+			})
 			$('.formButton').click(function () {
-				$('.placeholder').attr('value', '');
-			});
+				$('.placeholder').attr('value', '')
+			})
 		}
-	});
+	})
 </t3jquery:addJQueryAndScript>
-<div class="tx-subtabs-tabs">
-	<div class="tabs">
-		<ul class="tabNavigation">
-			<li><f:link.page section="Katalog" id="tab-katalog" addQueryString="TRUE" class="tabElement"><f:translate key="Katalog"/></f:link.page></li>
-			<li><f:link.page section="Faechersammlungen" id="tab-faechersammlungen" addQueryString="TRUE" class="tabElement"><f:translate key="Faechersammlungen"/><span class="fsResults"></span></f:link.page></li>
-			<li><f:link.page section="Webseite" id="tab-webseite" addQueryString="TRUE" class="tabElement"><f:translate key="Webseite"/></f:link.page></li>
-		</ul>
+
+<div class="search">
+
+	<f:form method="get" class="search_form" action="/">
+		<label for="search_input" class="sr-only"><f:translate key="labelkatalogsuche"/></label>
+		<f:form.textfield type="search" name="searchcat" id="search_input" size="40" class="search_input" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
+		<!--<f:form.submit value="{f:translate(key:'suchSubmitButton')}" class="search_submit"/>-->
+		<!-- TODO: Replace with fluid code -->
+		<button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/><span></button>
+	</f:form>
+
+	<div class="search_popup">
+
 		<f:render partial="Katalog" arguments="{_all}" />
+		<f:render partial="Faechersammlungen" arguments="{_all}" />
+		<f:render partial="Webseite" arguments="{_all}" />
 
-		<div id="Faechersammlungen">
-			<div class="tabsContent">
-				<form action="/" id="tabsFormThird">
-					<input class="field placeholder" type="search" id="q" placeholder="{f:translate(key:'labelfaecher')}"/>
-				</form>
-				<div class="tabsContentPlus" id="FaechersammlungenContentPlus">
-					<ul id="third_select" style="overflow:auto; width: 100%; margin-left: 0px;">
-						<f:for each="{faechersammlungen}" as="fach">
-							<li>
-								<f:link.page pageUid="{fach.seite}">{fach.titel}</f:link.page>
-							</li>
-						</f:for>
-					</ul>
-					<div class="resultsInfo"></div>
-				</div>
-			</div>
-		</div>
+		<ul class="search_navigation">
+			<li><f:link.page section="Katalog" id="tab-katalog" addQueryString="TRUE"><f:translate key="Katalog"/></f:link.page></li>
+			<li><f:link.page section="Faechersammlungen" id="tab-faechersammlungen" addQueryString="TRUE"><f:translate key="Faechersammlungen"/></f:link.page></li>
+			<li><f:link.page section="Webseite" id="tab-webseite" addQueryString="TRUE"><f:translate key="Webseite"/></f:link.page></li>
+		</ul>
 
-		<div id="Webseite">
-			<div class="tabsContent">
-				<form action="{f:translate(key:'solrTarget')}" method="get" accept-charset="utf-8">
-					<input type="search" class="field tx-solr-q placeholder field" size="40" id="solrtab" name="q" value="" placeholder="{f:translate(key:'suchAufWebseiten')}" />
-					<input type="submit" value="{f:translate(key:'suchSubmitButton')}" class="formButton" />
-				</form>
-				<div class="tabsContentPlus" id="WebseiteContentPlus"></div>
-			</div>
-		</div>
 	</div>
+
 </div>

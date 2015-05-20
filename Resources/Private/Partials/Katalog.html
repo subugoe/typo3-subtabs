@@ -1,42 +1,33 @@
 {namespace sub=Subugoe\Subtabs\ViewHelpers}
 
-<div id="Katalog">
-	<div class="tabsContent">
-		<f:for each="{kataloge}" as="katalogliste">
-			<f:form method="get" action="/" id="catalogueSearchForm">
-				<div class="searchLine">
-					<label for="mytextbox" class="sr-only">Katalogsuche</label>
-					<f:form.textfield type="search" name="searchcat" id="mytextbox" size="40" class="field placeholder" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
-					<f:form.submit value="{f:translate(key:'suchSubmitButton')}" class="formButton"/>
-				</div>
-				<div class="tabsContentPlus">
-					<f:for each="{katalogliste.katalogListe}" as="liste" iteration="katalogIterator">
-						<f:if condition="{liste.neuesFenster}">
-							<f:then>
-								<f:form.radio name="kataloge" id="katalog-{liste.uid}" class="newWindow" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
-							</f:then>
-							<f:else>
-								<f:form.radio name="kataloge" id="katalog-{liste.uid}" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
-							</f:else>
-						</f:if>
-						<sub:explode glue=" - " content="{liste.titel}" as="abbr"/>
-						<label for="katalog-{liste.uid}">
-							<span <f:if condition="{abbr.1}"><f:then> class="description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}	</span>
-							<f:if condition="{abbr.1}">
-								<f:link.external class="separator" uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbr.1}</f:link.external>
-							</f:if>
-						</label>
-						<br />
-					</f:for>
-					<ul class="linkList">
-						<f:for each="{katalogliste.seitenListe}" as="page">
-							<li>
-								<f:link.page pageUid="{page.uid}">{page.title -> f:format.htmlentitiesDecode()}</f:link.page>
-							</li>
-						</f:for>
-					</ul>
-				</div>
-			</f:form>
-		</f:for>
-	</div>
+<div class="search_content" id="Katalog">
+	<f:for each="{kataloge}" as="katalogliste">
+		<div class="search_catalog-list">
+			<f:for each="{katalogliste.katalogListe}" as="liste" iteration="katalogIterator">
+				<f:if condition="{liste.neuesFenster}">
+					<f:then>
+						<f:form.radio name="kataloge" id="katalog-{liste.uid}" class="search_radio -new-window" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
+					</f:then>
+					<f:else>
+						<f:form.radio name="kataloge" id="katalog-{liste.uid}" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
+					</f:else>
+				</f:if>
+				<sub:explode glue=" - " content="{liste.titel}" as="abbr"/>
+				<label for="katalog-{liste.uid}">
+					<span <f:if condition="{abbr.1}"><f:then> class="search_description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}	</span>
+					<f:if condition="{abbr.1}">
+						<f:link.external class="search_separator" uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbr.1}</f:link.external>
+					</f:if>
+				</label>
+				<br />
+			</f:for>
+			<ul class="search_catalog-page-list">
+				<f:for each="{katalogliste.seitenListe}" as="page">
+					<li>
+						<f:link.page pageUid="{page.uid}">{page.title -> f:format.htmlentitiesDecode()}</f:link.page>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:for>
 </div>
