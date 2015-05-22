@@ -1,8 +1,8 @@
-$(document).ready ->
+$ ->
 	"use strict"
+
 	$("#q").bind "keypress", (e) ->
 		false if e.keyCode is 13
-
 
 	# variable synonyme wird damit global nutzbar
 	$("#tab-faechersammlungen").click ->
