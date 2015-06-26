@@ -19,8 +19,8 @@
 <div class="search">
 
 	<f:form method="get" class="search_form" action="/">
-		<label for="search_input" class="sr-only"><f:translate key="labelkatalogsuche"/></label>
-		<f:form.textfield type="search" name="searchcat" id="search_input" size="40" class="search_input" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
+		<label for="q" class="sr-only"><f:translate key="labelkatalogsuche"/></label>
+		<f:form.textfield type="text" name="searchcat" id="q" size="40" class="search_input" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
 		<!--<f:form.submit value="{f:translate(key:'suchSubmitButton')}" class="search_submit"/>-->
 		<!-- TODO: Replace with fluid code -->
 		<button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/><span></button>
@@ -34,7 +34,7 @@
 
 		<ul class="search_navigation">
 			<li><f:link.page section="Katalog" id="tab-katalog" addQueryString="TRUE"><f:translate key="Katalog"/></f:link.page></li>
-			<li><f:link.page section="Faechersammlungen" id="tab-faechersammlungen" addQueryString="TRUE"><f:translate key="Faechersammlungen"/></f:link.page></li>
+			<li><f:link.page section="Faechersammlungen" id="tab-faechersammlungen" class="-hide-submit" addQueryString="TRUE"><f:translate key="Faechersammlungen"/></f:link.page></li>
 			<li><f:link.page section="Webseite" id="tab-webseite" addQueryString="TRUE"><f:translate key="Webseite"/></f:link.page></li>
 		</ul>
 

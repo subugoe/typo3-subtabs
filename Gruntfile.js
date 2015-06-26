@@ -10,6 +10,9 @@ module.exports = function (grunt) {
 			compile: {
 				files: {
 					'Resources/Public/JavaScript/SubTabs.js': ['Resources/Private/CoffeeScript/*.coffee']
+				},
+				options: {
+					bare: true
 				}
 			}
 		},
