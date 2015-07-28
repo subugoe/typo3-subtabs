@@ -23,32 +23,35 @@ namespace Subugoe\Subtabs\Domain\Model;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
-
+ ***************************************************************/
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- * Reiter Sammlungen
+ * Page
  */
-class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Page extends AbstractEntity
+{
 
-	/**
-	 * Title of the page
-	 *
-	 * @var string $title
-	 */
-	protected $title;
+    /**
+     * Title of the page
+     *
+     * @var string $title
+     */
+    protected $title;
 
-	/**
-	 * @param string $title
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 }
