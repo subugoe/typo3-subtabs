@@ -26,8 +26,12 @@ namespace Subugoe\Subtabs\Command;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
+use MatthiasMullie\Minify;
+
+require_once ExtensionManagementUtility::extPath('subtabs') . 'vendor/autoload.php';
 
 class JsonCommandController extends CommandController {
 
@@ -39,15 +43,17 @@ class JsonCommandController extends CommandController {
 
 		$hostname = $subConf['baseUrl'];
 
+		$minifier = new Minify\JS();
+
 		// do it twice for each language
 		// @todo automatically detect number of available languages
 		for ($i = 0; $i <= 1; $i++) {
 			$destinationDirectory = GeneralUtility::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
 			$url = $hostname . '?type=1011&L=' . $i;
 			$json = GeneralUtility::getUrl($url, 0);
-			$json = GeneralUtility::minifyJavaScript($json);
+			$minifier->add($json);
 			GeneralUtility::devLog($url, 'subtabs', 1);
-			GeneralUtility::writeFile($destinationDirectory, $json) ? $return = TRUE : $return = FALSE;
+			GeneralUtility::writeFile($destinationDirectory, $minifier->minify()) ? $return = TRUE : $return = FALSE;
 		}
 	}
 }
