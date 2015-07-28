@@ -24,132 +24,130 @@ namespace Subugoe\Subtabs\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- * Reiter Sammlungen
+ * Catalogue tab
  */
-class Kataloge extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Kataloge extends AbstractEntity
+{
 
-	/**
-	 * Title of the tab
-	 *
-	 * @var string $titel
-	 * @validate NotEmpty
-	 */
-	protected $titel;
+    /**
+     * Title of the tab
+     *
+     * @var string $titel
+     * @validate NotEmpty
+     */
+    protected $titel;
 
-	/**
-	 * List of catalogues
-	 *
-	 * @lazy
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Katalog> $katalogListe
-	 */
-	protected $katalogListe;
+    /**
+     * List of catalogues
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Katalog> $katalogListe
+     */
+    protected $katalogListe;
 
-	/**
-	 * Commaseparated list of pages
-	 *
-	 * @lazy
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page> $seitenListe
-	 */
-	protected $seitenListe;
+    /**
+     * Commaseparated list of pages
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page> $seitenListe
+     */
+    protected $seitenListe;
 
-	/**
-	 * __construct
-	 *
-	 * @return void
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
-	 * Initializes all \TYPO3\CMS\Extbase\Persistence\ObjectStorage properties.
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		/**
-		 * Do not modify this method!
-		 * It will be rewritten on each save in the kickstarter
-		 * You may modify the constructor of this class instead
-		 */
-		$this->katalogListe = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->seitenListe = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    /**
+     * Initializes all \TYPO3\CMS\Extbase\Persistence\ObjectStorage properties.
+     */
+    protected function initStorageObjects()
+    {
+        /**
+         * Do not modify this method!
+         * It will be rewritten on each save in the kickstarter
+         * You may modify the constructor of this class instead
+         */
+        $this->katalogListe = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->seitenListe = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Returns the titel
-	 *
-	 * @return string $titel
-	 */
-	public function getTitel() {
-		return $this->titel;
-	}
+    /**
+     * Returns the titel
+     *
+     * @return string $titel
+     */
+    public function getTitel()
+    {
+        return $this->titel;
+    }
 
-	/**
-	 * Sets the titel
-	 *
-	 * @param string $titel
-	 * @return void
-	 */
-	public function setTitel($titel) {
-		$this->titel = $titel;
-	}
+    /**
+     * Sets the titel
+     *
+     * @param string $titel
+     */
+    public function setTitel($titel)
+    {
+        $this->titel = $titel;
+    }
 
-	/**
-	 * Adds a Katalog
-	 *
-	 * @param \Subugoe\Subtabs\Domain\Model\Katalog $katalogListe
-	 * @return void
-	 */
-	public function addKatalogListe(\Subugoe\Subtabs\Domain\Model\Katalog $katalogListe) {
-		$this->katalogListe->attach($katalogListe);
-	}
+    /**
+     * Adds a Katalog
+     *
+     * @param \Subugoe\Subtabs\Domain\Model\Katalog $katalogListe
+     */
+    public function addKatalogListe(\Subugoe\Subtabs\Domain\Model\Katalog $katalogListe)
+    {
+        $this->katalogListe->attach($katalogListe);
+    }
 
-	/**
-	 * Removes a Katalog
-	 *
-	 * @param \Subugoe\Subtabs\Domain\Model\Katalog $katalogListeToRemove The Sammlung to be removed
-	 * @return void
-	 */
-	public function removeKatalogListe(\Subugoe\Subtabs\Domain\Model\Katalog $katalogListeToRemove) {
-		$this->katalogListe->detach($katalogListeToRemove);
-	}
+    /**
+     * Removes a Katalog
+     *
+     * @param \Subugoe\Subtabs\Domain\Model\Katalog $katalogListeToRemove The Sammlung to be removed
+     */
+    public function removeKatalogListe(\Subugoe\Subtabs\Domain\Model\Katalog $katalogListeToRemove)
+    {
+        $this->katalogListe->detach($katalogListeToRemove);
+    }
 
-	/**
-	 * Returns the katalogListe
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Katalog> $katalogListe
-	 */
-	public function getKatalogListe() {
-		return $this->katalogListe;
-	}
+    /**
+     * Returns the katalogListe
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Katalog> $katalogListe
+     */
+    public function getKatalogListe()
+    {
+        return $this->katalogListe;
+    }
 
-	/**
-	 * Sets the katalogListe
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage <\Subugoe\Subtabs\Domain\Model\Katalog> $katalogListe
-	 * @return void
-	 */
-	public function setKatalogListe($katalogListe) {
-		$this->katalogListe = $katalogListe;
-	}
+    /**
+     * Sets the katalogListe
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage <\Subugoe\Subtabs\Domain\Model\Katalog> $katalogListe
+     */
+    public function setKatalogListe($katalogListe)
+    {
+        $this->katalogListe = $katalogListe;
+    }
 
-	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage <\Subugoe\Subtabs\Domain\Model\Page> $seitenListe
-	 */
-	public function setSeitenListe($seitenListe) {
-		$this->seitenListe = $seitenListe;
-	}
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page>
+     */
+    public function getSeitenListe()
+    {
+        return $this->seitenListe;
+    }
 
-	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page>
-	 */
-	public function getSeitenListe() {
-		return $this->seitenListe;
-	}
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage <\Subugoe\Subtabs\Domain\Model\Page> $seitenListe
+     */
+    public function setSeitenListe($seitenListe)
+    {
+        $this->seitenListe = $seitenListe;
+    }
 
 }
