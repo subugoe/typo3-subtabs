@@ -42,3 +42,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks']['Suguboe\\Subtab
 );
 
 $TYPO3_CONF_VARS['FE']['eID_include'][$_EXTKEY . '_subjects'] = 'EXT:' . $_EXTKEY . '/Resources/Private/Ajax/FaecherSammlungen.php';
+
+// command controller
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Subugoe\\Subtabs\\Command\\JsonCommandController';

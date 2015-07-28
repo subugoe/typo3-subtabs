@@ -6,7 +6,7 @@ namespace Subugoe\Subtabs\Command;
  *
  *  (c) 2012 Ingo Pfennigstorf <pfennigstorf@sub-goettingen.de>
  *      Goettingen State Library
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -27,14 +27,9 @@ namespace Subugoe\Subtabs\Command;
  * ************************************************************* */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 
-class JsonCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController {
-
-	/**
-	 * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
-	 * @inject
-	 */
-	protected $faecherRepository;
+class JsonCommandController extends CommandController {
 
 	/**
 	 * Write Json files to location
