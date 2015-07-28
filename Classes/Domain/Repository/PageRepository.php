@@ -6,7 +6,7 @@ namespace Subugoe\Subtabs\Domain\Repository;
  *
  *  (c) 2012 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>,
  *      Goettingen State and University Library, Germany http://www.sub.uni-goettingen.de
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,10 +25,12 @@ namespace Subugoe\Subtabs\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Repository for Page
  */
-class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class PageRepository extends Repository
+{
 
 }

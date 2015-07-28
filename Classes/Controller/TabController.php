@@ -26,74 +26,67 @@ namespace Subugoe\Subtabs\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Controller for the Tab object
  */
-class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class TabController extends ActionController
+{
 
-	/**
-	 * @var \TYPO3\CMS\Core\Cache\Frontend\StringFrontend
-	 */
-	protected $cacheInstance;
+    /**
+     * @var \Subugoe\Subtabs\Domain\Repository\KatalogeRepository
+     * @inject
+     */
+    protected $katalogeRepository;
 
-	/**
-	 * Repository fuer den Reiter Kataloge
-	 * @var \Subugoe\Subtabs\Domain\Repository\KatalogeRepository
-	 * @inject
-	 */
-	protected $katalogeRepository;
-	/**
-	 * Repository mit den Faechern
-	 * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
-	 * @inject
-	 */
-	protected $faecherRepository;
+    /**
+     * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
+     * @inject
+     */
+    protected $faecherRepository;
 
-	/**
-	 * @var integer
-	 */
-	protected $language;
+    /**
+     * @var integer
+     */
+    protected $language;
 
-	/**
-	 * Initialisierung von Defaultwerten
-	 *
-	 * @return void
-	 */
-	public function initializeAction() {
-		$this->language = $GLOBALS['TSFE']->sys_language_uid;
-		/** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
-		$pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
-		$pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
-	}
+    /**
+     * Initialisierung von Defaultwerten
+     */
+    public function initializeAction()
+    {
+        $this->language = $GLOBALS['TSFE']->sys_language_uid;
+        /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
+        $pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
+        $pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
+    }
 
-	/**
-	 * shows all tabs
-	 *
-	 * @return void
-	 */
-	public function listAction() {
+    /**
+     * shows all tabs
+     */
+    public function listAction()
+    {
 
-		// Reiter Kataloge
-		$kataloge = $this->katalogeRepository->findAll();
-		// Reiter Faecher Sammlungen
-		$faechersammlungen = $this->faecherRepository->findAll();
-		// Uebergabe an den View
-		$this->view->assignMultiple(array(
-						'faechersammlungen' => $faechersammlungen,
-						'kataloge' => $kataloge
-				)
-		);
-	}
+        // Reiter Kataloge
+        $kataloge = $this->katalogeRepository->findAll();
+        // Reiter Faecher Sammlungen
+        $faechersammlungen = $this->faecherRepository->findAll();
+        // Uebergabe an den View
+        $this->view->assignMultiple([
+                'faechersammlungen' => $faechersammlungen,
+                'kataloge' => $kataloge
+            ]
+        );
+    }
 
-	/**
-	 * JSON Ausgabe der ganzen Synonyme und Fachbereiche
-	 *
-	 * @return void
-	 */
-	public function jsonAction() {
-		// Ausgabe aller Faecher und Sammlungen
-		$faechersammlungen = $this->faecherRepository->findFaecherSammlungen($GLOBALS['TSFE']->sys_language_uid);
-		$this->view->assign('faechersammlungen', $faechersammlungen);
-	}
+    /**
+     * JSON Ausgabe der ganzen Synonyme und Fachbereiche
+     */
+    public function jsonAction()
+    {
+        // Ausgabe aller Faecher und Sammlungen
+        $faechersammlungen = $this->faecherRepository->findFaecherSammlungen($this->language);
+        $this->view->assign('faechersammlungen', $faechersammlungen);
+    }
 }
