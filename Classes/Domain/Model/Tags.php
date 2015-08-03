@@ -1,10 +1,11 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Model;
 
 /* * *************************************************************
  *  Copyright notice
  *
  *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, Goettingen State and University Library, Germany http://www.sub.uni-goettingen.de
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -23,49 +24,59 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /**
- * Ein Tag
+ * a tag
  */
-class Tx_Subtabs_Domain_Model_Tags extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Tags extends AbstractValueObject
+{
 
-	/**
-	 * Titel des Tags
-	 *
-	 * @var string $titel
-	 * @validate NotEmpty
-	 */
-	protected $tag;
+    /**
+     * Titel des Tags
+     *
+     * @var string $tag
+     * @validate NotEmpty
+     */
+    protected $tag;
 
-	/**
-	 * Sprache des Tags
-	 *
-	 * @var int $lang
-	 */
-	protected $lang;
+    /**
+     * Sprache des Tags
+     *
+     * @var int $lang
+     */
+    protected $lang;
 
-	public function getTag() {
-		return $this->tag;
-	}
+    /**
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
 
-	public function setTag($tag) {
-		$this->tag = $tag;
-	}
+    /**
+     * @param string $tag
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+    }
 
-	/**
-	 * @param int $lang
-	 */
-	public function setLang($lang) {
-		$this->lang = $lang;
-	}
+    /**
+     * @return int
+     */
+    public function getLang()
+    {
+        return $this->lang;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getLang() {
-		return $this->lang;
-	}
+    /**
+     * @param int $lang
+     */
+    public function setLang($lang)
+    {
+        $this->lang = $lang;
+    }
 
 }
-
-?>

@@ -1,11 +1,12 @@
 <?php
+namespace Subugoe\Subtabs\Command;
 
 /* * *************************************************************
  *  Copyright notice
  *
  *  (c) 2012 Ingo Pfennigstorf <pfennigstorf@sub-goettingen.de>
  *      Goettingen State Library
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,36 +26,40 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
-/**
- * Description
- *
- * @author Ingo Pfennigstorf <pfennigstorf@sub-goettingen.de>, Goettingen State Library
- */
-class Tx_Subtabs_Command_JsonCommandController extends Tx_Extbase_MVC_Controller_CommandController {
+use MatthiasMullie\Minify;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 
-	/**
-	 * @var Tx_Subtabs_Domain_Repository_FaecherRepository
-	 * @inject
-	 */
-	protected $faecherRepository;
+require_once ExtensionManagementUtility::extPath('subtabs') . 'vendor/autoload.php';
 
-	/**
-	 * Write Json files to location
-	 */
-	public function writeJsonFilesCommand() {
-		$subConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['subtabs']);
+class JsonCommandController extends CommandController
+{
 
-		$hostname = $subConf['baseUrl'];
+    /**
+     * Write Json files to location
+     */
+    public function writeJsonFilesCommand()
+    {
+        $result = false;
 
-			// do it twice for each language
-			// @todo automatically detect number of available languages
-		for ($i = 0; $i <= 1; $i++) {
-			$destinationDirectory = t3lib_div::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
-			$url = $hostname . '?type=1011&L=' . $i;
-			$json = t3lib_div::getUrl($url, 0);
-			$json = t3lib_div::minifyJavaScript($json);
-			t3lib_div::devLog($url, 'subtabs', 1);
-			t3lib_div::writeFile($destinationDirectory, $json) ? $return = TRUE : $return = FALSE;
-		}
-	}
+        $subConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['subtabs']);
+
+        $hostname = $subConf['baseUrl'];
+
+        /** @var Minify\JS $minifier */
+        $minifier = new Minify\JS();
+
+        // do it twice. one tine for each language
+        for ($i = 0; $i <= 1; $i++) {
+            $destinationDirectory = GeneralUtility::getFileAbsFileName('uploads/tx_subtabs/data-' . $i . '.js');
+            $url = $hostname . '?type=1011&L=' . $i;
+            $json = GeneralUtility::getUrl($url, 0);
+            $minifier->add($json);
+            GeneralUtility::devLog($url, 'subtabs', 1);
+            GeneralUtility::writeFile($destinationDirectory, $minifier->minify()) ? $result = true : $result = false;
+        }
+
+        return $result;
+    }
 }

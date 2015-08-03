@@ -1,4 +1,5 @@
 <?php
+namespace Subugoe\Subtabs\Controller;
 
 /* * *************************************************************
  *  Copyright notice
@@ -24,103 +25,68 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Controller for the Tab object
  */
-class Tx_Subtabs_Controller_TabController extends Tx_Extbase_MVC_Controller_ActionController {
+class TabController extends ActionController
+{
 
-	/**
-	 * @var t3lib_cache_frontend_StringFrontend
-	 */
-	protected $cacheInstance;
+    /**
+     * @var \Subugoe\Subtabs\Domain\Repository\KatalogeRepository
+     * @inject
+     */
+    protected $katalogeRepository;
 
-	/**
-	 * Repository fuer den Reiter Kataloge
-	 * @var Tx_Subtabs_Domain_Repository_KatalogeRepository
-	 * @inject
-	 */
-	protected $katalogeRepository;
-	/**
-	 * Repository mit den Faechern
-	 * @var Tx_Subtabs_Domain_Repository_FaecherRepository
-	 * @inject
-	 */
-	protected $faecherRepository;
+    /**
+     * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
+     * @inject
+     */
+    protected $faecherRepository;
 
-	/**
-	 * @var integer
-	 */
-	protected $language;
+    /**
+     * @var integer
+     */
+    protected $language;
 
-	/**
-	 * Initialisierung von Defaultwerten
-	 *
-	 * @return void
-	 */
-	public function initializeAction() {
-		$this->initializeCache();
-		$this->language = $GLOBALS['TSFE']->sys_language_uid;
-	}
+    /**
+     * Initialisierung von Defaultwerten
+     */
+    public function initializeAction()
+    {
+        $this->language = $GLOBALS['TSFE']->sys_language_uid;
+        /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
+        $pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
+        $pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
+    }
 
-	/**
-	 * Initialisierung des Cachingframeworks
-	 *
-	 * @return void
-	 */
-	protected function initializeCache() {
+    /**
+     * shows all tabs
+     */
+    public function listAction()
+    {
 
-		t3lib_cache::initializeCachingFramework();
-		try {
-			$this->cacheInstance = $GLOBALS['typo3CacheManager']->getCache('subtabs_cache');
-		} catch (t3lib_cache_exception_NoSuchCache $e) {
-			$this->cacheInstance = $GLOBALS['typo3CacheFactory']->create(
-				'subtabs_cache',
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['subtabs_cache']['frontend'],
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['subtabs_cache']['backend'],
-				$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['subtabs_cache']['options']
-			);
-		}
-	}
+        // Reiter Kataloge
+        $kataloge = $this->katalogeRepository->findAll();
+        // Reiter Faecher Sammlungen
+        $faechersammlungen = $this->faecherRepository->findAll();
+        // Uebergabe an den View
+        $this->view->assignMultiple([
+                'faechersammlungen' => $faechersammlungen,
+                'kataloge' => $kataloge
+            ]
+        );
+    }
 
-	/**
-	 * shows all tabs
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-
-		$cacheName = 'subtabs-' . $this->language;
-
-		if ($this->cacheInstance->has($cacheName) === FALSE) {
-				// Reiter Kataloge
-			$kataloge = $this->katalogeRepository->findAll();
-				// Reiter Faecher Sammlungen
-			$faechersammlungen = $this->faecherRepository->findAll();
-				// Uebergabe an den View
-			$this->view->assignMultiple(array(
-				'faechersammlungen' => $faechersammlungen,
-				'kataloge' => $kataloge
-				)
-			);
-
-			$toCache = $this->view->render();
-			$this->cacheInstance->set($cacheName, $toCache, array(), 0);
-		}
-		return $this->cacheInstance->get($cacheName);
-
-	}
-
-	/**
-	 * JSON Ausgabe der ganzen Synonyme und Fachbereiche
-	 *
-	 * @return void
-	 */
-	public function jsonAction() {
-			// Ausgabe aller Faecher und Sammlungen
-		$faechersammlungen = $this->faecherRepository->findFaecherSammlungen($GLOBALS['TSFE']->sys_language_uid);
-		$this->view->assign('faechersammlungen', $faechersammlungen);
-
-	}
+    /**
+     * JSON Ausgabe der ganzen Synonyme und Fachbereiche
+     */
+    public function jsonAction()
+    {
+        // Ausgabe aller Faecher und Sammlungen
+        $faechersammlungen = $this->faecherRepository->findFaecherSammlungen($this->language);
+        $this->view->assign('faechersammlungen', $faechersammlungen);
+    }
 }
-?>

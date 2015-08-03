@@ -1,10 +1,11 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Repository;
 
 /* * *************************************************************
  *  Copyright notice
  *
  *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, Goettingen State and University Library, Germany http://www.sub.uni-goettingen.de
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -23,12 +24,12 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * Repository for Tx_Subtabs_Domain_Model_Fach
+ * Repository for Fach
  */
-class Tx_Subtabs_Domain_Repository_FachRepository extends Tx_Extbase_Persistence_Repository {
+class FachRepository extends Repository
+{
 
 }
-
-?>

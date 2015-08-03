@@ -1,19 +1,5 @@
 (function() {
-  var Fach, Fachbereich, collection, dataUrl, language, synonyms, sys_language_uid;
-
-  Fachbereich = Backbone.Model.extend({
-    defaults: {
-      title: "",
-      subjects: []
-    }
-  });
-
-  Fach = Backbone.Model.extend({
-    defaults: {
-      title: "",
-      tags: []
-    }
-  });
+  var collection, dataUrl, language, synonyms, sys_language_uid;
 
   language = jQuery(document).children("html").attr("lang");
 
@@ -63,7 +49,6 @@
 }).call(this);
 
 (function() {
-
   $(function() {
     "use strict";
     var sprache, sys_language_uid, tx_solr_suggestUrl, tx_solr_uid;
@@ -75,46 +60,46 @@
     } else {
       sys_language_uid = 1;
     }
-    $.ui.autocomplete.prototype._renderItem = function(ul, item) {
-      return $("<li></li>").data("item.autocomplete", item).append("<a href=\"/index.php?id=" + tx_solr_uid + "&tx_solr[q]=" + item.value + "\">" + item.label + "</a>").appendTo(ul);
-    };
-    return $("#Webseite .tx-solr-q").autocomplete({
-      source: function(request, response) {
-        return $.ajax({
-          type: "GET",
-          url: tx_solr_suggestUrl,
-          dataType: "json",
-          data: {
-            termLowercase: request.term.toLowerCase(),
-            termOriginal: request.term,
-            L: sys_language_uid
-          },
-          success: function(data) {
-            var output, rs;
-            rs = [];
-            output = [];
-            $.each(data, function(term, termIndex) {
-              var unformatted_label;
-              unformatted_label = term + " <span class=\"result_count\">(" + data[term] + ")</span>";
-              return output.push({
-                label: unformatted_label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(request.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<span class=\"highlight\">$1</span>"),
-                value: term
+    if (typeof autocomplete === 'function') {
+      $("#Webseite .tx-solr-q").autocomplete;
+      return {
+        source: function(request, response) {
+          return $.ajax({
+            type: "GET",
+            url: tx_solr_suggestUrl,
+            dataType: "json",
+            data: {
+              termLowercase: request.term.toLowerCase(),
+              termOriginal: request.term,
+              L: sys_language_uid
+            },
+            success: function(data) {
+              var output, rs;
+              rs = [];
+              output = [];
+              $.each(data, function(term, termIndex) {
+                var unformatted_label;
+                unformatted_label = term + " <span class=\"result_count\">(" + data[term] + ")</span>";
+                return output.push({
+                  label: unformatted_label.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + $.ui.autocomplete.escapeRegex(request.term) + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<span class=\"highlight\">$1</span>"),
+                  value: term
+                });
               });
-            });
-            $("#Webseite .tabsContent").css("height", "auto");
-            response(output);
-            return $('.ui-helper-hidden-accessible').css('display', 'none');
-          }
-        });
-      },
-      select: function(event, ui) {
-        this.value = ui.item.value;
-        return $(this).closest("form").submit();
-      },
-      delay: 0,
-      minLength: 3,
-      appendTo: "#WebseiteContentPlus"
-    });
+              $("#Webseite .tabsContent").css("height", "auto");
+              response(output);
+              return $('.ui-helper-hidden-accessible').css('display', 'none');
+            }
+          });
+        },
+        select: function(event, ui) {
+          this.value = ui.item.value;
+          return $(this).closest("form").submit();
+        },
+        delay: 0,
+        minLength: 3,
+        appendTo: "#WebseiteContentPlus"
+      };
+    }
   });
 
 }).call(this);
@@ -123,7 +108,8 @@
   var getQueryParams, klappeAuf;
 
   $(function() {
-    "use strict";    $('.tx-subtabs-tabs li').click = function(event) {
+    "use strict";
+    $('.tx-subtabs-tabs li').click = function(event) {
       var clicked;
       clicked = $(event.target);
       if (!clicked.parents().hasClass('tabs') && $('.tabsContentPlus').is(':visible')) {
@@ -181,7 +167,7 @@
       } else {
         $('#Katalog .tabsContent').addClass('tabsContentSmall');
         getParams = getQueryParams(document.location.search);
-        if (getParams['tx_solr[q]']) {
+        if (getParams['q']) {
           $('#tab-webseite').addClass('selected');
           $('#tab-katalog').removeClass('selected').addClass('hover');
         }
@@ -252,7 +238,8 @@
   var fachMatchesTerm, getAlleFaecher, getDefaultFaecherSammlungen, getTrefferErsteEbene, highlightTerms, localizations, notifyAboutNoResults, objectMatchesTerm, resultsFound, synonyme;
 
   $(document).ready(function() {
-    "use strict";    $("#q").bind("keypress", function(e) {
+    "use strict";
+    $("#q").bind("keypress", function(e) {
       if (e.keyCode === 13) {
         return false;
       }
@@ -292,10 +279,10 @@
     return false;
   });
 
+
   /*
   Notifies the user that no results are found
-  */
-
+   */
 
   notifyAboutNoResults = function(matches) {
     var message, notificationContainer, notificationText, tabsContentContainer;
@@ -313,10 +300,10 @@
     return false;
   };
 
+
   /*
   Zeige Treffer der ersten Ebene an und gib diese aus
-  */
-
+   */
 
   getTrefferErsteEbene = function(arr, filter) {
     var liste;
@@ -337,10 +324,10 @@
     return false;
   };
 
+
   /*
   Standards fuer den unteren Teil des Faecher und Sammlungen Reiters
-  */
-
+   */
 
   getDefaultFaecherSammlungen = function() {
     var standardListe;
@@ -361,10 +348,10 @@
     return false;
   };
 
+
   /*
   Ausgabe aller Faecher
-  */
-
+   */
 
   getAlleFaecher = function(oberfach, inhalt, filterTerm) {
     var rueckgabe;
@@ -402,13 +389,13 @@
     return rueckgabe;
   };
 
+
   /*
   Auszeichnung des Suchbegriffs in den Trefferstrings
   
   @param line
   @param word
-  */
-
+   */
 
   highlightTerms = function(treffer, filterTerm) {
     var regex;
@@ -416,10 +403,10 @@
     return treffer.replace(regex, "<span class=\"highlight\">$1</span>");
   };
 
+
   /*
   Wenn das Objekt dem Suchterm entspricht
-  */
-
+   */
 
   objectMatchesTerm = function(titel, filterTerm) {
     var result;
@@ -430,11 +417,11 @@
     return result;
   };
 
+
   /*
   Abfrage auf den Unterelementen
   @todo non-blocking / async
-  */
-
+   */
 
   fachMatchesTerm = function(fach, filterTerm) {
     var fachArray, result, tag, tagID;
@@ -463,10 +450,10 @@
     return fachArray;
   };
 
+
   /*
   Retrieve all synonyms and save them globally
-  */
-
+   */
 
   synonyme = function() {
     var dataUrl, language, sys_language_uid;
@@ -484,12 +471,12 @@
     });
   };
 
+
   /*
   tells us if there are any results
   
   @return {Boolean}
-  */
-
+   */
 
   resultsFound = function() {
     if ($("a.noMatch").length === $("#Faechersammlungen .tabsContentPlus ul>li>a").length) {
@@ -499,12 +486,12 @@
     }
   };
 
+
   /*
   Localizations used for the tabs
   
   @type {Object}
-  */
-
+   */
 
   localizations = {
     0: {

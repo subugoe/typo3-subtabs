@@ -1,10 +1,11 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Model;
 
 /* * *************************************************************
  *  Copyright notice
  *
  *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, Goettingen State and University Library, Germany http://www.sub.uni-goettingen.de
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -27,27 +28,28 @@
 /**
  * Die Tabs
  */
-class Tx_Subtabs_Domain_Model_Tab extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Tab extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
+{
 
-	/**
-	 * Alle Reiter der obersten Ebene
-	 *
-	 * @var array $reiter
-	 */
-	protected $reiter = array(
-		'Katalog',
-		'Faechersammlungen',
-		'Webseite'
-	);
-	
-	public function getReiter() {
-		return $this->reiter;
-	}
+    /**
+     * Alle Reiter der obersten Ebene
+     *
+     * @var array $reiter
+     */
+    protected $reiter = array(
+        'Katalog',
+        'Faechersammlungen',
+        'Webseite'
+    );
 
-	public function setReiter($reiter) {
-		$this->reiter = $reiter;
-	}
+    public function getReiter()
+    {
+        return $this->reiter;
+    }
+
+    public function setReiter($reiter)
+    {
+        $this->reiter = $reiter;
+    }
 
 }
-
-?>

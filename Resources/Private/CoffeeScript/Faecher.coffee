@@ -1,11 +1,3 @@
-Fachbereich = Backbone.Model.extend(defaults:
-  title: ""
-  subjects: []
-)
-Fach = Backbone.Model.extend(defaults:
-  title: ""
-  tags: []
-)
 language = jQuery(document).children("html").attr("lang")
 sys_language_uid = undefined
 synonyms = {}

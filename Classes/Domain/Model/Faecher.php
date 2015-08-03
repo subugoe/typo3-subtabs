@@ -1,12 +1,13 @@
 <?php
+namespace Subugoe\Subtabs\Domain\Model;
 
 /* * *************************************************************
  *  Copyright notice
  *
- *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, 
- *	Goettingen State and University Library, 
- *	Germany http://www.sub.uni-goettingen.de
- *  
+ *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>,
+ *  Goettingen State and University Library,
+ *  Germany http://www.sub.uni-goettingen.de
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -25,133 +26,135 @@
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Reiter Faecher und Sammlungen
  */
-class Tx_Subtabs_Domain_Model_Faecher extends Tx_Extbase_DomainObject_AbstractEntity {
+class Faecher extends AbstractEntity
+{
 
-	/**
-	 * Titel des Faches / der Sammlung
-	 * @var string
-	 */
-	protected $titel;
-	/**
-	 * Liste der Faecher
-	 * @lazy
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Fach> $fachListe
-	 */
-	protected $fachListe;
-	/**
-	 * Link zu der Seite der Uebersicht
-	 * @var Tx_Subtabs_Domain_Model_Page
-	 */
-	protected $seite;
+    /**
+     * Titel des Faches / der Sammlung
+     * @var string
+     */
+    protected $titel;
+    /**
+     * Liste der Faecher
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Fach> $fachListe
+     */
+    protected $fachListe;
 
-	/**
-	 * __construct
-	 *
-	 * @return void
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    /**
+     * Link zu der Seite der Uebersicht
+     * @var \Subugoe\Subtabs\Domain\Model\Page
+     */
+    protected $seite;
 
-	/**
-	 * Initializes all Tx_Extbase_Persistence_ObjectStorage properties.
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
+    public function __construct()
+    {
+        $this->initStorageObjects();
+    }
 
-		$this->fachListe = new Tx_Extbase_Persistence_ObjectStorage();
-		$this->seite = new Tx_Extbase_Persistence_ObjectStorage();
+    /**
+     * Initializes all ObjectStorage properties.
+     */
+    protected function initStorageObjects()
+    {
 
-	}
+        $this->fachListe = new ObjectStorage();
+        $this->seite = new ObjectStorage();
 
-	/**
-	 * Adds a Fach
-	 *
-	 * @param Tx_Subtabs_Domain_Model_Fach $fachListe
-	 * @return void
-	 */
-	public function addFachListe(Tx_Subtabs_Domain_Model_Fach $fachListe) {
-		$this->fachListe->attach($fachListe);
-	}
+    }
 
-	/**
-	 * Removes a Fach
-	 *
-	 * @param Tx_Subtabs_Domain_Model_Fach $fachListeToRemove Das zu loeschende Fach
-	 * @return void
-	 */
-	public function removeFachListe(Tx_Subtabs_Domain_Model_Fach $fachListeToRemove) {
-		$this->fachListe->detach($fachListeToRemove);
-	}
+    /**
+     * Adds a Fach
+     *
+     * @param \Subugoe\Subtabs\Domain\Model\Fach $fachListe
+     */
+    public function addFachListe(\Subugoe\Subtabs\Domain\Model\Fach $fachListe)
+    {
+        $this->fachListe->attach($fachListe);
+    }
 
-	/**
-	 * Returns the fachListe
-	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Fach> $fachListe
-	 */
-	public function getFachListe() {
-		return $this->fachListe;
-	}
+    /**
+     * Removes a Fach
+     *
+     * @param \Subugoe\Subtabs\Domain\Model\Fach $fachListeToRemove Das zu loeschende Fach
+     */
+    public function removeFachListe(\Subugoe\Subtabs\Domain\Model\Fach $fachListeToRemove)
+    {
+        $this->fachListe->detach($fachListeToRemove);
+    }
 
-	/**
-	 * Sets the fachListe
-	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Fach> $fachListe
-	 * @return void
-	 */
-	public function setFachListe($fachListe) {
-		$this->fachListe = $fachListe;
-	}
+    /**
+     * Returns the fachListe
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Fach> $fachListe
+     */
+    public function getFachListe()
+    {
+        return $this->fachListe;
+    }
 
-	/**
-	 * Der Titel des Knotens
-	 * @return string Titel des Knotens
-	 */
-	public function getTitel() {
-		return $this->titel;
-	}
+    /**
+     * Sets the fachListe
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Fach> $fachListe
+     */
+    public function setFachListe($fachListe)
+    {
+        $this->fachListe = $fachListe;
+    }
 
-	/**
-	 * Setter fuer den Titel
-	 * @param string $titel 
-	 */
-	public function setTitel($titel) {
-		$this->titel = $titel;
-	}
+    /**
+     * Der Titel des Knotens
+     * @return string Titel des Knotens
+     */
+    public function getTitel()
+    {
+        return $this->titel;
+    }
 
-	/**
-	 * Getter fuer das Fach
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Page>
-	 */
-	public function getSeite() {
-		return $this->seite;
-	}
+    /**
+     * Setter fuer den Titel
+     * @param string $titel
+     */
+    public function setTitel($titel)
+    {
+        $this->titel = $titel;
+    }
 
-	/**
-	 * Setter fuer das Fach
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_Subtabs_Domain_Model_Page> $seite
-	 */
-	public function setSeite($seite) {
-		$this->seite = $seite;
-	}
+    /**
+     * Getter fuer das Fach
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page>
+     */
+    public function getSeite()
+    {
+        return $this->seite;
+    }
 
-	public function encodeJSON()
-	{
+    /**
+     * Setter fuer das Fach
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Page> $seite
+     */
+    public function setSeite($seite)
+    {
+        $this->seite = $seite;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function encodeJSON()
+    {
+        $json = [];
 
-	    foreach ($this as $key => $value)
-	    {
-	        $json->$key = $value;
-	    }
-	    return $json;
-	}
+        foreach ($this as $key => $value) {
+            $json->$key = $value;
+        }
+        return $json;
+    }
 
 }
-
-?>
