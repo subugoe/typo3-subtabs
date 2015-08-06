@@ -23,6 +23,7 @@
 			<label index="direktLink">Link to</label>
 			<label index="direktLinkTitel">Titel des Direktlinks</label>
 			<label index="labelkatalogsuche">Your search terms</label>
+			<label index="labelSearchAll">Search catalogues, subjects, website</label>
 			<label index="labelfaecher">Your search terms</label>
 			<label index="labelwebseite">Your search terms</label>
 			<label index="opacError">Temporärer Fehler bei der Abfrage der Datenbanken</label>
@@ -52,6 +53,7 @@
 			<label index="direktLink">Direktlink</label>
 			<label index="direktLinkTitel">Titel des Direktlinks</label>
 			<label index="labelkatalogsuche">Ihre Suchbegriffe</label>
+			<label index="labelSearchAll">Durchsuche Kataloge, Fächer, Website</label>
 			<label index="labelfaecher">Ihre Suchbegriffe</label>
 			<label index="labelwebseite">Ihre Suchbegriffe</label>
 			<label index="opacError">Temporärer Fehler bei der Abfrage der Datenbanken</label>
