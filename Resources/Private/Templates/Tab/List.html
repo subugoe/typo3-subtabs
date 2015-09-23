@@ -1,40 +1,35 @@
 {namespace t3jquery=Tx_T3jquery_ViewHelpers}
 
-<t3jquery:addJQueryAndScript jsfile="{f:uri.resource(path:'JavaScript/SubTabs.js')}">
-	$(function () {
-		if (Modernizr.input.placeholder === false) {
-			$('#mytextbox').attr('value', '<f:translate key="labelkatalogsuche" />')
-			$('#q').attr('value', '<f:translate key="labelfaecher" />');
-			$('#solrtab').attr('value', '<f:translate key="suchAufWebseiten" />')
-			$('.placeholder').focusin(function () {
-				$(this).attr('value', '')
-			})
-			$('.formButton').click(function () {
-				$('.placeholder').attr('value', '')
-			})
-		}
-	})
-</t3jquery:addJQueryAndScript>
-
 <div class="search">
 
-	<f:form method="get" class="search_form" action="/">
-		<f:form.textfield type="text" name="searchcat" id="q" size="40" class="search_input" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
-		<label for="q" class="search_hint"><f:translate key="labelSearchAll"/></label>
+	<f:form method="get" class="search_form -catalogue -visible" action="/">
+		<f:form.textfield type="text" name="searchcat" id="mytextbox" size="40" class="search_input" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
+		<label for="mytextbox" class="search_hint"><f:translate key="labelkatalogsuche"/></label>
+		<f:form.button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
+	</f:form>
+
+	<f:form class="search_form -subjects">
+		<f:form.textfield type="text" name="searchcat" id="q" size="40" class="search_input" placeholder="{f:translate(key:'labelfaecher')}"/>
+		<label for="q" class="search_hint"><f:translate key="labelfaecher"/></label>
+	</f:form>
+
+	<f:form action="{f:translate(key:'solrTarget')}" method="get" class="search_form -website">
+		<f:form.textfield type="text" name="searchcat" id="solrtab" size="40" class="search_input" placeholder="{f:translate(key:'suchAufWebseiten')}"/>
+		<label for="solrtab" class="search_hint"><f:translate key="suchAufWebseiten"/></label>
 		<f:form.button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
 	</f:form>
 
 	<div class="search_popup">
 
+		<ul class="search_navigation">
+			<li><a href="#catalogue" class="search_tab -catalogue"><f:translate key="Katalog"/></a></li>
+			<li><a href="#subjects" class="search_tab -subjects"><f:translate key="Faechersammlungen"/></a></li>
+			<li><a href="#website" class="search_tab -website"><f:translate key="Webseite"/></a></li>
+		</ul>
+
 		<f:render partial="Katalog" arguments="{_all}" />
 		<f:render partial="Faechersammlungen" arguments="{_all}" />
 		<f:render partial="Webseite" arguments="{_all}" />
-
-		<ul class="search_navigation">
-			<li><f:link.page section="Katalog" id="tab-katalog" addQueryString="TRUE"><f:translate key="Katalog"/></f:link.page></li>
-			<li><f:link.page section="Faechersammlungen" id="tab-faechersammlungen" class="-hide-submit" addQueryString="TRUE"><f:translate key="Faechersammlungen"/></f:link.page></li>
-			<li><f:link.page section="Webseite" id="tab-webseite" addQueryString="TRUE"><f:translate key="Webseite"/></f:link.page></li>
-		</ul>
 
 	</div>
 

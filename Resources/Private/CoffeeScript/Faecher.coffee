@@ -1,36 +1,28 @@
-$noResults =
-	0:
-		$('<p class="search_no-results">Keine Treffer</p>')
-	1:
-		$('<p class="search_no-results">No results</p>')
-
+$noResults = {}
 sys_language_uid = 0
 filterVal = ''
 filterTimeout = null
 
 $ ->
-
 	language = $(document).children('html').attr('lang')
 	sys_language_uid = (if language is 'de' then 0 else 1)
+	$target = $('.search_content.-subjects')
 
-	$target = $('#Faechersammlungen')
-
-	$("#tab-faechersammlungen").click ->
+	$('.search_tab.-subjects').click ->
 		if $('.search_areas').length is 0
+			noResults = if language is 'de' then 'Keine Treffer' else 'No results'
+			$noResults = $("<p class=\"search_no-results\">#{noResults}</p>").hide()
+			$target.append($noResults)
 			$target.loadSubjects("/uploads/tx_subtabs/data-#{sys_language_uid}.js")
 		else
 			$('#q').keyup()
 
-	$("#q").bind 'keypress', (e) ->
-		if e.keyCode is 13
+	$('#q').bind 'keypress', (e) ->
+		if e.keyCode is 13 # Return
 			return false
 
 	$('#q').keyup (e) ->
-
 		clearTimeout(filterTimeout)
-
-		if e.keyCode is 27
-			$(this).val('')
 
 		if $target.is(':hidden')
 			return
@@ -40,7 +32,6 @@ $ ->
 		, 100)
 
 $.fn.loadSubjects = (url) -> return this.each ->
-
 	$this = $(this)
 
 	$.getJSON url, (areas) ->
@@ -77,7 +68,6 @@ $.fn.loadSubjects = (url) -> return this.each ->
 	return
 
 $.fn.filterSubjects = (val) -> return this.each ->
-
 	$this = $(this)
 
 	if val is filterVal then return
@@ -109,19 +99,20 @@ $.fn.filterSubjects = (val) -> return this.each ->
 				$(item).hide()
 			return
 
-		if ($items.filter(':visible').length is 0)
-			$this.append($noResults[sys_language_uid])
-		else
-			$noResults[sys_language_uid].remove()
+		$noResults.toggle($items.filter(':visible').length > 0)
 
-		$this.html( $this.html().replace(/\^/g, '<span class="search_highlight">').replace(/\$/g, '</span>') )
+		$this.html(
+			$this.html()
+				.replace(/\^/g, '<span class="search_highlight">')
+				.replace(/\$/g, '</span>')
+		)
 
 	else
 
 		$this.clearHighlight()
 		$items.filter('.search_area').show()
 		$items.not('.search_area').hide()
-		$noResults[sys_language_uid].remove()
+		$noResults.hide()
 
 	return
 
