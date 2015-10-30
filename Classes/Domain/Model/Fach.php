@@ -4,7 +4,7 @@ namespace Subugoe\Subtabs\Domain\Model;
 /* * *************************************************************
  *  Copyright notice
  *
- *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, Goettingen State and University Library, Germany http://www.sub.uni-goettingen.de
+ *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, Goettingen State and University Library
  *
  *  All rights reserved
  *
@@ -39,12 +39,14 @@ class Fach extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      */
     protected $titel;
+
     /**
      * Link zur Seite des Fachknotens
      *
      * @var \Subugoe\Subtabs\Domain\Model\Page
      */
     protected $seite;
+
     /**
      * Liste der Tags
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Tags> $tagListe

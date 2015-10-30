@@ -4,7 +4,7 @@ namespace Subugoe\Subtabs\Domain\Model;
 /* * *************************************************************
  *  Copyright notice
  *
- *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, Goettingen State and University Library, Germany http://www.sub.uni-goettingen.de
+ *  (c) 2011 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>, Goettingen State and University Library
  *
  *  All rights reserved
  *
@@ -36,11 +36,11 @@ class Tab extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      *
      * @var array $reiter
      */
-    protected $reiter = array(
+    protected $reiter = [
         'Katalog',
         'Faechersammlungen',
         'Webseite'
-    );
+    ];
 
     public function getReiter()
     {

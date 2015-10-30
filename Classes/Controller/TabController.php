@@ -25,6 +25,7 @@ namespace Subugoe\Subtabs\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -57,8 +58,9 @@ class TabController extends ActionController
     public function initializeAction()
     {
         $this->language = $GLOBALS['TSFE']->sys_language_uid;
+
         /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
-        $pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
+        $pageRenderer = $this->objectManager->get(PageRenderer::class);
         $pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
     }
 
@@ -72,7 +74,7 @@ class TabController extends ActionController
         $kataloge = $this->katalogeRepository->findAll();
         // Reiter Faecher Sammlungen
         $faechersammlungen = $this->faecherRepository->findAll();
-        // Uebergabe an den View
+
         $this->view->assignMultiple([
                 'faechersammlungen' => $faechersammlungen,
                 'kataloge' => $kataloge
