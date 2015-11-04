@@ -25,7 +25,9 @@ namespace Subugoe\Subtabs\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use Subugoe\Subtabs\Domain\Repository\FaecherRepository;
 
 /**
  * Controller for the Tab object
@@ -38,12 +40,6 @@ class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @inject
      */
     protected $katalogeRepository;
-
-    /**
-     * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
-     * @inject
-     */
-    protected $faecherRepository;
 
     /**
      * @var integer
@@ -59,7 +55,7 @@ class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $this->language = $GLOBALS['TSFE']->sys_language_uid;
         /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
-        $pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
+        $pageRenderer = $this->objectManager->get(PageRenderer::class);
         $pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
     }
 
@@ -68,17 +64,10 @@ class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function listAction()
     {
-
-        // Reiter Kataloge
+        // catalogue tab
         $kataloge = $this->katalogeRepository->findAll();
-        // Reiter Faecher Sammlungen
-        $faechersammlungen = $this->faecherRepository->findAll();
-        // Uebergabe an den View
-        $this->view->assignMultiple([
-                'faechersammlungen' => $faechersammlungen,
-                'kataloge' => $kataloge
-            ]
-        );
+
+        $this->view->assign('kataloge', $kataloge);
     }
 
     /**
@@ -86,8 +75,11 @@ class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function jsonAction()
     {
+        /** @var FaecherRepository $faecherRepository */
+        $faecherRepository = $this->objectManager->get(FaecherRepository::class);
+
         // Ausgabe aller Faecher und Sammlungen
-        $faechersammlungen = $this->faecherRepository->findFaecherSammlungen($this->language);
+        $faechersammlungen = $faecherRepository->findFaecherSammlungen($this->language);
         $this->view->assign('faechersammlungen', $faechersammlungen);
     }
 }
