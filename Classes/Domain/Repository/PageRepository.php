@@ -5,7 +5,7 @@ namespace Subugoe\Subtabs\Domain\Repository;
  *  Copyright notice
  *
  *  (c) 2012 Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>,
- *      Goettingen State and University Library, Germany http://www.sub.uni-goettingen.de
+ *      Goettingen State and University Library
  *
  *  All rights reserved
  *
