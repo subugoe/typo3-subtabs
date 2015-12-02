@@ -10,18 +10,18 @@
 		</ul>
 	</div>
 
-	<f:form method="get" class="search_form -catalogue -visible" action="/">
+	<f:form method="get" class="search_form -catalogue -visible" action="/" additionalAttributes="{role: 'search'}">
 		<f:form.textfield type="text" name="searchcat" id="mytextbox" size="40" class="search_input" placeholder="{f:translate(key:'labelkatalogsuche')}"/>
 		<label for="mytextbox" class="sr-only"><f:translate key="labelkatalogsuche"/></label>
 		<f:form.button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
 	</f:form>
 
-	<f:form class="search_form -subjects">
+	<f:form class="search_form -subjects" additionalAttributes="{role: 'search'}">
 		<f:form.textfield type="text" name="searchcat" id="q" size="40" class="search_input" placeholder="{f:translate(key:'labelfaecher')}"/>
 		<label for="q" class="sr-only"><f:translate key="labelfaecher"/></label>
 	</f:form>
 
-	<f:form action="{f:translate(key:'solrTarget')}" method="get" class="search_form -website">
+	<f:form action="{f:translate(key:'solrTarget')}" method="get" class="search_form -website" additionalAttributes="{role: 'search'}">
 		<f:form.textfield type="text" name="searchcat" id="solrtab" size="40" class="search_input" placeholder="{f:translate(key:'suchAufWebseiten')}"/>
 		<label for="solrtab" class="sr-only"><f:translate key="suchAufWebseiten"/></label>
 		<f:form.button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
