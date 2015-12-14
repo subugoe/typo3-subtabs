@@ -14,7 +14,7 @@
 						</f:else>
 					</f:if>
 					<sub:explode glue=" - " content="{liste.titel}" as="abbr"/>
-					<span <f:if condition="{abbr.1}"><f:then> class="search_description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}	</span>
+					<span <f:if condition="{abbr.1}"><f:then> class="search_description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}</span>
 					<f:if condition="{abbr.1}">
 						<f:link.external class="search_label-link" uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbr.1}</f:link.external>
 					</f:if>
