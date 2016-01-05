@@ -1,5 +1,7 @@
 (function() {
-  var $noResults, filterTimeout, filterVal, sys_language_uid;
+  var $areaList, $noResults, filterTimeout, filterVal, sys_language_uid;
+
+  $areaList = {};
 
   $noResults = {};
 
@@ -16,11 +18,13 @@
     $target = $('.search_content.-subjects');
     $('.search_tab.-subjects').click(function() {
       var noResults;
-      if ($('.search_areas').length === 0) {
+      if (!$areaList.length) {
+        $areaList = $('<ul class="search_areas"/>');
+        $areaList.loadSubjects("/uploads/tx_subtabs/data-" + sys_language_uid + ".js");
+        $target.append($areaList);
         noResults = language === 'de' ? 'Keine Treffer' : 'No results';
         $noResults = $("<p class=\"search_no-results\">" + noResults + "</p>").hide();
-        $target.append($noResults);
-        return $target.loadSubjects("/uploads/tx_subtabs/data-" + sys_language_uid + ".js");
+        return $target.append($noResults);
       } else {
         return $('#q').keyup();
       }
@@ -37,7 +41,7 @@
       }
       return filterTimeout = setTimeout((function(_this) {
         return function() {
-          return $target.filterSubjects($(_this).val());
+          return $areaList.filterSubjects($(_this).val());
         };
       })(this), 100);
     });
@@ -47,9 +51,8 @@
     return this.each(function() {
       var $this;
       $this = $(this);
-      $.getJSON(url, function(areas) {
-        var $area, $areaLink, $areaList, $subject, $subjectLink, $subjectList, $tag, $tagList, area, i, j, k, len, len1, len2, ref, ref1, subject, tag;
-        $areaList = $('<ul class="search_areas"/>');
+      return $.getJSON(url, function(areas) {
+        var $area, $areaLink, $subject, $subjectLink, $subjectList, $tag, $tagList, area, i, j, k, len, len1, len2, ref, ref1, subject, tag;
         for (i = 0, len = areas.length; i < len; i++) {
           area = areas[i];
           $area = $("<li class='search_area'/>");
@@ -75,9 +78,8 @@
             $subjectList.append($subject);
           }
           $area.append($subjectList);
-          $areaList.append($area);
+          $this.append($area);
         }
-        $this.html($areaList);
         return $('#q').keyup();
       });
     });
@@ -99,23 +101,31 @@
           var show;
           show = true;
           $.each(tokens, function(index, token) {
-            var $link, regexp;
+            var $html, $link, $newHtml, regex;
             if ($(item).text().toLowerCase().indexOf(token) === -1) {
               show = false;
               return false;
-            } else if (token > '') {
+            }
+            if (token > '') {
               $link = $(item).find('.search_title:first');
-              regexp = new RegExp("(" + token + ")", "gi");
-              $link.html($link.html().replace(regexp, '\^$1\$'));
+              $html = $link.html();
+              regex = new RegExp("(" + token + ")", "gi");
+              $newHtml = $html.replace(regex, '\^$1\$');
+              if ($html !== $newHtml) {
+                return $link.html($newHtml);
+              } else {
+                show = false;
+                return false;
+              }
             }
           });
           if (show) {
-            $(item).show().parents('.search_tags, .search_subject, .search_subjects, .search_area').show();
+            $(item).show().parents().show();
           } else {
             $(item).hide();
           }
         });
-        $noResults.toggle($items.filter(':visible').length > 0);
+        $noResults.toggle($items.filter(':visible').length === 0);
         $this.html($this.html().replace(/\^/g, '<span class="search_highlight">').replace(/\$/g, '</span>'));
       } else {
         $this.clearHighlight();

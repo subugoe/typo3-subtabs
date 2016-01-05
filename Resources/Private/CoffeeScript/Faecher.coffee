@@ -1,3 +1,4 @@
+$areaList = {}
 $noResults = {}
 sys_language_uid = 0
 filterVal = ''
@@ -9,11 +10,13 @@ $ ->
 	$target = $('.search_content.-subjects')
 
 	$('.search_tab.-subjects').click ->
-		if $('.search_areas').length is 0
+		unless $areaList.length
+			$areaList = $('<ul class="search_areas"/>')
+			$areaList.loadSubjects("/uploads/tx_subtabs/data-#{sys_language_uid}.js")
+			$target.append($areaList)
 			noResults = if language is 'de' then 'Keine Treffer' else 'No results'
 			$noResults = $("<p class=\"search_no-results\">#{noResults}</p>").hide()
 			$target.append($noResults)
-			$target.loadSubjects("/uploads/tx_subtabs/data-#{sys_language_uid}.js")
 		else
 			$('#q').keyup()
 
@@ -28,7 +31,7 @@ $ ->
 			return
 
 		filterTimeout = setTimeout( =>
-			$target.filterSubjects($(this).val())
+			$areaList.filterSubjects($(this).val())
 		, 100)
 
 $.fn.loadSubjects = (url) -> return this.each ->
@@ -36,7 +39,6 @@ $.fn.loadSubjects = (url) -> return this.each ->
 
 	$.getJSON url, (areas) ->
 
-		$areaList = $('<ul class="search_areas"/>')
 		for area in areas
 			$area = $("<li class='search_area'/>")
 			$areaLink = $("<a><span class='search_title'>#{area.titel}</span></a>")
@@ -60,12 +62,9 @@ $.fn.loadSubjects = (url) -> return this.each ->
 				$subjectList.append($subject)
 
 			$area.append($subjectList)
-			$areaList.append($area)
+			$this.append($area)
 
-		$this.html($areaList)
 		$('#q').keyup()
-
-	return
 
 $.fn.filterSubjects = (val) -> return this.each ->
 	$this = $(this)
@@ -80,26 +79,35 @@ $.fn.filterSubjects = (val) -> return this.each ->
 
 		$this.clearHighlight()
 		$items.each (index, item) ->
+
 			show = true
 			$.each tokens, (index, token) ->
-				if $(item).text().toLowerCase().indexOf(token) == -1
+				# This early check is much cheaper than regex below
+				if $(item).text().toLowerCase().indexOf(token) is -1
 					show = false
 					return false
-				else if token > ''
+
+				if token > ''
 					$link = $(item).find('.search_title:first')
-					regexp = new RegExp("(#{token})", "gi")
-					$link.html( $link.html().replace(regexp, '\^$1\$') )
-				return
+					$html = $link.html()
+					regex = new RegExp("(#{token})", "gi")
+					$newHtml = $html.replace(regex, '\^$1\$')
+					# Check again as .text() concatenates all children and thus
+					# could have lead to false positives
+					if $html isnt $newHtml
+						$link.html( $newHtml )
+					else
+						show = false
+						return false
+
 			if show
-				$(item)
-					.show()
-					.parents('.search_tags, .search_subject, .search_subjects, .search_area')
-						.show()
+				$(item).show().parents().show()
 			else
 				$(item).hide()
+
 			return
 
-		$noResults.toggle($items.filter(':visible').length > 0)
+		$noResults.toggle($items.filter(':visible').length is 0)
 
 		$this.html(
 			$this.html()
