@@ -149,7 +149,8 @@
       });
     });
     $('.search_input').change(function() {
-      return $('.search_input').val($(this).val());
+      $('.search_input').val($(this).val());
+      return $('.search_input-label').toggle($(this).val() === '');
     });
     $('.search, .main_left, .header_show-nav').click(function(e) {
       return e.stopPropagation();

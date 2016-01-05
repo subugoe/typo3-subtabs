@@ -10,6 +10,7 @@ $ ->
 
 	$('.search_input').change ->
 		$('.search_input').val( $(this).val() )
+		$('.search_input-label').toggle( $(this).val() is '' )
 
 	$('.search, .main_left, .header_show-nav').click (e) ->
 		e.stopPropagation()
