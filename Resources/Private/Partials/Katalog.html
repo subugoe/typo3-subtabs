@@ -7,16 +7,16 @@
 				<label class="search_label">
 					<f:if condition="{liste.neuesFenster}">
 						<f:then>
-							<f:form.radio name="kataloge" class="search_radio -new-window" value="{f:uri.external(uri:'{liste.url}')}" checked="{katalogIterator.isFirst}"/>
+							<f:form.radio name="kataloge" class="search_radio -new-window" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
 						</f:then>
 						<f:else>
-							<f:form.radio name="kataloge" value="{f:uri.external(uri:'{liste.url}')}" checked="{katalogIterator.isFirst}"/>
+							<f:form.radio name="kataloge" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
 						</f:else>
 					</f:if>
 					<v:iterator.explode as="abbreviation" content="{liste.titel}" glue=" - ">
 						<span <f:if condition="{abbreviation.1}"><f:then> class="search_description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbreviation.0}</span>
 						<f:if condition="{abbreviation.1}">
-							<f:link.external class="search_label-link" uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbreviation.1}</f:link.external>
+							<v:link.typolink configuration="{parameter: liste.direktLink, ATagParams: 'class=\'search_label-link\'', title: liste.direktLinkTitel}">{abbreviation.1}</v:link.typolink>
 						</f:if>
 					</v:iterator.explode>
 				</label>
@@ -24,7 +24,7 @@
 			<ul class="search_catalog-page-list">
 				<f:for each="{katalogliste.seitenListe}" as="page">
 					<li>
-						<f:link.page pageUid="{page.uid}">{page.title -> f:format.htmlentitiesDecode()}</f:link.page>
+						<v:link.typolink configuration="{parameter: page.uid, title: page.title}">{page.title}</v:link.typolink>
 					</li>
 				</f:for>
 			</ul>
