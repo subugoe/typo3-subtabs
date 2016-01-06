@@ -1,4 +1,4 @@
-{namespace sub=Subugoe\Subtabs\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
 <div class="search_content -catalogue">
 	<f:for each="{kataloge}" as="katalogliste">
@@ -7,17 +7,18 @@
 				<label class="search_label">
 					<f:if condition="{liste.neuesFenster}">
 						<f:then>
-							<f:form.radio name="kataloge" class="search_radio -new-window" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
+							<f:form.radio name="kataloge" class="search_radio -new-window" value="{f:uri.external(uri:'{liste.url}')}" checked="{katalogIterator.isFirst}"/>
 						</f:then>
 						<f:else>
-							<f:form.radio name="kataloge" value="{f:uri.page(pageUid:'{liste.url}',noCacheHash:'true')}" checked="{katalogIterator.isFirst}"/>
+							<f:form.radio name="kataloge" value="{f:uri.external(uri:'{liste.url}')}" checked="{katalogIterator.isFirst}"/>
 						</f:else>
 					</f:if>
-					<sub:explode glue=" - " content="{liste.titel}" as="abbr"/>
-					<span <f:if condition="{abbr.1}"><f:then> class="search_description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbr.0}</span>
-					<f:if condition="{abbr.1}">
-						<f:link.external class="search_label-link" uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbr.1}</f:link.external>
-					</f:if>
+					<v:iterator.explode as="abbreviation" content="{liste.titel}" glue=" - ">
+						<span <f:if condition="{abbreviation.1}"><f:then> class="search_description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbreviation.0}</span>
+						<f:if condition="{abbreviation.1}">
+							<f:link.external class="search_label-link" uri="{liste.direktLink}" title="{liste.direktLinkTitel}">{abbreviation.1}</f:link.external>
+						</f:if>
+					</v:iterator.explode>
 				</label>
 			</f:for>
 			<ul class="search_catalog-page-list">
