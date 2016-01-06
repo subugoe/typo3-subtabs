@@ -35,3 +35,30 @@ $ ->
 		$('.search_content, .search_form').filter('.-' + target).addClass('-visible')
 		$('.search_form.-' + target + ' input').focus()
 		false
+
+	$('.search_content.-catalogue input[type=radio]').click ->
+		link = $('.search_content.-catalogue input:checked').val()
+		$('.search_form.-catalogue').attr('action', link)
+
+	# submit the catalogue form
+	$('.search_form.-catalogue').submit ->
+		str = $('#mytextbox').val()
+		link = $('.search_form.-catalogue').attr('action')
+
+		# todo necessary to escape dbis and ezb?
+		if  $('#katalog-4').attr('checked') is 'checked' or $('#katalog-5').attr('checked') is 'checked'
+			get = escape(str)
+		else
+			get = encodeURIComponent(str)
+		url = link + get
+		if $('.search_catalog-list:first-child .search_radio').attr('checked') is 'checked'
+			bixPix = document.createElement('img')
+			bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2')
+			window.open(url)
+		else
+			if $('.search_catalog-list input:checked').hasClass('-new-window')
+				window.open(url)
+			else
+				location.href = url
+		false
+	false

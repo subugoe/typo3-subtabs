@@ -178,7 +178,7 @@
         }
       }
     });
-    return $('.search_navigation a').click(function() {
+    $('.search_navigation a').click(function() {
       var $parent, target;
       target = $(this).attr('href').split('#')[1];
       $parent = $(this).parent('li');
@@ -189,6 +189,35 @@
       $('.search_form.-' + target + ' input').focus();
       return false;
     });
+    $('.search_content.-catalogue input[type=radio]').click(function() {
+      var link;
+      link = $('.search_content.-catalogue input:checked').val();
+      return $('.search_form.-catalogue').attr('action', link);
+    });
+    $('.search_form.-catalogue').submit(function() {
+      var bixPix, get, link, str, url;
+      str = $('#mytextbox').val();
+      link = $('.search_form.-catalogue').attr('action');
+      if ($('#katalog-4').attr('checked') === 'checked' || $('#katalog-5').attr('checked') === 'checked') {
+        get = escape(str);
+      } else {
+        get = encodeURIComponent(str);
+      }
+      url = link + get;
+      if ($('.search_catalog-list:first-child .search_radio').attr('checked') === 'checked') {
+        bixPix = document.createElement('img');
+        bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2');
+        window.open(url);
+      } else {
+        if ($('.search_catalog-list input:checked').hasClass('-new-window')) {
+          window.open(url);
+        } else {
+          location.href = url;
+        }
+      }
+      return false;
+    });
+    return false;
   });
 
 }).call(this);
