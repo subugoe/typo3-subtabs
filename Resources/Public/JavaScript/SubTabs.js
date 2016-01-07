@@ -204,7 +204,7 @@
         get = encodeURIComponent(str);
       }
       url = link + get;
-      if ($('.search_catalog-list:first-child .search_radio').attr('checked') === 'checked') {
+      if ($('.search_catalog-list label:first-child input:checked').length !== 0) {
         bixPix = document.createElement('img');
         bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2');
         window.open(url);
