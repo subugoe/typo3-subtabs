@@ -51,7 +51,7 @@ $ ->
 		else
 			get = encodeURIComponent(str)
 		url = link + get
-		if $('.search_catalog-list label:first-child input:checked').length isnt 0
+		if $('.search_catalog-list label:first-child input:checked').length isnt 0 and window.location.hostname is 'www.sub.uni-goettingen.de'
 			bixPix = document.createElement('img')
 			bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2')
 			window.open(url)
