@@ -43,7 +43,7 @@ $ ->
 	# submit the catalogue form
 	$('.search_form.-catalogue').submit ->
 		str = $('#mytextbox').val()
-		link = $('.search_form.-catalogue').attr('action')
+		link = $('.search_content.-catalogue input:checked').val()
 
 		# todo necessary to escape dbis and ezb?
 		if  $('#katalog-4').attr('checked') is 'checked' or $('#katalog-5').attr('checked') is 'checked'

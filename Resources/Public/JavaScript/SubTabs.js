@@ -197,7 +197,7 @@
     $('.search_form.-catalogue').submit(function() {
       var bixPix, get, link, str, url;
       str = $('#mytextbox').val();
-      link = $('.search_form.-catalogue').attr('action');
+      link = $('.search_content.-catalogue input:checked').val();
       if ($('#katalog-4').attr('checked') === 'checked' || $('#katalog-5').attr('checked') === 'checked') {
         get = escape(str);
       } else {
