@@ -21,10 +21,10 @@
       if (!$areaList.length) {
         $areaList = $('<ul class="search_areas"/>');
         $areaList.loadSubjects("/uploads/tx_subtabs/data-" + sys_language_uid + ".js");
-        $target.append($areaList);
+        $target.prepend($areaList);
         noResults = language === 'de' ? 'Keine Treffer' : 'No results';
         $noResults = $("<p class=\"search_no-results\">" + noResults + "</p>").hide();
-        return $target.append($noResults);
+        return $target.prepend($noResults);
       } else {
         return $('#q').keyup();
       }
@@ -165,7 +165,7 @@
     $('.search, .main_left, .header_show-nav').click(function(e) {
       return e.stopPropagation();
     });
-    $(window).click(function() {
+    $(window).add('.search_close').click(function() {
       $('.search_input').blur();
       return $('.search').removeClass('-show-popup');
     });

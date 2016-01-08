@@ -13,10 +13,10 @@ $ ->
 		unless $areaList.length
 			$areaList = $('<ul class="search_areas"/>')
 			$areaList.loadSubjects("/uploads/tx_subtabs/data-#{sys_language_uid}.js")
-			$target.append($areaList)
+			$target.prepend($areaList)
 			noResults = if language is 'de' then 'Keine Treffer' else 'No results'
 			$noResults = $("<p class=\"search_no-results\">#{noResults}</p>").hide()
-			$target.append($noResults)
+			$target.prepend($noResults)
 		else
 			$('#q').keyup()
 

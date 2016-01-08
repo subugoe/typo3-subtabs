@@ -15,7 +15,7 @@ $ ->
 	$('.search, .main_left, .header_show-nav').click (e) ->
 		e.stopPropagation()
 
-	$(window).click ->
+	$(window).add('.search_close').click ->
 		$('.search_input').blur()
 		$('.search').removeClass('-show-popup')
 
