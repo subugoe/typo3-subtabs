@@ -24,7 +24,7 @@ $ ->
 			if $('.search_input').val() is ''
 				$(window).click()
 			else
-				$('.search_input').val('')
+				$('.search_input').val('').change()
 
 	$('.search_navigation a').click ->
 		target = $(this).attr('href').split('#')[1]
