@@ -9,8 +9,8 @@
 	</div>
 
 	<form method="get" class="search_form -catalogue -visible" action="/" role="search">
-		<f:form.textfield type="text" name="searchcat" id="mytextbox" size="40" class="search_input"/>
-		<label for="mytextbox" class="search_input-label"><f:translate key="labelSearchAll"/></label>
+		<f:form.textfield type="text" name="searchcat" id="mytextbox" size="40" class="search_input" placeholder="{f:translate(key:'labelSearchAll')}"/>
+		<label for="mytextbox" class="sr-only"><f:translate key="labelSearchAll"/></label>
 		<f:form.button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
 	</form>
 

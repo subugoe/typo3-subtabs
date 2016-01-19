@@ -174,7 +174,7 @@
         if ($('.search_input').val() === '') {
           return $(window).click();
         } else {
-          return $('.search_input').val('');
+          return $('.search_input').val('').change();
         }
       }
     });
