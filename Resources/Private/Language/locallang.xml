@@ -18,9 +18,9 @@
 			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
 			<label index="tx_subtabs_domain_model_katalog.information">Informationstext zur Sammlung</label>
 			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Ob das Suchergebnis in einem neuen Fenster geoeffnet werden soll</label>
-			<label index="Faechersammlungen">For subjects</label>
-			<label index="Webseite">On this website</label>
-			<label index="Katalog">In our catalogues</label>
+			<label index="Faechersammlungen">Subjects</label>
+			<label index="Webseite">Website</label>
+			<label index="Katalog">Catalogues</label>
 			<label index="direktLink">Link to</label>
 			<label index="direktLinkTitel">Titel des Direktlinks</label>
 			<label index="labelkatalogsuche">Your search terms</label>
@@ -49,9 +49,9 @@
 			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
 			<label index="tx_subtabs_domain_model_katalog.information">Informationstext zur Sammlung</label>
 			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Ob das Suchergebnis in einem neuen Fenster geoeffnet werden soll</label>
-			<label index="Faechersammlungen">Nach Fächern</label>
-			<label index="Webseite">Auf der Website</label>
-			<label index="Katalog">In Katalogen</label>
+			<label index="Faechersammlungen">Fächer</label>
+			<label index="Webseite">Website</label>
+			<label index="Katalog">Kataloge</label>
 			<label index="direktLink">Direktlink</label>
 			<label index="direktLinkTitel">Titel des Direktlinks</label>
 			<label index="labelkatalogsuche">Ihre Suchbegriffe</label>
