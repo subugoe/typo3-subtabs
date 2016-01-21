@@ -15,13 +15,13 @@
 	</form>
 
 	<form class="search_form -subjects" role="search">
-		<f:form.textfield type="text" name="searchcat" id="q" size="40" class="search_input"/>
-		<label for="q" class="search_input-label"><f:translate key="labelSearchAll"/></label>
+		<f:form.textfield type="text" name="searchcat" id="q" size="40" class="search_input" placeholder="{f:translate(key:'labelSearchAll')}"/>
+		<label for="q" class="sr-only"><f:translate key="labelSearchAll"/></label>
 	</form>
 
 	<form action="<f:uri.page pageUid='{f:translate(key:\'solrTarget\')}' />" method="get" class="search_form -website" role="search">
-		<f:form.textfield type="text" name="q" id="solrtab" size="40" class="search_input"/>
-		<label for="solrtab" class="search_input-label"><f:translate key="labelSearchAll"/></label>
+		<f:form.textfield type="text" name="q" id="solrtab" size="40" class="search_input" placeholder="{f:translate(key:'labelSearchAll')}"/>
+		<label for="solrtab" class="sr-only"><f:translate key="labelSearchAll"/></label>
 		<f:form.button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
 	</form>
 

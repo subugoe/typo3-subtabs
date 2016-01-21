@@ -2,24 +2,29 @@
 
 <div class="search_content -catalogue">
 	<f:for each="{kataloge}" as="katalogliste">
-		<div class="search_catalog-list">
+		<ul class="search_catalog-list">
 			<f:for each="{katalogliste.katalogListe}" as="liste" iteration="katalogIterator">
-				<label class="search_label">
+				<li class="search_item">
 					<f:if condition="{liste.neuesFenster}">
 						<f:then>
-							<f:form.radio name="kataloge" class="search_radio -new-window" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
+							<f:form.radio name="kataloge" id="radio{katalogIterator.index}" class="search_radio -new-window" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
 						</f:then>
 						<f:else>
-							<f:form.radio name="kataloge" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
+							<f:form.radio name="kataloge" id="radio{katalogIterator.index}" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
 						</f:else>
 					</f:if>
 					<v:iterator.explode as="abbreviation" content="{liste.titel}" glue=" - ">
-						<span <f:if condition="{abbreviation.1}"><f:then> class="search_description"</f:then><f:else> title="{liste.information}"</f:else></f:if>>{abbreviation.0}</span>
-						<f:if condition="{abbreviation.1}">
-							<v:link.typolink configuration="{parameter: liste.direktLink, ATagParams: 'class=\'search_label-link\'', title: liste.direktLinkTitel}">{abbreviation.1}</v:link.typolink>
-						</f:if>
+						<label class="search_label {f:if(condition: '{abbreviation.1}', then: '-bold')}" for="radio{katalogIterator.index}">{abbreviation.0}</label>
+						<span class="search_label-link">
+							<f:if condition="{abbreviation.1}">
+								<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.1}</v:link.typolink>
+								<span class="search_info" title="{liste.direktLinkTitel}">
+									<span class="sr-only">{liste.direktLinkTitel}</span>
+								</span>
+							</f:if>
+						</span>
 					</v:iterator.explode>
-				</label>
+				</li>
 			</f:for>
 			<ul class="search_catalog-page-list">
 				<f:for each="{katalogliste.seitenListe}" as="page">
@@ -28,7 +33,7 @@
 					</li>
 				</f:for>
 			</ul>
-		</div>
+		</ul>
 	</f:for>
 	<button class="search_close" title="{f:translate(key:'close')}">
 		<span class="sr-only"><f:translate key="close"/></span>
