@@ -26,13 +26,13 @@
 					</v:iterator.explode>
 				</li>
 			</f:for>
-			<ul class="search_catalog-page-list">
-				<f:for each="{katalogliste.seitenListe}" as="page">
-					<li>
-						<v:link.typolink configuration="{parameter: page.uid, title: page.title}">{page.title}</v:link.typolink>
-					</li>
-				</f:for>
-			</ul>
+		</ul>
+		<ul class="search_catalog-page-list">
+			<f:for each="{katalogliste.seitenListe}" as="page">
+				<li>
+					<v:link.typolink configuration="{parameter: page.uid, title: page.title}">{page.title}</v:link.typolink>
+				</li>
+			</f:for>
 		</ul>
 	</f:for>
 	<button class="search_close" title="{f:translate(key:'close')}">
