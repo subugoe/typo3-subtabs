@@ -14,10 +14,12 @@
 						</f:else>
 					</f:if>
 					<v:iterator.explode as="abbreviation" content="{liste.titel}" glue=" - ">
-						<label class="search_label {f:if(condition: '{abbreviation.1}', then: '-bold')}" for="radio{katalogIterator.index}">{abbreviation.0}</label>
+						<label class="search_label" for="radio{katalogIterator.index}">{f:if(condition: '{abbreviation.1}', then: abbreviation.1, else: abbreviation.0)}</label>
 						<span class="search_label-link">
-							<f:if condition="{abbreviation.1}">
-								<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.1}</v:link.typolink>
+							<f:if condition="{abbreviation.0}">
+								<f:if condition="{abbreviation.1}">
+									(<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.0}</v:link.typolink>)
+								</f:if>
 								<span class="search_info" title="{liste.direktLinkTitel}">
 									<span class="sr-only">{liste.direktLinkTitel}</span>
 								</span>
