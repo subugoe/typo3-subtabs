@@ -7,6 +7,7 @@
 	<data type="array">
 		<languageKey index="en" type="array">
 			<label index="close">Close</label>
+			<label index="more">Mehr</label>
 			<label index="tx_subtabs_domain_model_faecher">Reiter Faecher und Sammlungen</label>
 			<label index="synonymsuche">Suche nach Begriffen</label>
 			<label index="tx_subtabs_domain_model_kataloge">Reiter Kataloge</label>
@@ -37,6 +38,7 @@
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="close">Schließen</label>
+			<label index="more">Mehr</label>
 			<label index="tx_subtabs_domain_model_faecher">Reiter Faecher und Sammlungen</label>
 			<label index="synonymsuche">Suche nach Begriffen</label>
 			<label index="tx_subtabs_domain_model_kataloge">Reiter Kataloge</label>

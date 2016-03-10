@@ -159,8 +159,7 @@
       });
     });
     $('.search_input').change(function() {
-      $('.search_input').val($(this).val());
-      return $('.search_input-label').toggle($(this).val() === '');
+      return $('.search_input').val($(this).val());
     });
     $('.search, .main_left, .header_show-nav').click(function(e) {
       return e.stopPropagation();
@@ -217,7 +216,11 @@
       }
       return false;
     });
-    return false;
+    false;
+    return $('.search_info-toggle').click(function() {
+      $(this).siblings('.search_info-toggle').addBack().toggle();
+      return $(this).closest('.search_item').find('.search_info').slideToggle();
+    });
   });
 
 }).call(this);
