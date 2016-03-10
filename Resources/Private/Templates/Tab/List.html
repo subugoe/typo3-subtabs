@@ -11,7 +11,7 @@
 	<form method="get" class="search_form -catalogue -visible" action="/" role="search">
 		<f:form.textfield type="text" name="searchcat" id="mytextbox" size="40" class="search_input" placeholder="{f:translate(key:'labelSearchAll')}"/>
 		<label for="mytextbox" class="sr-only"><f:translate key="labelSearchAll"/></label>
-		<f:form.button type="submit" class="search_submit" name="button_submit-catalogue"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
+		<button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></button>
 	</form>
 
 	<form class="search_form -subjects" role="search">
@@ -22,7 +22,7 @@
 	<form action="<f:uri.page pageUid='{f:translate(key:\'solrTarget\')}' />" method="get" class="search_form -website" role="search">
 		<f:form.textfield type="text" name="q" id="solrtab" size="40" class="search_input" placeholder="{f:translate(key:'labelSearchAll')}"/>
 		<label for="solrtab" class="sr-only"><f:translate key="labelSearchAll"/></label>
-		<f:form.button type="submit" class="search_submit" name="button_submit-website"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></f:form.button>
+		<button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></button>
 	</form>
 
 	<div class="search_popup">
