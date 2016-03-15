@@ -164,9 +164,13 @@
     $('.search, .main_left, .header_show-nav').click(function(e) {
       return e.stopPropagation();
     });
-    $(window).add('.search_close').click(function() {
+    $(window).click(function() {
+      return $('.search_close').click();
+    });
+    $('.search_close').click(function() {
       $('.search_input').blur();
-      return $('.search').removeClass('-show-popup');
+      $('.search').removeClass('-show-popup');
+      return false;
     });
     $(document).bind('keydown', function(e) {
       if (e.keyCode === 27) {
