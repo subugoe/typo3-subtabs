@@ -32,7 +32,7 @@ $ ->
 		$parent.addClass('-active')
 		$('.search_content, .search_form').not('.-' + target).removeClass('-visible')
 		$('.search_content, .search_form').filter('.-' + target).addClass('-visible')
-		$('.search_form.-' + target + ' input').focus()
+		$('.search_form.-' + target + ' .search_input').focus()
 		false
 
 	$('.search_content.-catalogue input[type=radio]').click ->
