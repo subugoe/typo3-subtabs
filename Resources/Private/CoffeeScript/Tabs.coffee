@@ -70,3 +70,4 @@ $ ->
 	$('.search_info-toggle').click ->
 		$(this).siblings('.search_info-toggle').addBack().toggle()
 		$(this).closest('.search_item').find('.search_info').slideToggle()
+		false

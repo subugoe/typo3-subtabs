@@ -16,18 +16,18 @@
 					<v:iterator.explode as="abbreviation" content="{liste.titel}" glue=" - ">
 						<label class="search_label" for="radio{katalogIterator.index}">
 							{f:if(condition: '{abbreviation.1}', then: abbreviation.1, else: abbreviation.0)}
-							<span class="search_label-addon">
-								<f:if condition="{abbreviation.0}">
-									<f:if condition="{abbreviation.1}">
-										(<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.0}</v:link.typolink>)
-									</f:if>
-								</f:if>
-								<f:if condition="{liste.direktLinkTitel}">
-									<button class="search_info-toggle -show"><span class="sr-only"><f:translate key="more"/></span></button>
-									<button class="search_info-toggle -hide"><span class="sr-only"><f:translate key="close"/></span></button>
-								</f:if>
-							</span>
 						</label>
+						<span class="search_label-addon">
+							<f:if condition="{abbreviation.0}">
+								<f:if condition="{abbreviation.1}">
+									(<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.0}</v:link.typolink>)
+								</f:if>
+							</f:if>
+							<f:if condition="{liste.direktLinkTitel}">
+								<button class="search_info-toggle -show"><span class="sr-only"><f:translate key="more"/></span></button>
+								<button class="search_info-toggle -hide"><span class="sr-only"><f:translate key="close"/></span></button>
+							</f:if>
+						</span>
 						<div class="search_info">{liste.direktLinkTitel}</div>
 					</v:iterator.explode>
 				</li>

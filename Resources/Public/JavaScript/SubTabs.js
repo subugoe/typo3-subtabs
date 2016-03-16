@@ -223,7 +223,8 @@
     false;
     return $('.search_info-toggle').click(function() {
       $(this).siblings('.search_info-toggle').addBack().toggle();
-      return $(this).closest('.search_item').find('.search_info').slideToggle();
+      $(this).closest('.search_item').find('.search_info').slideToggle();
+      return false;
     });
   });
 
