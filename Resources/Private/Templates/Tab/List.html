@@ -2,13 +2,13 @@
 
 	<div class="search_popup -clip-right">
 		<ul class="search_navigation">
-			<li><a href="#catalogue" class="search_tab -catalogue"><f:translate key="Katalog"/></a></li>
+			<li><a href="#catalog" class="search_tab -catalog"><f:translate key="Katalog"/></a></li>
 			<li><a href="#subjects" class="search_tab -subjects"><f:translate key="Faechersammlungen"/></a></li>
 			<li><a href="#website" class="search_tab -website"><f:translate key="Webseite"/></a></li>
 		</ul>
 	</div>
 
-	<form method="get" class="search_form -catalogue -visible" action="/" role="search">
+	<form class="search_form -catalog -visible" method="get" action="{kataloge.0.katalogListe.0.url}" role="search">
 		<f:form.textfield type="text" name="searchcat" id="mytextbox" size="40" class="search_input" placeholder="{f:translate(key:'labelSearchAll')}"/>
 		<label for="mytextbox" class="sr-only"><f:translate key="labelSearchAll"/></label>
 		<button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></button>
@@ -25,7 +25,7 @@
 		</div>
 	</form>
 
-	<form action="<f:uri.page pageUid='{f:translate(key:\'solrTarget\')}' />" method="get" class="search_form -website" role="search">
+	<form class="search_form -website" method="get" action="<f:uri.page pageUid='{f:translate(key:\'solrTarget\')}' />" role="search">
 		<f:form.textfield type="text" name="q" id="solrtab" size="40" class="search_input" placeholder="{f:translate(key:'labelSearchAll')}"/>
 		<label for="solrtab" class="sr-only"><f:translate key="labelSearchAll"/></label>
 		<button type="submit" class="search_submit"><span class="sr-only"><f:translate key="suchSubmitButton"/></span></button>

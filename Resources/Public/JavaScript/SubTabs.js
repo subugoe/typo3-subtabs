@@ -192,35 +192,34 @@
       $('.search_form.-' + target + ' .search_input').focus();
       return false;
     });
-    $('.search_content.-catalogue input[type=radio]').click(function() {
-      var link;
-      link = $('.search_content.-catalogue input:checked').val();
-      return $('.search_form.-catalogue').attr('action', link);
-    });
-    $('.search_form.-catalogue').submit(function() {
-      var bixPix, get, link, str, url;
+    $('.search_form.-catalog').submit(function() {
+      var bixPix, get, link, open, str, url;
       str = $('#mytextbox').val();
-      link = $('.search_content.-catalogue input:checked').val();
-      if ($('#katalog-4').attr('checked') === 'checked' || $('#katalog-5').attr('checked') === 'checked') {
+      link = $('.search_content.-catalog :checked').val();
+      if (str === ':P') {
+        $('body,button,input,select,textarea').css('fontFamily', 'Comic Sans MS,' + $('body').css('fontFamily'));
+        $('#mytextbox').val(';)');
+      }
+      if (link.indexOf('/ezeit/') !== -1 || link.indexOf('/dbinfo/') !== -1) {
         get = escape(str);
       } else {
         get = encodeURIComponent(str);
       }
       url = link + get;
-      if ($('.search_catalog-list label:first-child input:checked').length !== 0 && window.location.hostname === 'www.sub.uni-goettingen.de') {
+      if (link.indexOf('//opac') !== -1 && window.location.hostname === 'www.sub.uni-goettingen.de') {
         bixPix = document.createElement('img');
         bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2');
-        window.open(url);
-      } else {
-        if ($('.search_catalog-list input:checked').hasClass('-new-window')) {
-          window.open(url);
-        } else {
+      }
+      if ($('.search_catalog-list input:checked').hasClass('-new-window')) {
+        open = window.open(url);
+        if (open === null || typeof open === 'undefined') {
           location.href = url;
         }
+      } else {
+        location.href = url;
       }
       return false;
     });
-    false;
     return $('.search_info-toggle').click(function() {
       $(this).siblings('.search_info-toggle').addBack().toggle();
       $(this).closest('.search_item').find('.search_info').slideToggle();

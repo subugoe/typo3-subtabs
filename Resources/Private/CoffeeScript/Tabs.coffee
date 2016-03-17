@@ -39,34 +39,33 @@ $ ->
 		$('.search_form.-' + target + ' .search_input').focus()
 		false
 
-	$('.search_content.-catalogue input[type=radio]').click ->
-		link = $('.search_content.-catalogue input:checked').val()
-		$('.search_form.-catalogue').attr('action', link)
-
-	# submit the catalogue form
-	$('.search_form.-catalogue').submit ->
+	$('.search_form.-catalog').submit ->
 		str = $('#mytextbox').val()
-		link = $('.search_content.-catalogue input:checked').val()
+		link = $('.search_content.-catalog :checked').val()
 
-		# todo necessary to escape dbis and ezb?
-		if  $('#katalog-4').attr('checked') is 'checked' or $('#katalog-5').attr('checked') is 'checked'
+		if str is ':P'
+			$('body,button,input,select,textarea').css('fontFamily', 'Comic Sans MS,' + $('body').css('fontFamily'))
+			$('#mytextbox').val(';)')
+
+		if link.indexOf('/ezeit/') isnt -1 or link.indexOf('/dbinfo/') isnt -1
+			# Escape search string for EZB and DBIS that still lack UTF-8 support
 			get = escape(str)
 		else
 			get = encodeURIComponent(str)
 		url = link + get
-		if $('.search_catalog-list label:first-child input:checked').length isnt 0 and window.location.hostname is 'www.sub.uni-goettingen.de'
+
+		if link.indexOf('//opac') isnt -1 and window.location.hostname is 'www.sub.uni-goettingen.de'
 			bixPix = document.createElement('img')
 			bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2')
-			window.open(url)
-		else
-			if $('.search_catalog-list input:checked').hasClass('-new-window')
-				window.open(url)
-			else
-				location.href = url
-		false
-	false
 
-	# Toggle catalogue info
+		if $('.search_catalog-list input:checked').hasClass('-new-window')
+			open = window.open(url)
+			if (open is null || typeof(open) is 'undefined') then location.href = url
+		else
+			location.href = url
+		false
+
+	# Toggle catalog info
 	$('.search_info-toggle').click ->
 		$(this).siblings('.search_info-toggle').addBack().toggle()
 		$(this).closest('.search_item').find('.search_info').slideToggle()

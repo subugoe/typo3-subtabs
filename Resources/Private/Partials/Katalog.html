@@ -1,46 +1,44 @@
 {namespace v=FluidTYPO3\Vhs\ViewHelpers}
 
-<div class="search_content -catalogue">
-	<f:for each="{kataloge}" as="katalogliste">
-		<ul class="search_catalog-list">
-			<f:for each="{katalogliste.katalogListe}" as="liste" iteration="katalogIterator">
-				<li class="search_item">
-					<f:if condition="{liste.neuesFenster}">
-						<f:then>
-							<f:form.radio name="kataloge" id="radio{katalogIterator.index}" class="search_radio -new-window" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
-						</f:then>
-						<f:else>
-							<f:form.radio name="kataloge" id="radio{katalogIterator.index}" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{katalogIterator.isFirst}"/>
-						</f:else>
-					</f:if>
-					<v:iterator.explode as="abbreviation" content="{liste.titel}" glue=" - ">
-						<label class="search_label" for="radio{katalogIterator.index}">
-							{f:if(condition: '{abbreviation.1}', then: abbreviation.1, else: abbreviation.0)}
-						</label>
-						<span class="search_label-addon">
-							<f:if condition="{abbreviation.0}">
-								<f:if condition="{abbreviation.1}">
-									(<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.0}</v:link.typolink>)
-								</f:if>
+<div class="search_content -catalog">
+	<ul class="search_catalog-list">
+		<f:for each="{kataloge.0.katalogListe}" as="liste" iteration="catalogIterator">
+			<li class="search_item">
+				<f:if condition="{liste.neuesFenster}">
+					<f:then>
+						<f:form.radio name="kataloge" id="radio{catalogIterator.index}" class="search_radio -new-window" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{catalogIterator.isFirst}"/>
+					</f:then>
+					<f:else>
+						<f:form.radio name="kataloge" id="radio{catalogIterator.index}" value="{v:uri.typolink(configuration: '{parameter: liste.url}')}" checked="{catalogIterator.isFirst}"/>
+					</f:else>
+				</f:if>
+				<v:iterator.explode as="abbreviation" content="{liste.titel}" glue=" - ">
+					<label class="search_label" for="radio{catalogIterator.index}">
+						{f:if(condition: '{abbreviation.1}', then: abbreviation.1, else: abbreviation.0)}
+					</label>
+					<span class="search_label-addon">
+						<f:if condition="{abbreviation.0}">
+							<f:if condition="{abbreviation.1}">
+								(<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.0}</v:link.typolink>)
 							</f:if>
-							<f:if condition="{liste.direktLinkTitel}">
-								<button class="search_info-toggle -show"><span class="sr-only"><f:translate key="more"/></span></button>
-								<button class="search_info-toggle -hide"><span class="sr-only"><f:translate key="close"/></span></button>
-							</f:if>
-						</span>
-						<div class="search_info">{liste.direktLinkTitel}</div>
-					</v:iterator.explode>
-				</li>
-			</f:for>
-		</ul>
-		<ul class="search_catalog-page-list">
-			<f:for each="{katalogliste.seitenListe}" as="page">
-				<li>
-					<v:link.typolink configuration="{parameter: page.uid, title: page.title}">{page.title}</v:link.typolink>
-				</li>
-			</f:for>
-		</ul>
-	</f:for>
+						</f:if>
+						<f:if condition="{liste.direktLinkTitel}">
+							<button class="search_info-toggle -show"><span class="sr-only"><f:translate key="more"/></span></button>
+							<button class="search_info-toggle -hide"><span class="sr-only"><f:translate key="close"/></span></button>
+						</f:if>
+					</span>
+					<div class="search_info">{liste.direktLinkTitel}</div>
+				</v:iterator.explode>
+			</li>
+		</f:for>
+	</ul>
+	<ul class="search_catalog-page-list">
+		<f:for each="{kataloge.0.seitenListe}" as="page">
+			<li>
+				<v:link.typolink configuration="{parameter: page.uid, title: page.title}">{page.title}</v:link.typolink>
+			</li>
+		</f:for>
+	</ul>
 	<button class="search_close" title="{f:translate(key:'close')}">
 		<span class="sr-only"><f:translate key="close"/></span>
 	</button>
