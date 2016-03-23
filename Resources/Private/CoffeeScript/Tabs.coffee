@@ -24,10 +24,11 @@ $ ->
 
 	$(document).bind 'keydown', (e) ->
 		if e.keyCode is 27 # Esc
-			if $('.search_input').val() is ''
+			if $('.search_input:focus').length is 0 or $('.search_input').val() is ''
 				$(window).click()
 			else
 				$('.search_input').val('').change()
+			return false
 
 	$('.search_navigation a').click ->
 		target = $(this).attr('href').split('#')[1]

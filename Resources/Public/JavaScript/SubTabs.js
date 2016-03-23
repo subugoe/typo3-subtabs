@@ -174,11 +174,12 @@
     });
     $(document).bind('keydown', function(e) {
       if (e.keyCode === 27) {
-        if ($('.search_input').val() === '') {
-          return $(window).click();
+        if ($('.search_input:focus').length === 0 || $('.search_input').val() === '') {
+          $(window).click();
         } else {
-          return $('.search_input').val('').change();
+          $('.search_input').val('').change();
         }
+        return false;
       }
     });
     $('.search_navigation a').click(function() {
