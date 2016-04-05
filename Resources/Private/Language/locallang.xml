@@ -6,6 +6,8 @@
 	</meta>
 	<data type="array">
 		<languageKey index="en" type="array">
+			<label index="close">Close</label>
+			<label index="more">Mehr</label>
 			<label index="tx_subtabs_domain_model_faecher">Reiter Faecher und Sammlungen</label>
 			<label index="synonymsuche">Suche nach Begriffen</label>
 			<label index="tx_subtabs_domain_model_kataloge">Reiter Kataloge</label>
@@ -17,12 +19,13 @@
 			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
 			<label index="tx_subtabs_domain_model_katalog.information">Informationstext zur Sammlung</label>
 			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Ob das Suchergebnis in einem neuen Fenster geoeffnet werden soll</label>
-			<label index="Faechersammlungen">… your subjects</label>
-			<label index="Webseite">… our website</label>
-			<label index="Katalog">Search: our catalogues</label>
+			<label index="Faechersammlungen">Subjects</label>
+			<label index="Webseite">Website</label>
+			<label index="Katalog">Catalogues</label>
 			<label index="direktLink">Link to</label>
 			<label index="direktLinkTitel">Titel des Direktlinks</label>
 			<label index="labelkatalogsuche">Your search terms</label>
+			<label index="labelSearchAll">Catalogues, subjects, website</label>
 			<label index="labelfaecher">Your search terms</label>
 			<label index="labelwebseite">Your search terms</label>
 			<label index="opacError">Temporärer Fehler bei der Abfrage der Datenbanken</label>
@@ -34,6 +37,8 @@
 			<label index="solrTarget">/en/search/</label>
 		</languageKey>
 		<languageKey index="de" type="array">
+			<label index="close">Schließen</label>
+			<label index="more">Mehr</label>
 			<label index="tx_subtabs_domain_model_faecher">Reiter Faecher und Sammlungen</label>
 			<label index="synonymsuche">Suche nach Begriffen</label>
 			<label index="tx_subtabs_domain_model_kataloge">Reiter Kataloge</label>
@@ -46,12 +51,13 @@
 			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
 			<label index="tx_subtabs_domain_model_katalog.information">Informationstext zur Sammlung</label>
 			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Ob das Suchergebnis in einem neuen Fenster geoeffnet werden soll</label>
-			<label index="Faechersammlungen">… nach Fächern</label>
-			<label index="Webseite">… auf der Website</label>
-			<label index="Katalog">Suche: in Katalogen</label>
+			<label index="Faechersammlungen">Fächer</label>
+			<label index="Webseite">Website</label>
+			<label index="Katalog">Kataloge</label>
 			<label index="direktLink">Direktlink</label>
 			<label index="direktLinkTitel">Titel des Direktlinks</label>
 			<label index="labelkatalogsuche">Ihre Suchbegriffe</label>
+			<label index="labelSearchAll">Kataloge, Fächer, Website</label>
 			<label index="labelfaecher">Ihre Suchbegriffe</label>
 			<label index="labelwebseite">Ihre Suchbegriffe</label>
 			<label index="opacError">Temporärer Fehler bei der Abfrage der Datenbanken</label>

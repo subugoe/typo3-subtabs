@@ -39,14 +39,12 @@ class Fach extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * @validate NotEmpty
      */
     protected $titel;
-
     /**
      * Link zur Seite des Fachknotens
      *
      * @var \Subugoe\Subtabs\Domain\Model\Page
      */
     protected $seite;
-
     /**
      * Liste der Tags
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Tags> $tagListe

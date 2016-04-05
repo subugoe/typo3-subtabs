@@ -32,35 +32,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class FaecherRepository extends Repository
 {
-
-    /**
-     * Suche in allen Teilen des verketteten Objekts nach dem Vorkommen eines Strings
-     * @param string $suchbegriff
-     * @return array|QueryResultInterface
-     */
-    public function findSuchbegriff($suchbegriff)
-    {
-
-        $query = $this->createQuery();
-        $query = $query->matching(
-            $query->logicalOr(
-                $query->like('titel', '%' . $suchbegriff . '%'),
-                $query->like('fachListe.titel', '%' . $suchbegriff . '%')
-            ));
-
-        return $query->execute();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function findOnlyTopLevelFaecher()
-    {
-        $query = $this->createQuery();
-        $query = $query->statement('SELECT * FROM tx_subtabs_domain_model_faecher');
-        return $query->execute();
-    }
-
     /**
      * @param int $sysLanguageUid
      * @return mixed

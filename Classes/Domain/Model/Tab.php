@@ -36,11 +36,11 @@ class Tab extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      *
      * @var array $reiter
      */
-    protected $reiter = [
+    protected $reiter = array(
         'Katalog',
         'Faechersammlungen',
         'Webseite'
-    ];
+    );
 
     public function getReiter()
     {

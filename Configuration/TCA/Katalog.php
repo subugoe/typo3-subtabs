@@ -3,194 +3,182 @@ if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
 }
 
-$TCA['tx_subtabs_domain_model_katalog'] = [
+$TCA['tx_subtabs_domain_model_katalog'] = array(
     'ctrl' => $TCA['tx_subtabs_domain_model_katalog']['ctrl'],
-    'interface' => [
+    'interface' => array(
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, titel, url, suchparameter, direkt_link, direkt_link_titel, information, neues_fenster',
-    ],
-    'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, titel, url, suchparameter, direkt_link, direkt_link_titel, information, neues_fenster,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'],
-    ],
-    'palettes' => [
-        '1' => ['showitem' => ''],
-    ],
-    'columns' => [
-        'sys_language_uid' => [
+    ),
+    'types' => array(
+        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, titel, url, suchparameter, direkt_link, direkt_link_titel, information, neues_fenster,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+    ),
+    'palettes' => array(
+        '1' => array('showitem' => ''),
+    ),
+    'columns' => array(
+        'sys_language_uid' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.language',
-            'config' => [
+            'config' => array(
                 'type' => 'select',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    ['LLL:EXT:lang/locallang_general.php:LGL.allLanguages', -1],
-                    ['LLL:EXT:lang/locallang_general.php:LGL.default_value', 0]
-                ],
-            ],
-        ],
-        'l10n_parent' => [
+                'items' => array(
+                    array('LLL:EXT:lang/locallang_general.php:LGL.allLanguages', -1),
+                    array('LLL:EXT:lang/locallang_general.php:LGL.default_value', 0)
+                ),
+            ),
+        ),
+        'l10n_parent' => array(
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.l18n_parent',
-            'config' => [
+            'config' => array(
                 'type' => 'select',
-                'items' => [
-                    ['', 0],
-                ],
+                'items' => array(
+                    array('', 0),
+                ),
                 'foreign_table' => 'tx_subtabs_domain_model_katalog',
                 'foreign_table_where' => 'AND tx_subtabs_domain_model_katalog.pid=###CURRENT_PID### AND tx_subtabs_domain_model_katalog.sys_language_uid IN (-1,0)',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
+            ),
+        ),
+        'l10n_diffsource' => array(
+            'config' => array(
                 'type' => 'passthrough',
-            ],
-        ],
-        't3ver_label' => [
+            ),
+        ),
+        't3ver_label' => array(
             'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.versionLabel',
-            'config' => [
+            'config' => array(
                 'type' => 'input',
                 'size' => '30',
                 'max' => '255',
-            ]
-        ],
-        'hidden' => [
+            )
+        ),
+        'hidden' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-            'config' => [
+            'config' => array(
                 'type' => 'check',
-            ],
-        ],
-        'starttime' => [
+            ),
+        ),
+        'starttime' => array(
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.starttime',
-            'config' => [
+            'config' => array(
                 'type' => 'input',
                 'size' => '10',
                 'max' => '20',
                 'eval' => 'datetime',
                 'checkbox' => '0',
                 'default' => '0',
-            ],
-        ],
-        'endtime' => [
+            ),
+        ),
+        'endtime' => array(
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.endtime',
-            'config' => [
+            'config' => array(
                 'type' => 'input',
                 'size' => '8',
                 'max' => '20',
                 'eval' => 'datetime',
                 'checkbox' => '0',
                 'default' => '0',
-                'range' => [
+                'range' => array(
                     'upper' => mktime(0, 0, 0, 12, 31, date('Y') + 10),
                     'lower' => mktime(0, 0, 0, date('m') - 1, date('d'), date('Y'))
-                ],
-            ],
-        ],
-        'titel' => [
+                ),
+            ),
+        ),
+        'titel' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_katalog.titel',
-            'config' => [
+            'config' => array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
-            ],
-        ],
-        'url' => [
+            ),
+        ),
+        'url' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_katalog.url',
-            'config' => [
+            'config' => array(
                 'type' => 'input',
                 'size' => 40,
                 'eval' => 'trim',
-                'wizards' => [
+                'wizards' => array(
                     '_PADDING' => 2,
-                    'link' => [
+                    'link' => array(
                         'type' => 'popup',
                         'title' => 'Link',
                         'icon' => 'link_popup.gif',
-                        'module' => [
-                            'name' => 'wizard_element_browser',
-                            'urlParameters' => [
-                                'mode' => 'wizard',
-                                'act' => 'file'
-                            ]
-                        ],
+                        'script' => 'browse_links.php?mode=wizard',
                         'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
-                    ]
-                ]
-            ]
-        ],
-        'direkt_link' => [
+                    )
+                )
+            )
+        ),
+        'direkt_link' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_katalog.direkt_link',
-            'config' => [
+            'config' => array(
                 'type' => 'input',
                 'size' => 40,
                 'eval' => 'trim',
-                'wizards' => [
+                'wizards' => array(
                     '_PADDING' => 2,
-                    'link' => [
+                    'link' => array(
                         'type' => 'popup',
                         'title' => 'Link',
                         'icon' => 'link_popup.gif',
-                        'module' => [
-                            'name' => 'wizard_element_browser',
-                            'urlParameters' => [
-                                'mode' => 'wizard',
-                                'act' => 'file'
-                            ]
-                        ],
+                        'script' => 'browse_links.php?mode=wizard',
                         'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
-                    ]
-                ]
-            ]
-        ],
-        'direkt_link_titel' => [
+                    )
+                )
+            )
+        ),
+        'direkt_link_titel' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_katalog.direktLinkTitel',
-            'config' => [
+            'config' => array(
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
                 'eval' => 'trim'
-            ],
-        ],
-        'suchparameter' => [
+            ),
+        ),
+        'suchparameter' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_katalog.suchparameter',
-            'config' => [
+            'config' => array(
                 'type' => 'input',
                 'size' => 10,
                 'eval' => 'trim'
-            ],
-        ],
-        'information' => [
+            ),
+        ),
+        'information' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_katalog.information',
-            'config' => [
+            'config' => array(
                 'type' => 'text',
                 'cols' => 40,
                 'rows' => 15,
                 'eval' => 'trim'
-            ],
-        ],
-        'neues_fenster' => [
+            ),
+        ),
+        'neues_fenster' => array(
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_katalog.neues_fenster',
-            'config' => [
+            'config' => array(
                 'type' => 'check',
                 'default' => 0
-            ],
-        ],
-        'kataloge' => [
-            'config' => [
+            ),
+        ),
+        'kataloge' => array(
+            'config' => array(
                 'type' => 'passthrough',
-            ],
-        ],
-    ],
-];
+            ),
+        ),
+    ),
+);
