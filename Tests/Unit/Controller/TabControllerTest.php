@@ -1,5 +1,6 @@
 <?php
 namespace Subugoe\Subtabs\Tests\Unit\Controller;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -23,50 +24,52 @@ namespace Subugoe\Subtabs\Tests\Unit\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use TYPO3\CMS\Extbase\Object\ObjectManager;
+
+use Subugoe\Subtabs\Controller\TabController;
+use Subugoe\Subtabs\Domain\Repository\FaecherRepository;
 
 /**
  * Test case for class Tx_Subtabs_Controller_FachController
- *
- * @author Ingo Pfennigstorf <pfennigstorf@sub.uni-goettingen.de>
- * @package subtabs
  */
-class FaecherControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
-	/**
-	 * @var \Subugoe\Subtabs\Controller\FaecherController
-	 */
-	protected $fixture;
+class TabControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
 
-	/**
-	 * @var \Subugoe\Subtabs\Domain\Repository\FaecherRepository
-	 */
-	protected $repository;
+    /**
+     * @var TabController
+     */
+    protected $fixture;
 
-	/**
-	 * @return void
-	 */
-	public function setUp() {
-		$class =  'Subugoe\\Subtabs\\Controller\\FaecherController';
-		$this->fixture = $this->getMock($class);
+    /**
+     * @var FaecherRepository
+     */
+    protected $repository;
 
-		/**
-		 * @var $repository \Subugoe\Subtabs\Domain\Repository\FaecherRepository
-		 */
-		$this->repository = $this->getMock(
-			'Subugoe\\Subtabs\\Domain\\Repository\\FaecherRepository',
-			array('findAll', 'findByUid', 'update', 'add', 'remove', 'countAll', 'findSuchbegriff')
-		);
+    /**
+     * @return void
+     */
+    public function setUp()
+    {
+        $this->fixture = $this->getMock(TabController::class);
 
-	}
+        /**
+         * @var $repository \Subugoe\Subtabs\Domain\Repository\FaecherRepository
+         */
+        $this->repository = $this->getMock(
+            FaecherRepository::class,
+            ['findAll', 'findByUid', 'update', 'add', 'remove', 'countAll', 'findSuchbegriff']
+        );
 
-	/**
-	 * @test
-	 * @markTestIncomplete
-	 */
-	public function testFachAnlage(){
-		$i = 1;
-		
-		$this->assertEquals(1, $i);
-	}
+    }
+
+    /**
+     * @test
+     * @markTestIncomplete
+     */
+    public function testFachAnlage()
+    {
+        $i = 1;
+
+        $this->assertEquals(1, $i);
+    }
 
 }

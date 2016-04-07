@@ -24,15 +24,15 @@ namespace Subugoe\Subtabs\Controller;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
- * ************************************************************* */
-use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+     * ************************************************************* */
+
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Subugoe\Subtabs\Domain\Repository\FaecherRepository;
 
 /**
  * Controller for the Tab object
  */
-class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class TabController extends ActionController
 {
 
     /**
@@ -48,22 +48,18 @@ class TabController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * Initialisierung von Defaultwerten
-     *
-     * @return void
      */
     public function initializeAction()
     {
         $this->language = $GLOBALS['TSFE']->sys_language_uid;
-        /** @var \TYPO3\CMS\Core\Page\PageRenderer $pageRenderer */
-        $pageRenderer = $this->objectManager->get(PageRenderer::class);
-        $pageRenderer->addCssFile(ExtensionManagementUtility::siteRelPath('subtabs') . 'Resources/Public/Css/Tabs.css');
     }
 
     /**
-     * shows all tabs
+     * Shows all tabs
      */
     public function listAction()
     {
+
         // catalogue tab
         $kataloge = $this->katalogeRepository->findAll();
 

@@ -8,18 +8,16 @@
     "url": "https://github.com/subugoe/typo3-subtabs.git"
   },
   "author": "",
-  "license": "GPL",
+  "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/subugoe/typo3-subtabs/issues"
   },
   "homepage": "https://github.com/subugoe/typo3-subtabs",
-  "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-compass": "^0.3.9",
-    "grunt-contrib-coffee": "^0.12.0",
-    "grunt-contrib-watch": "^0.6.1"
-  },
   "devDependencies": {
-    "grunt-autoprefixer": "^2.2.0"
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-coffeelint": "^0.5.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-notify": "^2.2.0"
   }
 }
