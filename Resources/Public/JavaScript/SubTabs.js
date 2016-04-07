@@ -194,7 +194,7 @@
       return false;
     });
     $('.search_form.-catalog').submit(function() {
-      var bixPix, get, link, open, str, url;
+      var get, link, open, str, url;
       str = $('#mytextbox').val();
       link = $('.search_content.-catalog :checked').val();
       if (str === ':P') {
@@ -207,10 +207,6 @@
         get = encodeURIComponent(str);
       }
       url = link + get;
-      if (link.indexOf('//opac') !== -1 && window.location.hostname === 'www.sub.uni-goettingen.de') {
-        bixPix = document.createElement('img');
-        bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2');
-      }
       if ($('.search_catalog-list input:checked').hasClass('-new-window')) {
         open = window.open(url);
         if (open === null || typeof open === 'undefined') {

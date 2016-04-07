@@ -55,10 +55,6 @@ $ ->
 			get = encodeURIComponent(str)
 		url = link + get
 
-		if link.indexOf('//opac') isnt -1 and window.location.hostname is 'www.sub.uni-goettingen.de'
-			bixPix = document.createElement('img')
-			bixPix.setAttribute('src', 'http://dbspixel.hbz-nrw.de/count?id=AF007&page=2')
-
 		if $('.search_catalog-list input:checked').hasClass('-new-window')
 			open = window.open(url)
 			if (open is null || typeof(open) is 'undefined') then location.href = url
