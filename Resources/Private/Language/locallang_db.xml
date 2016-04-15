@@ -19,19 +19,17 @@
 			<label index="tx_subtabs_domain_model_kataloge">Kataloge</label>
 			<label index="tx_subtabs_domain_model_kataloge.titel">Titel</label>
 			<label index="tx_subtabs_domain_model_kataloge.katalog_liste">Katalog Liste</label>
-			<label index="tx_subtabs_domain_model_kataloge.suchparameter">Suchparameter</label>
 			<label index="tx_subtabs_domain_model_webseite">Webseite</label>
 			<label index="tx_subtabs_domain_model_katalog">Katalog</label>
 			<label index="tx_subtabs_domain_model_katalog.titel">Titel</label>
 			<label index="tx_subtabs_domain_model_katalog.url">Url</label>
 			<label index="tx_subtabs_domain_model_katalog.direkt_link">Direktlink zum Katalog</label>
-			<label index="tx_subtabs_domain_model_katalog.information">Information</label>
 			<label index="tx_subtabs_domain_model_katalog.neues_fenster">Neues Fenster</label>
 			<label index="tx_subtabs_domain_model_tags">Synonyme</label>
 			<label index="tx_subtabs_domain_model_tags.titel">Synonym</label>
 			<label index="tx_subtabs_domain_model_fach.neuerwerbungen">Neuerwerbungen</label>
 			<label index="tx_subtabs_domain_model_neuerwerbung.titel">Titel</label>
-			<label index="tx_subtabs_domain_model_katalog.direktLinkTitel">Titel des Direktlinks</label>
+			<label index="tx_subtabs_domain_model_katalog.direktLinkTitel">Information</label>
 			<label index="tx_subtabs_domain_model_neuerwerbung.kurz">Label</label>
 			<label index="tx_subtabs_domain_model_neuerwerbung.suchbegriff">Suchbegriff</label>
 		</languageKey>

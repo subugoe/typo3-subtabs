@@ -149,5 +149,4 @@ class Kataloge extends AbstractEntity
     {
         $this->seitenListe = $seitenListe;
     }
-
 }

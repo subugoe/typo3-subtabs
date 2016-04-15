@@ -78,5 +78,4 @@ class Tags extends AbstractValueObject
     {
         $this->lang = $lang;
     }
-
 }

@@ -45,7 +45,6 @@ class TabControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     protected $repository;
 
     /**
-     * @return void
      */
     public function setUp()
     {
@@ -58,7 +57,6 @@ class TabControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             FaecherRepository::class,
             ['findAll', 'findByUid', 'update', 'add', 'remove', 'countAll', 'findSuchbegriff']
         );
-
     }
 
     /**
@@ -71,5 +69,4 @@ class TabControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
         $this->assertEquals(1, $i);
     }
-
 }

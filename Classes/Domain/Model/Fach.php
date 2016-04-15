@@ -59,7 +59,6 @@ class Fach extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Initializes all ObjectStorage properties.
      *
-     * @return void
      */
     protected function initStorageObjects()
     {
@@ -70,7 +69,6 @@ class Fach extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * Adds a Tag
      *
      * @param \Subugoe\Subtabs\Domain\Model\Tags $tagListe
-     * @return void
      */
     public function addTagListe(\Subugoe\Subtabs\Domain\Model\Tags $tagListe)
     {
@@ -81,7 +79,6 @@ class Fach extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * Removes a Tag
      *
      * @param \Subugoe\Subtabs\Domain\Model\Tags $tagListeToRemove The Sammlung to be removed
-     * @return void
      */
     public function removeTagListe(\Subugoe\Subtabs\Domain\Model\Tags $tagListeToRemove)
     {
@@ -102,7 +99,6 @@ class Fach extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
      * Sets the tagListe
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Subugoe\Subtabs\Domain\Model\Tags> $tagListe
-     * @return void
      */
     public function setTagListe($tagListe)
     {

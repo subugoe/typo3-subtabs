@@ -62,10 +62,8 @@ class Faecher extends AbstractEntity
      */
     protected function initStorageObjects()
     {
-
         $this->fachListe = new ObjectStorage();
         $this->seite = new ObjectStorage();
-
     }
 
     /**
@@ -156,5 +154,4 @@ class Faecher extends AbstractEntity
         }
         return $json;
     }
-
 }

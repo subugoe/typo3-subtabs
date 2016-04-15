@@ -42,7 +42,7 @@ class TabController extends ActionController
     protected $katalogeRepository;
 
     /**
-     * @var integer
+     * @var int
      */
     protected $language;
 

@@ -78,7 +78,7 @@ class Katalog extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Ob das Suchergebnis in einem neuen Fenster geoeffnet werden soll
      *
-     * @var boolean $neuesFenster
+     * @var bool $neuesFenster
      */
     protected $neuesFenster;
 
@@ -165,7 +165,7 @@ class Katalog extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Returns the neuesFenster
      *
-     * @return boolean
+     * @return bool
      */
     public function getNeuesFenster()
     {
@@ -175,7 +175,7 @@ class Katalog extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Returns the boolean state of neuesFenster
      *
-     * @return boolean
+     * @return bool
      */
     public function isNeuesFenster()
     {
@@ -185,7 +185,7 @@ class Katalog extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     /**
      * Sets the neuesFenster
      *
-     * @param boolean $neuesFenster
+     * @param bool $neuesFenster
      */
     public function setNeuesFenster($neuesFenster)
     {
@@ -223,5 +223,4 @@ class Katalog extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
     {
         $this->direktLinkTitel = $direktLinkTitel;
     }
-
 }

@@ -24,7 +24,6 @@ namespace Subugoe\Subtabs\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -43,5 +42,4 @@ class FaecherRepository extends Repository
         $query = $query->statement($statement);
         return $query->execute();
     }
-
 }

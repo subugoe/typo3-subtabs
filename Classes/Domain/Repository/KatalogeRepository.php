@@ -26,11 +26,9 @@ namespace Subugoe\Subtabs\Domain\Repository;
  ***************************************************************/
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-
 /**
  * Repository for Kataloge
  */
 class KatalogeRepository extends Repository
 {
-
 }

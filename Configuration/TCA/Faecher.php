@@ -4,140 +4,146 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$TCA['tx_subtabs_domain_model_faecher'] = array(
+$TCA['tx_subtabs_domain_model_faecher'] = [
     'ctrl' => $TCA['tx_subtabs_domain_model_faecher']['ctrl'],
-    'interface' => array(
+    'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, titel, seite, fach_liste',
-    ),
-    'types' => array(
-        '1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,titel,seite,fach_liste,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
-    ),
-    'palettes' => array(
-        '1' => array('showitem' => ''),
-    ),
-    'columns' => array(
-        'sys_language_uid' => array(
+    ],
+    'types' => [
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,titel,seite,fach_liste,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'],
+    ],
+    'palettes' => [
+        '1' => ['showitem' => ''],
+    ],
+    'columns' => [
+        'sys_language_uid' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.language',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => array(
-                    array('LLL:EXT:lang/locallang_general.php:LGL.allLanguages', -1),
-                    array('LLL:EXT:lang/locallang_general.php:LGL.default_value', 0)
-                ),
-            ),
-        ),
-        'l10n_parent' => array(
+                'items' => [
+                    ['LLL:EXT:lang/locallang_general.php:LGL.allLanguages', -1],
+                    ['LLL:EXT:lang/locallang_general.php:LGL.default_value', 0]
+                ],
+            ],
+        ],
+        'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.l18n_parent',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
-                'items' => array(
-                    array('', 0),
-                ),
+                'items' => [
+                    ['', 0],
+                ],
                 'foreign_table' => 'tx_subtabs_domain_model_faecher',
                 'foreign_table_where' => 'AND tx_subtabs_domain_model_faecher.pid=###CURRENT_PID### AND tx_subtabs_domain_model_faecher.sys_language_uid IN (-1,0)',
-            ),
-        ),
-        'l10n_diffsource' => array(
-            'config' => array(
+            ],
+        ],
+        'l10n_diffsource' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        't3ver_label' => array(
+            ],
+        ],
+        't3ver_label' => [
             'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.versionLabel',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => '30',
                 'max' => '255',
-            )
-        ),
-        'hidden' => array(
+            ]
+        ],
+        'hidden' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
-            'config' => array(
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
+            ],
+        ],
+        'starttime' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.starttime',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => '10',
                 'max' => '20',
                 'eval' => 'datetime',
                 'checkbox' => '0',
                 'default' => '0',
-            ),
-        ),
-        'endtime' => array(
+            ],
+        ],
+        'endtime' => [
             'exclude' => 1,
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.php:LGL.endtime',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => '8',
                 'max' => '20',
                 'eval' => 'datetime',
                 'checkbox' => '0',
                 'default' => '0',
-                'range' => array(
+                'range' => [
                     'upper' => mktime(0, 0, 0, 12, 31, date('Y') + 10),
                     'lower' => mktime(0, 0, 0, date('m') - 1, date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'titel' => array(
+                ],
+            ],
+        ],
+        'titel' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_faecher.titel',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
-            ),
-        ),
-        'seite' => array(
+            ],
+        ],
+        'seite' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_fach.seite',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => '15',
                 'max' => '255',
                 'checkbox' => '',
                 'eval' => 'trim',
-                'wizards' => array(
+                'wizards' => [
                     '_PADDING' => 2,
-                    'link' => array(
+                    'link' => [
                         'type' => 'popup',
                         'title' => 'Link',
                         'icon' => 'link_popup.gif',
-                        'script' => 'browse_links.php?mode=wizard',
+                        'module' => [
+                            'name' => 'wizard_element_browser',
+                            'urlParameters' => [
+                                'mode' => 'wizard',
+                            ]
+                        ],
                         'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
-                    )
-                )
-            )
-        ),
-        'fach_liste' => array(
+                    ]
+                ]
+            ]
+        ],
+        'fach_liste' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:subtabs/Resources/Private/Language/locallang_db.xml:tx_subtabs_domain_model_faecher.fach_liste',
-            'config' => array(
+            'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_subtabs_domain_model_fach',
                 'foreign_field' => 'faecher',
                 'maxitems' => 9999,
-                'appearance' => array(
+                'appearance' => [
                     'collapse' => 0,
                     'levelLinksPosition' => 'both',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,
                     'showAllLocalizationLink' => 1
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+            ],
+        ],
+    ],
+];
