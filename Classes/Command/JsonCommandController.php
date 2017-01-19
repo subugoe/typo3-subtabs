@@ -31,8 +31,6 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 
-require_once ExtensionManagementUtility::extPath('subtabs') . 'vendor/autoload.php';
-
 class JsonCommandController extends CommandController
 {
 
