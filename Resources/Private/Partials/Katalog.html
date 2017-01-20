@@ -19,7 +19,7 @@
 					<span class="search_label-addon">
 						<f:if condition="{abbreviation.0}">
 							<f:if condition="{abbreviation.1}">
-								(<v:link.typolink configuration="{parameter: liste.direktLink}">{abbreviation.0}</v:link.typolink>)
+								(<f:link.typolink parameter="{liste.direktLink}">{abbreviation.0}</f:link.typolink>)
 							</f:if>
 						</f:if>
 						<f:if condition="{liste.direktLinkTitel}">
@@ -35,7 +35,7 @@
 	<ul class="search_catalog-page-list">
 		<f:for each="{kataloge.0.seitenListe}" as="page">
 			<li>
-				<v:link.typolink configuration="{parameter: page.uid, title: page.title}">{page.title}</v:link.typolink>
+				<f:link.typolink parameter="{page.uid}" title="{page.title}">{page.title}</f:link.typolink>
 			</li>
 		</f:for>
 	</ul>
